@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>FORMULARIO</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+
+    <section>
+    <form action="https://www.lab.it.uc3m.es/labgamm/php/dump.php" target="_blank"> <!-- pongo la url ya que hay que programar el php. target="_blank" hace que el rsultado del submit aparezca en una nueva ventana -->
+           
+            <label for="Nombre"> Introduce el nombre:</label> <br> <!-- br = salto de linea -->
+            <input type="text" name="Nombre"/> <br> <!-- Pongo el atributo name ya que si no no se puede mandar -->
+            <label for="Apellido"> Introduce el apellido: </label> <br>
+            <input type="text" name="Apellido"/> <br>
+
+            <label for="Compra_juego"> Fecha compra del juego:</label> <br>
+            <select name="fecha_compra">
+                
+                <optgroup label="Grupo de opciones 1">
+                    <option>Elige una opción</option> 
+                    <option>Opción 1</option> 
+                    <option>Opción 2</option>
+                </optgroup>
+                
+                <optgroup label="Grupo de opciones 2">
+                    <option>Opción 1</option>
+                    <option>Opción 2</option> </optgroup>
+
+            </select> <br>
+
+            <label for="Telefono"> Introduce numero de telefono:</label> <br>
+            <input type="tel" name="telefono" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"/> <br>
+            <small>Format: 123-456-789</small> <br><br>
+
+            <input type="submit">
+
+            
+    </form>
+
+        
+    </section>
+
+    <footer>
+
+    </footer>
+
+    <address>
+        
+    </address>
+    
+</body>
+
+</html>
