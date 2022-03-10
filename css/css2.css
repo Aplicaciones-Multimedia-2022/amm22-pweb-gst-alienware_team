@@ -6,13 +6,26 @@
     align-items: center;
 
 }
+
+body{
+  height: 70%;
+}
+
 .header{
+
 		display: flex;
-		justify-content: ; /*para alinear los elementos del contenedor*/
+		/*justify-content: ; para alinear los elementos del contenedor*/
 		align-items: center;
-    padding: 10px;
-    margin: 10px;
+    padding: 0px;
+    margin: 0px;
   }
+
+  .footer{
+		display: flex;
+		/*justify-content: space-between;*/
+		align-items: center;
+		margin-left: 620px;
+	}
 
 .inicio img{
 		width: 80px;
