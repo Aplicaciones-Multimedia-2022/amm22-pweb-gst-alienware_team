@@ -1,12 +1,29 @@
 .div_lista {
-    
-    height: 250px;
-    height: 700px;
+
+    height: 650px;
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
+.header{
+		display: flex;
+		justify-content: ; /*para alinear los elementos del contenedor*/
+		align-items: center;
+    padding: 10px;
+    margin: 10px;
+  }
+
+.inicio img{
+		width: 80px;
+		height: auto;
+	}
+
+	.inicio{
+		align-items: center;
+    padding-top: 10px;
+
+	}
 
 ul{
     list-style-type: none; /*Elimina los puntos de antes de una lista*/
@@ -15,7 +32,7 @@ ul{
     overflow:hidden;
     text-align: center;
     justify-items: center;
-    
+
 }
 
 li:last-child {
@@ -52,7 +69,7 @@ li a{
 
   @font-face {
     font-family: game_over;
-    src: url(../res/aAutobusOmnibus.otf);
+    src: url(../res/Rixel.otf);
 }
 
 @import url(https://fonts.googleapis.com/css?family=Varela+Round);
@@ -66,70 +83,71 @@ h1:hover {
   margin: 0;
   text-align: center;
   text-transform: uppercase;
-  
+  font-family: game_over;
+
   width: 100%;
-  animation: move linear 2000ms infinite;  
+  animation: move linear 2000ms infinite;
 }
 
 @keyframes move {
   0% {
     text-shadow:
-      4px -4px 0 hsla(0, 100%, 50%, 1), 
-      3px -3px 0 hsla(0, 100%, 50%, 1), 
-      2px -2px 0 hsla(0, 100%, 50%, 1), 
+      4px -4px 0 hsla(0, 100%, 50%, 1),
+      3px -3px 0 hsla(0, 100%, 50%, 1),
+      2px -2px 0 hsla(0, 100%, 50%, 1),
       1px -1px 0 hsla(0, 100%, 50%, 1),
-      -4px 4px 0 hsla(180, 100%, 50%, 1), 
-      -3px 3px 0 hsla(180, 100%, 50%, 1), 
-      -2px 2px 0 hsla(180, 100%, 50%, 1), 
+      -4px 4px 0 hsla(180, 100%, 50%, 1),
+      -3px 3px 0 hsla(180, 100%, 50%, 1),
+      -2px 2px 0 hsla(180, 100%, 50%, 1),
       -1px 1px 0 hsla(180, 100%, 50%, 1)
     ;
   }
-  25% {    
-    text-shadow:      
-      -4px -4px 0 hsla(180, 100%, 50%, 1), 
-      -3px -3px 0 hsla(180, 100%, 50%, 1), 
-      -2px -2px 0 hsla(180, 100%, 50%, 1), 
+  25% {
+    text-shadow:
+      -4px -4px 0 hsla(180, 100%, 50%, 1),
+      -3px -3px 0 hsla(180, 100%, 50%, 1),
+      -2px -2px 0 hsla(180, 100%, 50%, 1),
       -1px -1px 0 hsla(180, 100%, 50%, 1),
-      4px 4px 0 hsla(0, 100%, 50%, 1), 
-      3px 3px 0 hsla(0, 100%, 50%, 1), 
-      2px 2px 0 hsla(0, 100%, 50%, 1), 
-      1px 1px 0 hsla(0, 100%, 50%, 1)      
+      4px 4px 0 hsla(0, 100%, 50%, 1),
+      3px 3px 0 hsla(0, 100%, 50%, 1),
+      2px 2px 0 hsla(0, 100%, 50%, 1),
+      1px 1px 0 hsla(0, 100%, 50%, 1)
     ;
   }
   50% {
     text-shadow:
-      -4px 4px 0 hsla(0, 100%, 50%, 1), 
-      -3px 3px 0 hsla(0, 100%, 50%, 1), 
-      -2px 2px 0 hsla(0, 100%, 50%, 1), 
+      -4px 4px 0 hsla(0, 100%, 50%, 1),
+      -3px 3px 0 hsla(0, 100%, 50%, 1),
+      -2px 2px 0 hsla(0, 100%, 50%, 1),
       -1px 1px 0 hsla(0, 100%, 50%, 1),
-      4px -4px 0 hsla(180, 100%, 50%, 1), 
-      3px -3px 0 hsla(180, 100%, 50%, 1), 
-      2px -2px 0 hsla(180, 100%, 50%, 1), 
+      4px -4px 0 hsla(180, 100%, 50%, 1),
+      3px -3px 0 hsla(180, 100%, 50%, 1),
+      2px -2px 0 hsla(180, 100%, 50%, 1),
       1px -1px 0 hsla(180, 100%, 50%, 1)
     ;
   }
   75% {
     text-shadow:
-      4px 4px 0 hsla(180, 100%, 50%, 1), 
-      3px 3px 0 hsla(180, 100%, 50%, 1), 
-      2px 2px 0 hsla(180, 100%, 50%, 1), 
+      4px 4px 0 hsla(180, 100%, 50%, 1),
+      3px 3px 0 hsla(180, 100%, 50%, 1),
+      2px 2px 0 hsla(180, 100%, 50%, 1),
       1px 1px 0 hsla(180, 100%, 50%, 1),
-      -4px -4px 0 hsla(0, 100%, 50%, 1), 
-      -3px -3px 0 hsla(0, 100%, 50%, 1), 
-      -2px -2px 0 hsla(0, 100%, 50%, 1), 
-      -1px -1px 0 hsla(0, 100%, 50%, 1)      
+      -4px -4px 0 hsla(0, 100%, 50%, 1),
+      -3px -3px 0 hsla(0, 100%, 50%, 1),
+      -2px -2px 0 hsla(0, 100%, 50%, 1),
+      -1px -1px 0 hsla(0, 100%, 50%, 1)
     ;
   }
   100% {
     text-shadow:
-      4px -4px 0 hsla(0, 100%, 50%, 1), 
-      3px -3px 0 hsla(0, 100%, 50%, 1), 
-      2px -2px 0 hsla(0, 100%, 50%, 1), 
+      4px -4px 0 hsla(0, 100%, 50%, 1),
+      3px -3px 0 hsla(0, 100%, 50%, 1),
+      2px -2px 0 hsla(0, 100%, 50%, 1),
       1px -1px 0 hsla(0, 100%, 50%, 1),
-      -4px 4px 0 hsla(180, 100%, 50%, 1), 
-      -3px 3px 0 hsla(180, 100%, 50%, 1), 
-      -2px 2px 0 hsla(180, 100%, 50%, 1), 
+      -4px 4px 0 hsla(180, 100%, 50%, 1),
+      -3px 3px 0 hsla(180, 100%, 50%, 1),
+      -2px 2px 0 hsla(180, 100%, 50%, 1),
       -1px 1px 0 hsla(180, 100%, 50%, 1)
     ;
-  }  
+  }
 }
