@@ -8,7 +8,7 @@
 }
 
 body{
-  height: 70%;
+  height: 100%;
 }
 
 .header{
@@ -16,8 +16,6 @@ body{
 		display: flex;
 		/*justify-content: ; para alinear los elementos del contenedor*/
 		align-items: center;
-    padding: 0px;
-    margin: 0px;
   }
 
   .footer{
