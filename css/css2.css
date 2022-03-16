@@ -1,3 +1,5 @@
+
+
 .div_lista {
 
     height: 650px;
@@ -62,9 +64,9 @@ li a{
     color: rgb(223, 248, 0);
   }
 
-  .active { /*Clase para saber que apartado del menu esta activo*/
+  /*.active { Clase para saber que apartado del menu esta activo
     color: #1900ff;
-  }
+  }*/
 
   html{
       background-image: url(../img/fondo_menu.jpeg);
