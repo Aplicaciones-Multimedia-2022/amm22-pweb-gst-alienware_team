@@ -1,6 +1,10 @@
 @import url("../css/general.css");
 
-
+*{
+		padding: 0;
+		margin: 0;
+	}
+  
 .div_lista {
 
     height: 650px;
