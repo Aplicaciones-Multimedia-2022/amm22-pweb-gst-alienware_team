@@ -64,7 +64,7 @@ li a{
   }*/
 
   html{
-      background-image: url(../img/fondo_menu.jpeg);
+      background-image: url(../img/fondo_menu_def.jpg);
       background-repeat: no-repeat; /*Hacemos que la imagen no se repita*/
       background-size: cover; /*Linea 37 y 38 es para asegurarse que cubre toda la pantalla*/
       background-attachment: fixed;
