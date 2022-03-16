@@ -1,0 +1,13 @@
+body {
+    height: 100%;
+}
+
+ul {
+    list-style-type: none; /*Elimina los puntos de antes de una lista*/
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+    text-align: center;
+    justify-items: center;
+}
+

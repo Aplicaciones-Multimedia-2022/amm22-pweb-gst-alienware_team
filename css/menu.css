@@ -1,3 +1,5 @@
+@import '/css/general.css';
+
 .div_lista {
 
     height: 650px;
@@ -7,9 +9,7 @@
 
 }
 
-body{
-  height: 100%;
-}
+
 
 .header{
 
@@ -36,15 +36,7 @@ body{
 
 	}
 
-ul{
-    list-style-type: none; /*Elimina los puntos de antes de una lista*/
-    margin: 0;
-    padding: 0;
-    overflow:hidden;
-    text-align: center;
-    justify-items: center;
 
-}
 
 li:last-child {
     border-right: none;
