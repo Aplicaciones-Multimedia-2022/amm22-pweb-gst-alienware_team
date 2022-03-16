@@ -14,6 +14,7 @@ html{
 	display: flex;
 	/*justify-content: ; para alinear los elementos del contenedor*/
 	align-items: center;
+
 }
 
 .footer{
@@ -26,11 +27,13 @@ html{
 .inicio img{
   width: 80px;
   height: auto;
+  margin-left: 15px;
 }
 
 .inicio{
   align-items: center;
   padding-top: 10px;
+  flex-grow: 1;
 }
 
 /* ----- LISTA DEL MENÚ ----- */
@@ -68,6 +71,16 @@ p{
   background-color: white;
 }
 
+h1{
+  font-size: 48px;
+  color: aliceblue;
+  justify-content: center;
+}
+
+div.titulo{
+    flex-grow: 1;
+    justify-content: center;
+}
 
 
 @font-face {
@@ -76,10 +89,10 @@ p{
 }
 
 @import url(https://fonts.googleapis.com/css?family=Varela+Round);
-h1:hover {
+h2:hover {
   color: hsla(0, 0%, 0%, .9);
-  font: normal 20px Varela Round, sans-serif;
-  height: 50px;
+  font: normal 36px Varela Round, sans-serif;
+  height: 80px;
   left: 0;
   letter-spacing: 5px;
   margin: 0;
@@ -89,6 +102,11 @@ h1:hover {
 
   width: 100%;
   animation: move linear 2000ms infinite;
+}
+
+h2{
+  font-size: 36px;
+  margin-bottom: 10px;
 }
 
 @keyframes move {
