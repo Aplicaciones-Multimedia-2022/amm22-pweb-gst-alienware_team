@@ -1,87 +1,81 @@
-@import url("../css/general.css");
+@import url("general.css");
 
-*{
-		padding: 0;
-		margin: 0;
-	}
-  
-.div_lista {
-
-    height: 650px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+/* ----- SECCIONES HTML ----- */
+html{
+  background-image: url(../img/fondo_menu_def.jpg);
+  background-repeat: no-repeat; /*Hacemos que la imagen no se repita*/
+  background-size: cover; /*Las líneas son para asegurarse que cubre toda la pantalla*/
+  background-attachment: fixed;
+  font-family: game_over;
 }
 
+.header {
 
+	display: flex;
+	/*justify-content: ; para alinear los elementos del contenedor*/
+	align-items: center;
+}
 
-.header{
-
-		display: flex;
-		/*justify-content: ; para alinear los elementos del contenedor*/
-		align-items: center;
-  }
-
-  .footer{
-		display: flex;
-		/*justify-content: space-between;*/
-		align-items: center;
-		margin-left: 620px;
-	}
+.footer{
+	display: flex;
+	/*justify-content: space-between;*/
+	align-items: center;
+	margin-left: 620px;
+}
 
 .inicio img{
-		width: 80px;
-		height: auto;
-	}
+  width: 80px;
+  height: auto;
+}
 
-	.inicio{
-		align-items: center;
-    padding-top: 10px;
+.inicio{
+  align-items: center;
+  padding-top: 10px;
+}
 
-	}
+/* ----- LISTA DEL MENÚ ----- */
+.div_lista {
 
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+}
 
 li:last-child {
     border-right: none;
-  }
+ }
 
-li a{
-    display: block; /*Allows us to specify padding (and height, width, margins, etc. if you want)*/
-    color: white;
-    text-align: center;
-    padding: 14px 22px; /*Specify some padding between each <a> element, to make them look good. 14px=espacio entre lineas y 16px= */
-    text-decoration: none;
-  }
+li a {
+  display: block; /*Allows us to specify padding (and height, width, margins, etc. if you want)*/
+  color: white;
+  text-align: center;
+  padding: 14px 22px; /*Specify some padding between each <a> element, to make them look good. 14px=espacio entre lineas y 16px= */
+  text-decoration: none;
+}
 
-  li a:hover { /*Cambiamos el color cuando pasamos el raton*/
-    color: rgb(223, 248, 0);
-  }
+li a:hover { /*Cambiamos el color cuando pasamos el raton*/
+  color: rgb(223, 248, 0);
+}
 
-  /*.active { Clase para saber que apartado del menu esta activo
-    color: #1900ff;
-  }*/
+/*.active { Clase para saber que apartado del menu esta activo
+  color: #1900ff;
+}*/
 
-  html{
-      background-image: url(../img/fondo_menu_def.jpg);
-      background-repeat: no-repeat; /*Hacemos que la imagen no se repita*/
-      background-size: cover; /*Linea 37 y 38 es para asegurarse que cubre toda la pantalla*/
-      background-attachment: fixed;
-      font-family: game_over;
-  }
+/* ----- TEXTO ----- */
+p{
+  background-color: white;
+}
 
-  p{
-      background-color: white;
-  }
 
-  @font-face {
-    font-family: game_over;
-    src: url(../res/Rixel.otf);
+
+@font-face {
+  font-family: game_over;
+  src: url(../res/Rixel.otf);
 }
 
 @import url(https://fonts.googleapis.com/css?family=Varela+Round);
-
 h1:hover {
   color: hsla(0, 0%, 0%, .9);
   font: normal 20px Varela Round, sans-serif;
