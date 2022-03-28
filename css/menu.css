@@ -2,6 +2,7 @@
 
 /* ----- SECCIONES HTML ----- */
 html{
+  overflow-y: auto;
   background-image: url(../img/fondo_menu_def.jpg);
   background-repeat: no-repeat; /*Hacemos que la imagen no se repita*/
   background-size: cover; /*Las líneas son para asegurarse que cubre toda la pantalla*/
@@ -10,27 +11,27 @@ html{
 }
 
 .header {
-
 	display: flex;
 	/*justify-content: ; para alinear los elementos del contenedor*/
 	align-items: center;
 
 }
 
-.footer{
+/*.footer{
 	display: flex;
-	/*justify-content: space-between;*/
+	justify-content: space-between;
 	align-items: center;
 	margin-left: 620px;
-}
+}*/
 
-.inicio img{
+.inicio img{  /*Icono Alien return "menu"*/
   width: 80px;
   height: auto;
-  margin-left: 15px;
+  margin-left: 25px;
+  margin-top: 15px;
 }
 
-.inicio{
+.inicio{ 
   align-items: center;
   padding-top: 10px;
   flex-grow: 1;
@@ -38,8 +39,7 @@ html{
 
 /* ----- LISTA DEL MENÚ ----- */
 .div_lista {
-
-  height: 650px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,15 +51,16 @@ li:last-child {
  }
 
 li a {
+  margin-top: 10px;
   display: block; /*Allows us to specify padding (and height, width, margins, etc. if you want)*/
-  color: white;
+  color: rgb(255, 255, 255);
   text-align: center;
   padding: 14px 22px; /*Specify some padding between each <a> element, to make them look good. 14px=espacio entre lineas y 16px= */
   text-decoration: none;
 }
 
-li a:hover { /*Cambiamos el color cuando pasamos el raton*/
-  color: rgb(223, 248, 0);
+li a:hover {                 /*Cambiamos el color cuando pasamos el raton*/
+  color: rgb(223, 248, 0); /*223,248,0*/
 }
 
 /*.active { Clase para saber que apartado del menu esta activo
@@ -67,18 +68,19 @@ li a:hover { /*Cambiamos el color cuando pasamos el raton*/
 }*/
 
 /* ----- TEXTO ----- */
-p{
+/*p{
   background-color: white;
-}
+}*/
 
 h1{
-  font-size: 48px;
-  color: aliceblue;
+  margin-bottom: 40px;
+  font-size: 150px;
+  color: rgb(255, 255, 255);
   justify-content: center;
 }
 
 div.titulo{
-    flex-grow: 1;
+    text-align: center;
     justify-content: center;
 }
 
@@ -106,7 +108,7 @@ h2:hover {
 
 h2{
   font-size: 36px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 @keyframes move {

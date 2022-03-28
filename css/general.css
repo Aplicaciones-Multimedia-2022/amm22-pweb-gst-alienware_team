@@ -3,10 +3,6 @@
     margin: 0;
 }
 
-body {
-    height: 100%;
-}
-
 ul {
     list-style-type: none; /*Elimina los puntos de antes de una lista*/
     margin: 0;
