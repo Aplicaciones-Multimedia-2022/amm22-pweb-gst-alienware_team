@@ -59,7 +59,7 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {                 /*Cambiamos el color cuando pasamos el raton*/
+li h3 a:hover {                 /*Cambiamos el color cuando pasamos el raton*/
   color: rgb(223, 248, 0); /*223,248,0*/
 }
 
@@ -91,7 +91,7 @@ div.titulo{
 }
 
 @import url(https://fonts.googleapis.com/css?family=Varela+Round);
-h2:hover {
+h3:hover {
   color: hsla(0, 0%, 0%, .9);
   font: normal 36px Varela Round, sans-serif;
   height: 80px;
@@ -106,9 +106,13 @@ h2:hover {
   animation: move linear 2000ms infinite;
 }
 
-h2{
+h3{
   font-size: 36px;
   margin-bottom: 15px;
+}
+
+.boton_play{
+  font-size: 50px;
 }
 
 @keyframes move {
