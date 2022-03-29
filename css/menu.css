@@ -23,6 +23,16 @@
 .button_play { /* boton play menu inicio */
   height: 120px;
   width: 350px; 
+  animation: parpadeo 0.5s infinite alternate;
+}
+
+@keyframes parpadeo {
+    0%{
+        opacity:.0.8;
+    }
+    100%{
+        opacity:0;
+    }
 }
 
 .titulo {
