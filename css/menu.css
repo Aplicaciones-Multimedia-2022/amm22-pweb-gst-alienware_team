@@ -23,15 +23,15 @@
 .button_play { /* boton play menu inicio */
   height: 120px;
   width: 350px; 
-  animation: parpadeo 0.5s infinite alternate;
+  animation: parpadeo 1.2s infinite alternate;
 }
 
 @keyframes parpadeo {
     0%{
-        opacity:.0.8;
+        opacity:0;
     }
     100%{
-        opacity:0;
+        opacity:1;
     }
 }
 
