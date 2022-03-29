@@ -14,13 +14,13 @@
   /* justify-content: space-around; */
 }
 
-.alien{ 
+.alien { 
   align-items: center;
   /* padding-top: 10px; */
   flex-grow: 1;
 }
 
-.buttom_play{ /* boton play menu inicio */
+.button_play { /* boton play menu inicio */
   height: 120px;
   width: 350px; 
 }
