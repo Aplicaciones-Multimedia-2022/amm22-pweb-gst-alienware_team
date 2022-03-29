@@ -4,7 +4,7 @@
     margin: 0;
 }
 
-html{
+html {
     overflow-y: auto;
     background-image: url(../img/fondo_menu_def.jpg);
     background-repeat: no-repeat; /*Hacemos que la imagen no se repita*/
