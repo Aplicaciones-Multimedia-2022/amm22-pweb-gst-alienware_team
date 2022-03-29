@@ -11,7 +11,7 @@
 .header {
 	display: flex;
 	align-items: center;
-  /* justify-content: space-around; */
+  justify-content: space-around;
 }
 
 .alien { 
@@ -20,14 +20,10 @@
   flex-grow: 1;
 }
 
-.button_play { /* boton play menu inicio */
-  height: 120px;
-  width: 350px; 
-}
-
 .titulo {
   flex-grow: 2;
   align-items: center;
+  display: flex;
 }
 
 .github {  /*icono cabecera*/
@@ -49,6 +45,11 @@ a img {
 }
 
 /* ----- LISTA DEL MENÚ ----- */
+.button_play { /* boton play menu inicio */
+  height: 120px;
+  width: 350px; 
+}
+
 ul {
   list-style-type: none; /*Elimina los puntos de antes de una lista*/
   margin: 0;
@@ -84,16 +85,18 @@ li h3 a:hover { /*Cambiamos el color cuando pasamos el raton*/
 }
 
 /* ----- TEXTO ----- */
-h1{
+h1 {
   /* margin-bottom: 40px; */
-  font-size: 150px;
+  /* font-size: 150px; */
+  /* display: inline-flexbox; */
   color: rgb(255, 255, 255);
-  justify-content: left;
+  /* justify-content: left; */
+  align-self: center;
 }
 
 div.titulo{
-    text-align: center;
-    justify-content: center;
+  align-content: center;
+  justify-content: center;
 }
 
 h3{
