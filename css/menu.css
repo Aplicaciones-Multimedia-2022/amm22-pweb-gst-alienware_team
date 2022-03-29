@@ -14,22 +14,22 @@
   /* justify-content: space-around; */
 }
 
-.inicio{ 
+.alien{ 
   align-items: center;
   /* padding-top: 10px; */
   flex-grow: 1;
 }
 
-.buttom_play{
-  height: 50px;
-  width: 100px; 
+.buttom_play{ /* boton play menu inicio */
+  height: 120px;
+  width: 350px; 
 }
 
 .titulo {
   flex-grow: 2;
 }
 
-.github {
+.github {  /*icono cabecera*/
   flex-grow: 1;
   align-items: center;
   /* justify-content: center; */
