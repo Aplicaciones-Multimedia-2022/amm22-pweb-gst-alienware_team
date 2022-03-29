@@ -1,15 +1,6 @@
 @import url("general.css");
 
 /* ----- SECCIONES HTML ----- */
-html{
-  overflow-y: auto;
-  background-image: url(../img/fondo_menu_def.jpg);
-  background-repeat: no-repeat; /*Hacemos que la imagen no se repita*/
-  background-size: cover; /*Las líneas son para asegurarse que cubre toda la pantalla*/
-  background-attachment: fixed;
-  font-family: game_over;
-}
-
 .header {
 	display: flex;
 	/*justify-content: ; para alinear los elementos del contenedor*/
@@ -28,14 +19,6 @@ html{
   align-items: center;
   /* padding-top: 10px; */
   flex-grow: 1;
-}
-
-.inicio img{  /*Icono Alien return "menu"*/
-  width: 80px;
-  height: 88px;
-  justify-content: center;
-  /* margin-left: 25px;
-  margin-top: 15px; */
 }
 
 .titulo {
@@ -61,6 +44,15 @@ a img {
 }
 
 /* ----- LISTA DEL MENÚ ----- */
+ul {
+  list-style-type: none; /*Elimina los puntos de antes de una lista*/
+  margin: 0;
+  padding: 0;
+  overflow:hidden;
+  text-align: center;
+  justify-items: center;
+}
+
 .div_lista {
   height: auto;
   display: flex;
