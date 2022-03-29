@@ -26,15 +26,16 @@ html{
 
 .inicio{ 
   align-items: center;
-  padding-top: 10px;
+  /* padding-top: 10px; */
   flex-grow: 1;
 }
 
 .inicio img{  /*Icono Alien return "menu"*/
   width: 80px;
-  height: auto;
-  margin-left: 25px;
-  margin-top: 15px;
+  height: 88px;
+  justify-content: center;
+  /* margin-left: 25px;
+  margin-top: 15px; */
 }
 
 .titulo {
@@ -44,14 +45,19 @@ html{
 .github {
   flex-grow: 1;
   align-items: center;
-  justify-content: flex-end;
+  /* justify-content: center; */
 }
 
 .github img {
   width: 80px;
   height: 80px;
-  margin-right: 25px;
-  margin-top: 15px;
+  /* margin-right: 25px;
+  margin-top: 15px; */
+}
+
+a img {
+  align-content: center;
+  justify-content: center;
 }
 
 /* ----- LISTA DEL MENÚ ----- */
