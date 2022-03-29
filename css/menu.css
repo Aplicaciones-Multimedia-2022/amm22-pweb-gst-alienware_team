@@ -27,6 +27,7 @@
 
 .titulo {
   flex-grow: 2;
+  align-items: center;
 }
 
 .github {
@@ -84,7 +85,7 @@ li h3 a:hover { /*Cambiamos el color cuando pasamos el raton*/
 
 /* ----- TEXTO ----- */
 h1{
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   font-size: 150px;
   color: rgb(255, 255, 255);
   justify-content: left;
