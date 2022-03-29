@@ -1,19 +1,18 @@
 @import url("general.css");
 
 /* ----- SECCIONES HTML ----- */
-.header {
-	display: flex;
-	/*justify-content: ; para alinear los elementos del contenedor*/
-	align-items: center;
-  justify-content: space-around;
-}
-
 /*.footer{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-left: 620px;
 }*/
+
+.header {
+	display: flex;
+	align-items: center;
+  /* justify-content: space-around; */
+}
 
 .inicio{ 
   align-items: center;
@@ -63,7 +62,7 @@ ul {
 
 li:last-child {
     border-right: none;
- }
+}
 
 li a {
   margin-top: 10px;
@@ -74,19 +73,11 @@ li a {
   text-decoration: none;
 }
 
-li h3 a:hover {                 /*Cambiamos el color cuando pasamos el raton*/
-  color: rgb(223, 248, 0); /*223,248,0*/
+li h3 a:hover { /*Cambiamos el color cuando pasamos el raton*/
+  color: rgb(223, 248, 0);
 }
 
-/*.active { Clase para saber que apartado del menu esta activo
-  color: #1900ff;
-}*/
-
 /* ----- TEXTO ----- */
-/*p{
-  background-color: white;
-}*/
-
 h1{
   margin-bottom: 40px;
   font-size: 150px;
@@ -99,7 +90,16 @@ div.titulo{
     justify-content: center;
 }
 
+h3{
+  font-size: 36px;
+  margin-bottom: 15px;
+}
 
+.boton_play{
+  font-size: 50px;
+}
+
+/* Estilo de letra */
 @font-face {
   font-family: game_over;
   src: url(../res/Rixel.otf);
@@ -121,15 +121,7 @@ h3:hover {
   animation: move linear 2000ms infinite;
 }
 
-h3{
-  font-size: 36px;
-  margin-bottom: 15px;
-}
-
-.boton_play{
-  font-size: 50px;
-}
-
+/* Animaciones :hover menú */
 @keyframes move {
   0% {
     text-shadow:
