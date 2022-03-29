@@ -20,6 +20,11 @@
   flex-grow: 1;
 }
 
+.buttom_play{
+  height: 50px;
+  width: 100px; 
+}
+
 .titulo {
   flex-grow: 2;
 }
