@@ -1,13 +1,23 @@
+/* ESTILOS GENERALES DE TODAS LAS PÁGINAS */
 * {
     padding: 0;
     margin: 0;
 }
 
-ul {
-    list-style-type: none; /*Elimina los puntos de antes de una lista*/
-    margin: 0;
-    padding: 0;
-    overflow:hidden;
-    text-align: center;
-    justify-items: center;
+html{
+    overflow-y: auto;
+    background-image: url(../img/fondo_menu_def.jpg);
+    background-repeat: no-repeat; /*Hacemos que la imagen no se repita*/
+    background-size: cover; /*Las líneas son para asegurarse que cubre toda la pantalla*/
+    background-attachment: fixed;
+    font-family: game_over;
   }
+
+/* Imagen vuelta home (logo alien) */
+.inicio img{  /*Icono Alien return "menu"*/
+    width: 80px;
+    height: 88px;
+    /* justify-content: center; */
+    /* margin-left: 25px;
+    margin-top: 15px; */
+}
