@@ -14,7 +14,7 @@ html{
 	display: flex;
 	/*justify-content: ; para alinear los elementos del contenedor*/
 	align-items: center;
-
+  justify-content: space-around;
 }
 
 /*.footer{
@@ -24,6 +24,12 @@ html{
 	margin-left: 620px;
 }*/
 
+.inicio{ 
+  align-items: center;
+  padding-top: 10px;
+  flex-grow: 1;
+}
+
 .inicio img{  /*Icono Alien return "menu"*/
   width: 80px;
   height: auto;
@@ -31,10 +37,21 @@ html{
   margin-top: 15px;
 }
 
-.inicio{ 
-  align-items: center;
-  padding-top: 10px;
+.titulo {
+  flex-grow: 2;
+}
+
+.github {
   flex-grow: 1;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.github img {
+  width: 80px;
+  height: 80px;
+  margin-right: 25px;
+  margin-top: 15px;
 }
 
 /* ----- LISTA DEL MENÚ ----- */
@@ -76,7 +93,7 @@ h1{
   margin-bottom: 40px;
   font-size: 150px;
   color: rgb(255, 255, 255);
-  justify-content: center;
+  justify-content: left;
 }
 
 div.titulo{
