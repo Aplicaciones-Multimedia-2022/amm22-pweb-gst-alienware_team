@@ -6,7 +6,7 @@
 
 html {
     overflow-y: auto;
-    background-image: url(../img/fondo_menu_def.jpg);
+    background-image: url(../img/fondo_menu.jpg);
     background-repeat: no-repeat; /*Hacemos que la imagen no se repita*/
     background-size: cover; /*Las líneas son para asegurarse que cubre toda la pantalla*/
     background-attachment: fixed;
