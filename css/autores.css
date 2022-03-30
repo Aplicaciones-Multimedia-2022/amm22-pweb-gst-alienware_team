@@ -6,15 +6,21 @@
     margin: 0;
     padding: 0;
     justify-content:space-between;
+    overflow: hidden;
+    background-color: #0b0553;
 }
 
 .li_navegacion {
     float: left;
-    align-items: center;
 }
 
-.a_nav {
+#a_nav {
     display: block;
-    padding: 8px;
-    background-color: #424040;
+    padding: 20px;
+    background-color: #0b0553;
+    font-size: 21px;
+    text-decoration: none; /*quita la linea de denajo de la lista*/
+    list-style-type: none;/*quita los puntos de delante*/
+    color: white;
   }
+
