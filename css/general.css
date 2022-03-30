@@ -19,9 +19,9 @@ html {
   }
 
 /* Imagen vuelta home (logo alien) */
-.alien img{  /*Icono Alien return "menu"*/
-    width: 80px;
-    height: 88px;
+.alien_nav img{  /*Icono Alien return "menu"*/
+    width: 20px;
+    height: 20px;
     /* justify-content: center; */
     /* margin-left: 25px;
     margin-top: 15px; */
