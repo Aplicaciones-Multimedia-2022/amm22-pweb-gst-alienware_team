@@ -1,0 +1,3 @@
+- Hacer una clase Alien solo para el Juego y el Menu Principal (EasterEgg)
+- Imagen alien_nav tamaño imagen (%) --> https://www.w3schools.com/css/css3_object-fit.asp
+- 
