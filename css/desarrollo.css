@@ -1,1 +1,5 @@
 @import url("general.css");
+
+li {
+    display: inline;
+  }

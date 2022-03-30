@@ -1,5 +1,9 @@
 @import url("general.css");
 
+li {
+  display: inline;
+}
+
 
 .container{
   display: flex;
