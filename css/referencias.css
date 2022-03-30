@@ -10,7 +10,21 @@
   text-decoration: none;
   color: black;
   font-size: 1em;
+  padding-right: 2em;
+  padding-left: 2em;
+  font-size: 1.3em;
+
 }
+
+.li_ref_top{
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+}
+
+.li_ref{
+  padding-bottom: 0.8em;
+}
+
 
 .anav{
   color: white;
@@ -30,12 +44,16 @@
 
 .colRed{
 		background: rgb(200,22,22);
+    flex-grow: 1;
+
 	}
 .colBlue{
 		background: blue;
+    flex-grow: 1.5;
 	}
 .colYellow{
 		background: yellow;
+    flex-grow: 1;
 	}
 
   .ul{
