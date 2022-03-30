@@ -4,6 +4,11 @@
     margin: 0;
 }
 
+@font-face {
+  font-family: game_over;
+  src: url(../res/Rixel.otf);
+}
+
 html {
     overflow-y: auto;
     background-image: url(../img/fondo_menu.jpg);

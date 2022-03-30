@@ -1,1 +1,30 @@
 @import url("general.css");
+
+
+.container{
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: center;
+  text-align: center;
+  
+}
+
+.colKhaki{
+		background: Khaki;
+	}
+.colGreen{
+		background: paleGreen;
+	}
+.colSalmon{
+		background: salmon;
+	}
+
+  ul {
+    list-style-type: none; /*Elimina los puntos de antes de una lista*/
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+
+  }
