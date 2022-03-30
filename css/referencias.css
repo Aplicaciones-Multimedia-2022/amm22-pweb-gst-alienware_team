@@ -8,17 +8,17 @@
   align-items: stretch;
   align-content: center;
   text-align: center;
-  
+
 }
 
 .colKhaki{
-		background: Khaki;
+		background: blue;
 	}
 .colGreen{
-		background: paleGreen;
+		background: limeGreen;
 	}
 .colSalmon{
-		background: salmon;
+		background: rgb(200,22,22);
 	}
 
   ul {
@@ -28,3 +28,11 @@
     overflow:hidden;
 
   }
+
+  li a{
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+  }
+
+  
