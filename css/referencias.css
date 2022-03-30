@@ -1,9 +1,22 @@
 @import url("general.css");
 
-li {
+.linavegacion{
   display: inline;
+  font-size: 1.3em;
+  color: white;
 }
 
+.a{
+  text-decoration: none;
+  color: black;
+  font-size: 1em;
+}
+
+.anav{
+  color: white;
+  text-decoration: none;
+  list-style-type: none;
+}
 
 .container{
   display: flex;
@@ -15,28 +28,20 @@ li {
 
 }
 
-.colKhaki{
-		background: blue;
-	}
-.colGreen{
-		background: limeGreen;
-	}
-.colSalmon{
+.colRed{
 		background: rgb(200,22,22);
 	}
+.colBlue{
+		background: blue;
+	}
+.colYellow{
+		background: yellow;
+	}
 
-  ul {
+  .ul{
     list-style-type: none; /*Elimina los puntos de antes de una lista*/
     margin: 0;
     padding: 0;
     overflow:hidden;
 
   }
-
-  li a{
-    text-decoration: none;
-    color: white;
-    font-size: 1em;
-  }
-
-  
