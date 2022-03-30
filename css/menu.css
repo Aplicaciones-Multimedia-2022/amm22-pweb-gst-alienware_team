@@ -15,12 +15,16 @@
 }
 
 .alien { 
+  margin-left: 2vw;
+  margin-right: 2vw;
   align-items: center;
   /* padding-top: 10px; */
   flex-grow: 1;
 }
 
 .button_play { /* boton play menu inicio */
+  margin-top: 6vh;
+  margin-bottom: 5vh;
   height: 120px;
   width: 350px; 
   animation: parpadeo 1.2s infinite alternate;
@@ -36,6 +40,8 @@
 }
 
 .titulo {
+  margin-top: 3vh;
+  margin-right: 3vw;
   flex-grow: 2;
   align-items: center;
 }
@@ -43,12 +49,13 @@
 .github {  /*icono cabecera*/
   flex-grow: 1;
   align-items: center;
-  /* justify-content: center; */
 }
 
 .github img {
   width: 80px;
   height: 80px;
+  float: inline-end;
+  margin-right: 2vw;
   /* margin-right: 25px;
   margin-top: 15px; */
 }
@@ -69,6 +76,8 @@ ul {
 }
 
 .div_lista {
+  display: flex;
+  flex-direction: column;
   height: auto;
   display: flex;
   justify-content: center;
