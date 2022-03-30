@@ -1,3 +1,5 @@
 - Hacer una clase Alien solo para el Juego y el Menu Principal (EasterEgg)
 - Imagen alien_nav tamaño imagen (%) --> https://www.w3schools.com/css/css3_object-fit.asp
-- 
+- Crear un CSS propio para MENU y JUEGO, para evitar problemas con el logo alien (?¿)
+- Pensar fondo del nav y ver si introducimo alguna animacion o activacion (que cambie de 
+  color cuando el raton este encima)
