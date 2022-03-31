@@ -45,7 +45,7 @@ a img { /* imágenes con enlace */
   animation: parpadeo 1.2s infinite alternate;
 }
 
-@keyframes parpadeo { /*funcion parpadeo boton play*/
+@keyframes parpadeo { /* funcion parpadeo boton play */
     0%{
         opacity:0;
     }
@@ -72,10 +72,6 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-li:last-child {
-    border-right: none;
 }
 
 .a_menu {
