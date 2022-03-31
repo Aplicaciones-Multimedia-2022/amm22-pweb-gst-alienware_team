@@ -2,12 +2,6 @@
 @import url("general.css");
 
 /* ----- SECCIONES HTML ----- */
-/*.footer{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-left: 620px;
-}*/
 
 .header {
 	display: flex;
@@ -33,7 +27,6 @@
 }
 
 .titulo {
-  margin-top: 3vh;
   margin-right: 3vw;
   flex-grow: 2;
   align-items: center;
