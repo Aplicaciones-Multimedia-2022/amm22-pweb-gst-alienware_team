@@ -11,27 +11,27 @@ a img { /* imágenes con enlace */
 .header {
 	display: flex;
 	align-items: center;
-  /* justify-content: space-around; */
+  justify-content: space-around;
 }
 
 .titulo {
-  margin-right: 3vw;
-  flex-grow: 2;
+  /* margin-right: 3vw; */
+  /* flex-grow: 2; */
   align-items: center;
   text-align: center;
   justify-content: center;
 }
 
 .github {  /* contenedor icono */
-  flex-grow: 1;
+  /* flex-grow: 1; */
   align-items: center;
 }
 
 .github img { /* imagen icono */
   width: 80px;
   height: 80px;
-  float: inline-end;
-  margin-right: 2vw;
+  /* float: right; */
+  /* margin-right: 2vw; */
   /* margin-right: 25px;
   margin-top: 15px; */
 }
@@ -39,7 +39,7 @@ a img { /* imágenes con enlace */
 /* --------------- BOTÓN "PLAY" --------------- */
 .button_play { /* imagen play menu inicio */
   margin-top: 6vh;
-  margin-bottom: 5vh;
+  margin-bottom:5vh;
   height: 120px;
   width: 350px; 
   animation: parpadeo 1.2s infinite alternate;
