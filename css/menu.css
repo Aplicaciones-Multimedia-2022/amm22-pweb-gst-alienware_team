@@ -1,15 +1,43 @@
 /* SE IMPORTA LA HOJA DE ESTILOS GENERAL */
 @import url("general.css");
 
-/* ----- SECCIONES HTML ----- */
+/* --------------- TODO EL DOCUMENTO --------------- */
+a img { /* imágenes con enlace */
+  align-content: center;
+  justify-content: center;
+}
 
+/* --------------- HEADER --------------- */
 .header {
 	display: flex;
 	align-items: center;
   /* justify-content: space-around; */
 }
 
-.button_play { /* boton play menu inicio */
+.titulo {
+  margin-right: 3vw;
+  flex-grow: 2;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.github {  /* contenedor icono */
+  flex-grow: 1;
+  align-items: center;
+}
+
+.github img { /* imagen icono */
+  width: 80px;
+  height: 80px;
+  float: inline-end;
+  margin-right: 2vw;
+  /* margin-right: 25px;
+  margin-top: 15px; */
+}
+
+/* --------------- BOTÓN "PLAY" --------------- */
+.button_play { /* imagen play menu inicio */
   margin-top: 6vh;
   margin-bottom: 5vh;
   height: 120px;
@@ -26,34 +54,10 @@
     }
 }
 
-.titulo {
-  margin-right: 3vw;
-  flex-grow: 2;
-  align-items: center;
-}
-
-.github {  /*icono cabecera*/
-  flex-grow: 1;
-  align-items: center;
-}
-
-.github img {
-  width: 80px;
-  height: 80px;
-  float: inline-end;
-  margin-right: 2vw;
-  /* margin-right: 25px;
-  margin-top: 15px; */
-}
-
-a img {
-  align-content: center;
-  justify-content: center;
-}
-
-/* ----- LISTA DEL MENÚ ----- */
+/* --------------- MENÚ PRINCIPAL --------------- */
+/* --------------- Lista --------------- */
 ul {
-  list-style-type: none; /*Elimina los puntos de antes de una lista*/
+  list-style-type: none; /* Elimina los puntos de antes de una lista */
   margin: 0;
   padding: 0;
   overflow:hidden;
@@ -68,14 +72,13 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 li:last-child {
     border-right: none;
 }
 
-li a {
+.a_menu {
   margin-top: 10px;
   display: block; /*Allows us to specify padding (and height, width, margins, etc. if you want)*/
   color: rgb(255, 255, 255);
@@ -84,11 +87,11 @@ li a {
   text-decoration: none;
 }
 
-li h3 a:hover { /*Cambiamos el color cuando pasamos el raton*/
+.a_menu:hover { /*Cambiamos el color cuando pasamos el raton*/
   color: rgb(223, 248, 0);
 }
 
-/* ----- TEXTO ----- */
+/* ----- Texto lista menú general ----- */
 h1{
   /* margin-bottom: 40px; */
   font-size: 150px;
@@ -96,26 +99,12 @@ h1{
   justify-content: left;
 }
 
-div.titulo{
-    text-align: center;
-    justify-content: center;
-}
-
 h3{
   font-size: 36px;
   margin-bottom: 15px;
 }
 
-.boton_play{
-  font-size: 50px;
-}
-
-/* Estilo de letra */
-@font-face {
-  font-family: game_over;
-  src: url(../res/Rixel.otf);
-}
-
+/* --------------- Efectos elementos de la lista --------------- */
 @import url(https://fonts.googleapis.com/css?family=Varela+Round);
 h3:hover {
   color: hsla(0, 0%, 0%, .9);
@@ -132,8 +121,7 @@ h3:hover {
   animation: move linear 2000ms infinite;
 }
 
-/* Animaciones :hover menú */
-@keyframes move {
+@keyframes move { /* animación hover <li> menú */
   0% {
     text-shadow:
       4px -4px 0 hsla(0, 100%, 50%, 1),
