@@ -1,26 +1,26 @@
 /* ESTILOS GENERALES DE TODAS LAS PÁGINAS */
 /* Estilos HTML */
-* {
+* { /* Reseteo los márgenes dentro y fuera de los contenedores a 0 */
     padding: 0;
     margin: 0;
 }
 
-@font-face {
+@font-face {  /* Se importa la fuente de letra "game over" */
   font-family: game_over;
   src: url(../res/Rixel.otf);
 }
 
 html {
-    overflow-y: auto;
-    background-image: url(../img/fondo_menu.jpg);
-    background-repeat: no-repeat; /*Hacemos que la imagen no se repita*/
-    background-size: cover; /*Las líneas son para asegurarse que cubre toda la pantalla*/
-    background-attachment: fixed;
+    overflow-y: auto; /* Cómo se comporta el contenido de la página cuando este desborda del contenedor */
+    background-image: url(../img/fondo_menu.jpg); /* La imagen de fondo va a ser la misma para todas las páginas */
+    background-repeat: no-repeat; /* Hacemos que la imagen no se repita */
+    background-size: cover; /* Dimensiona la imagen al tamaño de la página */
+    background-attachment: fixed; /* La imagen no se desplaza al hacer scroll */
     font-family: game_over;
   }
 
-/* Imagen vuelta home (logo alien) */
-.alien_nav img{  /*Icono Alien return "menu"*/
+/* Tamaños "alien_logo" del header */
+.alien_nav img{  /* Icono Alien return "menu.html" (NAV) */
     width: 25px;
     height: 25px;
     /* justify-content: center; */
@@ -28,3 +28,10 @@ html {
     margin-top: 15px; */
 }
 
+.alien_mj img { /* Icono Alien return "menu.html" (menu.html y juego.html) */
+  margin-left: 2vw;
+  margin-right: 2vw;
+  align-items: center;
+  width: 80px;
+  height: 88px;
+}
