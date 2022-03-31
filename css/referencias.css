@@ -66,29 +66,4 @@
   }
 
 
-  /*NAVEGACION*/
 
-  .ul_navegacion {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    justify-content:space-between;
-    overflow: hidden;
-    background-color: #0b0553;
-    position: sticky
-}
-
-.li_navegacion {
-    float: left;
-}
-
-#a_nav {
-    display: block;
-    padding: 20px;
-    background-color: #0b0553;
-    font-size: 21px;
-    text-decoration: none; /*quita la linea de denajo de la lista*/
-    list-style-type: none;/*quita los puntos de delante*/
-    color: white;
-  }
