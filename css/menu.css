@@ -11,7 +11,7 @@ a img { /* imágenes con enlace */
 .header {
 	display: flex;
 	align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .titulo {
@@ -32,7 +32,7 @@ a img { /* imágenes con enlace */
   width: 80px;
   height: 80px;
   /* float: right; */
-  /* margin-right: 2vw; */
+  margin-right: 2vw;
   /* margin-right: 25px;
   margin-top: 15px; */
 }
