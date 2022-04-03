@@ -1,3 +1,4 @@
+/* SE IMPORTA LA HOJA DE ESTILOS GENERAL */
 @import url("general.css");
 
 
@@ -51,10 +52,12 @@
     flex-grow: 1;
 	}
 
-  .ul{
-    list-style-type: none; /*Elimina los puntos de antes de una lista*/
-    margin: 0;
-    padding: 0;
-    overflow:hidden;
+.ul{
+  list-style-type: none; /* Elimina los puntos de antes de una lista */
+  margin: 0;
+  padding: 0;
+  overflow:hidden;
+}
 
-  }
+
+
