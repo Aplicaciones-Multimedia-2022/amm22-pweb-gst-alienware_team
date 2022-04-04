@@ -69,3 +69,7 @@ html {
   list-style-type: none; /* quita los puntos de delante */
   color: white;
 }
+
+#a_nav:hover {
+  background-color: #08042e;
+}
