@@ -39,13 +39,20 @@ html {
 }
 
 /* --------------- Estilos nav de las páginas --------------- */
+#sticky { /* Para mantener el nav aunque la página tenga scroll */
+  /* position: -webkit-sticky; */
+  position: sticky;
+  top: 0.1px; /* Hueco entre la parte superior del nav y la parte superior de viewport */
+}
+
 .ul_navegacion {
   display: flex;
   list-style-type: none;
   margin: 0;
   padding: 0;
+  align-items: stretch;
   justify-content:space-between;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #0b0553;
 }
 
@@ -62,10 +69,3 @@ html {
   list-style-type: none; /* quita los puntos de delante */
   color: white;
 }
-
-/*#sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: auto;
-
-}*/
