@@ -1,63 +1,56 @@
 /* SE IMPORTA LA HOJA DE ESTILOS GENERAL */
 @import url("general.css");
 
-
-.a{
-  text-decoration: none;
-  color: black;
-  font-size: 1em;
-  padding-right: 2em;
-  padding-left: 2em;
-  font-size: 1.3em;
-
-}
-
-.li_ref_top{
-  padding-top: 0.8em;
-  padding-bottom: 0.8em;
-}
-
-.li_ref{
-  padding-bottom: 0.8em;
-}
-
-
-.anav{
-  color: white;
-  text-decoration: none;
-  list-style-type: none;
-}
-
-.container{
+/* --------------- Contenedor de los tres apartados --------------- */
+.referencias {
   display: flex;
   flex-flow:row wrap;
   justify-content: space-around;
   align-items: stretch;
   align-content: center;
   text-align: center;
-
 }
 
-.colRed{
-		background: rgb(200,22,22);
-    flex-grow: 1;
+/* --------------- Apartados --------------- */
+.html {
+  background: rgb(200,22,22);
+  flex-grow: 1;
+}
+.css {
+  background: blue;
+  flex-grow: 1.5;
+}
+.js {
+  background: rgb(230, 230, 0);
+  flex-grow: 1;
+}
 
-	}
-.colBlue{
-		background: blue;
-    flex-grow: 1.5;
-	}
-.colYellow{
-		background: yellow;
-    flex-grow: 1;
-	}
-
-.ul{
-  list-style-type: none; /* Elimina los puntos de antes de una lista */
+/* --------------- Listas de referencias --------------- */
+.ul_referencias {
+  list-style-type: none;
   margin: 0;
   padding: 0;
   overflow:hidden;
 }
 
+.li_ref_top {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+}
 
+.li_ref {
+  padding-bottom: 0.8em;
+}
 
+.a_ref {
+  text-decoration: none;
+  color: black;
+  font-size: 1em;
+  padding-right: 2em;
+  padding-left: 2em;
+  font-size: 1.3em;
+}
+
+.a_ref:hover {
+  color: white;
+}
