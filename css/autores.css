@@ -1,3 +1,48 @@
 /* SE IMPORTA LA HOJA DE ESTILOS GENERAL */
 @import url("general.css");
 
+/* --------------- APARTADO FOTOS --------------- */
+/* --------------- Cómo se muestran las fotos --------------- */
+#fotos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#fotos img {
+    width: 13vw;
+    height: 20vh;
+}
+
+/* --------------- Cómo reaccionan las fotos --------------- */
+.active_tab {
+    border: solid white;
+}
+  
+.hidden_tab {
+    background-color: transparent;
+}
+  
+.hidden_tab:hover {
+    border: solid white;
+}
+
+/* --------------- APARTADO INFO --------------- */
+/* --------------- Cómo se muestra la información personal --------------- */
+#info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.hidden_sect {
+    display: none;
+}
+  
+.active_sect {
+    display: block;
+    background-color: white;
+    /* height: inherit; */
+    /* width: fit-content; */
+    /* object-fit: fill; */
+}
