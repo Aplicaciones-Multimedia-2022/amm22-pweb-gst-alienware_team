@@ -60,7 +60,7 @@ html {
   float: left;
 }
 
-#a_nav {
+.a_nav {
   display: block;
   padding: 20px;
   background-color: #0b0553;
@@ -70,6 +70,13 @@ html {
   color: white;
 }
 
-#a_nav:hover {
+.a_nav:hover {
   background-color: #08042e;
+  transition: all ease-in-out 250ms;
+}
+
+.a_nav:active { /*mantener en otro color cuando he clicado*/
+  
+  background-color: rgb(255, 0, 0);
+
 }
