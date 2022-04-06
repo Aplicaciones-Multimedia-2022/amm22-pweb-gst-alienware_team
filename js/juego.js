@@ -58,6 +58,7 @@ window.onload = function() {
     }
 
 
+
     // MÁS COSILLAS
     // var drawPicture  = function() {
     //     // Gestiono el tamaño de la imagen
