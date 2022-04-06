@@ -10,6 +10,24 @@ window.onload = function() {
     // DEFINICIÓN DE OBJETOS
 
 
+       function drawAliens(){
+           let img = new Image
+
+       }
+
+       function drawNave(){
+
+       }
+
+       function drawShoot(){
+
+       }
+
+
+
+    }
+
+
     // MÁS COSILLAS
     // var drawPicture  = function() {
     //     // Gestiono el tamaño de la imagen
