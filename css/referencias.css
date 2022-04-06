@@ -2,6 +2,40 @@
 @import url("general.css");
 
 /* --------------- Contenedor de los tres apartados --------------- */
+.titulos {
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: center;
+  text-align: center;
+  padding-top: 2em;
+}
+
+.titulo_html {
+  flex-grow: 0.6;
+}
+.titulo_css {
+  flex-grow: 0.7;
+}
+.titulo_js {
+  flex-grow: 1.1;
+}
+
+#html {
+    width: 22vw;
+    height: 20vh;
+}
+
+#css {
+    width: 18vw;
+    height: 20vh;
+}
+#js {
+    width: 13vw;
+    height: 20vh;
+}
+
 .referencias {
   display: flex;
   flex-flow:row wrap;
@@ -9,6 +43,7 @@
   align-items: stretch;
   align-content: center;
   text-align: center;
+  padding-top: 1em;
 }
 
 /* --------------- Apartados --------------- */
