@@ -1,3 +1,6 @@
+
+var mov_nave_x;
+
 window.onload = function() {
     // CREACIÓN DE VARIABLES LOCALES
     var canvas, ctx;
@@ -14,12 +17,12 @@ window.onload = function() {
            img.src = "../img/greynave.png"
 
            //Nos aseguramos que la imagen este descargada antes de poder usarla
-             img.onload = function(){
+            img.onload = function(){
             ctx.drawImage(img, 300, 300);
-        
+
             }
         }
-        
+
         function drawAliens(){
 
        }
@@ -27,7 +30,7 @@ window.onload = function() {
        function drawShoot(){
 
        }
-        
+
        //LLAMAR A FUNCIONES PRUEBA
          drawNave();
 
