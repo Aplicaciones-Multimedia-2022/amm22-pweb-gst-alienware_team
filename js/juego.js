@@ -1,6 +1,3 @@
-
-var mov_nave_x;
-
 window.onload = function() {
     // CREACIÓN DE VARIABLES LOCALES
     var canvas, ctx;
@@ -13,29 +10,53 @@ window.onload = function() {
     // DEFINICIÓN DE OBJETOS
 
        function drawNave(){
-           var img = new Image
-           img.src = "../img/greynave.png"
+           var img = new Image;
+           img.src = "../img/greynave.png";
+
+           //Gestionamos el tamaño de la imagen
+           let resizeX = 50;
+           let resizeY = 50;
 
            //Nos aseguramos que la imagen este descargada antes de poder usarla
-            img.onload = function(){
-            ctx.drawImage(img, 300, 300);
-
+             img.onload = function(){
+            ctx.drawImage(img, 250, 540, resizeX, resizeY);
+        
             }
         }
-
+        
         function drawAliens(){
+            var img = new Image;
+            img.src = "../img/redalien.png";
 
+            //Gestionamos el tamaño de la imagen
+           let resizeX = 50;
+           let resizeY = 50;
+           
+           img.onload = function(){
+           ctx.drawImage(img, 250, 100, resizeX, resizeY);
+        
+            }
        }
 
-       function drawShoot(){
+        function drawShoot(){
+            var img = new Image;
+            img.src = "../img/redlaser.png";
+        
+            img.onload = function(){
+            ctx.drawImage(img, 250, 200);
 
-       }
-
+             }
+        }
+        
        //LLAMAR A FUNCIONES PRUEBA
          drawNave();
+         drawAliens();
+         drawShoot();
+
 
 
     }
+
 
 
     // MÁS COSILLAS
