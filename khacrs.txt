@@ -1,5 +1,5 @@
 - Alien Menu Principal (EasterEgg)
 - Imagen alien_nav tamaño imagen (%) --> https://www.w3schools.com/css/css3_object-fit.asp
 - Pensar fondo del nav y ver si introducimo alguna animacion o activacion (que cambie de color cuando el raton este encima)
-- Página autores: meter fotos, tamaño fotos, meter info, estilos, etc.
-- Nav páginas: con el hover se ve que el contenedor del enlace no llega hasta abajo del todo del nav.
+- David: preguntar Murri estilos referencias.css
+- Sticky muvi.
