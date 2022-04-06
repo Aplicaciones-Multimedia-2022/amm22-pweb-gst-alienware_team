@@ -9,20 +9,27 @@ window.onload = function() {
 
     // DEFINICIÓN DE OBJETOS
 
-
-       function drawAliens(){
-           let img = new Image
-
-       }
-
        function drawNave(){
+           var img = new Image
+           img.src = "../img/greynave.png"
+
+           //Nos aseguramos que la imagen este descargada antes de poder usarla
+             img.onload = function(){
+            ctx.drawImage(img, 300, 300);
+        
+            }
+        }
+        
+        function drawAliens(){
 
        }
 
        function drawShoot(){
 
        }
-
+        
+       //LLAMAR A FUNCIONES PRUEBA
+         drawNave();
 
 
     }
@@ -61,5 +68,3 @@ window.onload = function() {
     //     }
     // }
     // LINK PARA SACAR LOS CÓDIGOS DE LAS TECLAS: https://keycode.info/
-
-}
