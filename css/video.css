@@ -1,4 +1,14 @@
-html{
+@import url("general.css");
 
-    background-color: black;
+.fondo {
+    background-image: url(../img/fondo_menu.jpg);
+}
+
+div{
+    text-align: center;
+}
+
+.alien_EasterEgg{
+    width: 40px;
+    height: 40px;
 }
