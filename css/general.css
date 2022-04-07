@@ -70,7 +70,7 @@ html {
   color: white;
 }
 
-li.navegacion_lineaAbajo:hover {
+.hober .li_nav:hover {
   background-color: #ffffff;
   transition: all ease-in-out 250ms;
 }
