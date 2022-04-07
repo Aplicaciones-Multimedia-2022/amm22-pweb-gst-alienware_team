@@ -53,7 +53,7 @@ html {
   align-items: stretch;
   justify-content:space-between;
   /* overflow: hidden; */
-  background-color: #0b0553;
+  background-color: #1d1b1b;
 }
 
 .li_navegacion {
@@ -63,20 +63,14 @@ html {
 .a_nav {
   display: block;
   padding: 20px;
-  background-color: #0b0553;
+  background-color: #1d1b1b;
   font-size: 21px;
   text-decoration: none; /* quita la linea de debajo de la lista */
   list-style-type: none; /* quita los puntos de delante */
   color: white;
 }
 
-.a_nav:hover {
-  background-color: #08042e;
+li.navegacion_lineaAbajo:hover {
+  background-color: #ffffff;
   transition: all ease-in-out 250ms;
-}
-
-.a_nav:active { /*mantener en otro color cuando he clicado*/
-  
-  background-color: rgb(255, 0, 0);
-
 }
