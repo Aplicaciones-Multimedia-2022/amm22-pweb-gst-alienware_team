@@ -4,19 +4,28 @@
 /* --------------- APARTADO FOTOS --------------- */
 /* --------------- Cómo se muestran las fotos --------------- */
 #fotos {
+    margin-top: 5vh;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    
 }
 
 #fotos img {
-    width: 13vw;
-    height: 20vh;
+    width: 18vw;
+    height: 27vh;
+    border-radius: 8px;
+}
+
+#fotos img:hover {
+    -webkit-transform: scale(1.2);
+    border: solid white;
 }
 
 /* --------------- Cómo reaccionan las fotos --------------- */
 .active_tab {
     border: solid white;
+    border-radius: 10px;
 }
   
 .hidden_tab {
@@ -24,7 +33,8 @@
 }
   
 .hidden_tab:hover {
-    border: solid white;
+    border: solid white 5px;
+    border-radius: 10px;
 }
 
 /* --------------- APARTADO INFO --------------- */
@@ -42,6 +52,7 @@
 .active_sect {
     display: block;
     background-color: white;
+    margin-top: 5vh;
     /* height: inherit; */
     /* width: fit-content; */
     /* object-fit: fill; */
