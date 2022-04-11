@@ -70,7 +70,7 @@ html {
   color: white;
 }
 
-.hober .li_nav:hover {
+.hover .li_nav:hover {
   background-color: #ffffff;
   transition: all ease-in-out 250ms;
 }
