@@ -23,6 +23,7 @@ window.onload = function(){
     canvas = document.getElementById("SpaceCanvas");
     ctx = canvas.getContext("2d");
 
+    //contrucot Bala//
     function Bala(x,y,w){
 
         this.x = x;
@@ -38,6 +39,7 @@ window.onload = function(){
 
     }
     
+    //Constructor Jugador//
     function Jugador(x){
         
         this.x = x;
@@ -48,7 +50,7 @@ window.onload = function(){
         };
     }
     
-    
+    //Construcot Enemigo//
     function Enemigo(x,y){
         
         this.x = x;
@@ -61,6 +63,24 @@ window.onload = function(){
         this.figura = true;
         this.vive = true;
         this.dibuja = function(){
+            //Retraso//
+            if(this.ciclos > 30){
+                if(this.veces>this.num){
+                    this.dx *= -1;
+                    this.veces = 0;
+                    this.num = 28;
+                    this.y += 20;
+                    //no se que pollas hace esto la vdd//
+                    this.dx = (this.dx>0) ? this.dx++:this.dx--;
+                }else{
+                    this.x += this.dx;
+                }
+                this.veces++;
+                this.ciclos = 0;
+            }else{
+                this.ciclos++;
+
+            }
             ctx.drawImage(imagenEnemigo,0,0,40,30,this.x,this.y,35,30);
         };
     
@@ -120,7 +140,7 @@ window.onload = function(){
     });
 
     
-
+    //imagen nave//
     x = canvas.width/2;
     imagen = new Image();
     imagen.src = "../img/nave.png"
@@ -131,7 +151,8 @@ window.onload = function(){
         anima();
     }
 
-    imagenEnemigo = new new Image();
+    //imagen enemigo//
+    imagenEnemigo = new Image();
     imagenEnemigo.src = "../img/enemigo1.png"
     imagenEnemigo.onload = function(){
         for(var i = 0; i<5; i++){

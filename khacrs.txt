@@ -3,3 +3,6 @@
 - Pensar fondo del nav y ver si introducimo alguna animacion o activacion (que cambie de color cuando el raton este encima)
 - David: preguntar Murri estilos referencias.css
 -Balas poner imagen
+-Problema con los enemigos
+-Mirar EasterEgg
+-Mirar que lo smarcianitos se salen de la pantalla
