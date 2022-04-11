@@ -43,7 +43,7 @@ window.onload = function(){
     function Jugador(x){
         
         this.x = x;
-        this.y = 450;
+        this.y = 580;
         this.dibuja = function(x){
             this.x = x;
             ctx.drawImage(imagen, this.x, this.y, tamañoXImg, tamañoYImg);
@@ -81,7 +81,7 @@ window.onload = function(){
                 this.ciclos++;
 
             }
-            ctx.drawImage(imagenEnemigo,0,0,40,30,this.x,this.y,35,30);
+            ctx.drawImage(imagenEnemigo,0,0,93,84,this.x,this.y,35,30);
         };
     
     }
