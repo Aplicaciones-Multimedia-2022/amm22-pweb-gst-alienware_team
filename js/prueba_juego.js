@@ -1,21 +1,22 @@
 window.onload = function(){
     
-    //Variables//
+    // ----- Variables ----- //
+    // Canvas
     var canvas,ctx;
     var x = 100;
     var y = 100;
     var tamañoXImg = 35, tamañoYImg = 30;
 
-    // var KEY_ENTER = 13;
+    // ----- Teclas ----- //
     var KEY_LEFT = "ArrowLeft";
-    // var KEY_UP = 38;
     var KEY_RIGHT = "ArrowRight";
-    // var KEY_DOWN = 40;
     var BARRA = " "; // caracter vacío == espacio
-    var imagen, imagenEnemigo;
-
     var teclaPulsada = null;
     var tecla = [];
+
+    // ----- Otros usos ----- //
+    var imagen, imagenEnemigo;
+
     var colorBala = "red";
     var balas_array = new Array();
     var enemigos_array = new Array();
@@ -23,12 +24,13 @@ window.onload = function(){
     canvas = document.getElementById("SpaceCanvas");
     ctx = canvas.getContext("2d");
 
-    //contrucot Bala//
+    // ----- Constructor Bala ----- //
     function Bala(x,y,w){
 
         this.x = x;
         this.y = y;
         this.w = w;
+
         this.dibuja = function(){
             ctx.save();
             ctx.fillStyle = colorBala;
@@ -39,19 +41,20 @@ window.onload = function(){
 
     }
     
-    //Constructor Jugador//
+    // ----- Constructor Jugador ----- //
     function Jugador(x){
         
         this.x = x;
         this.y = 580;
+
         this.dibuja = function(x){
             this.x = x;
             ctx.drawImage(imagen, this.x, this.y, tamañoXImg, tamañoYImg);
         };
     }
     
-    //Construcot Enemigo//
-    function Enemigo(x,y){
+    // ----- Constructor Enemigo ----- //
+    function Enemigo(x,y){ // REVISAR (DAVID)
         
         this.x = x;
         this.y = y;
@@ -62,7 +65,8 @@ window.onload = function(){
         this.num = 14;
         this.figura = true;
         this.vive = true;
-        this.dibuja = function(){
+
+        this.dibuja = function(){ // REVISAR (DAVID)
             //Retraso//
             if(this.ciclos > 30){ //ciclos = velocidad//
                 if(this.veces>this.num){
@@ -86,35 +90,42 @@ window.onload = function(){
     
     }
 
+    // ----- Genera la animación ----- //
     function anima(){
         requestAnimationFrame(anima);
         verifica();
         pinta();
     }
 
+    // ----- Comprueba movimiento de los objetos ----- //
     function verifica(){
+        // NAVE //
+        // Mover
         if (tecla[KEY_RIGHT]){
             x += 10;
-        }else if (tecla[KEY_LEFT]) {
+        } else if (tecla[KEY_LEFT]) {
             x -=10;
         }
-        //verifica cañon//
+        // Márgenes canvas
         if (x>canvas.width-tamañoXImg){
             x = canvas.width-tamañoXImg;
         }else if (x<0){
             x = 0;
         }
-        //Disparo//
+
+        // BALA //
         if (tecla[BARRA]){
             balas_array.push(new Bala (jugador.x + 12,jugador.y-3,5));
             tecla[BARRA] = false;
         }
     }
 
+    // ----- Pinta los objetos sobre el canvas ----- //
     function pinta(){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        jugador.dibuja(x);
-        //pintar balas//
+        ctx.clearRect(0,0,canvas.width,canvas.height);  // limpia el canvas
+        // NAVE //
+        jugador.dibuja(x); // REVISAR (DAVID)
+        // BALAS //
         for(var i = 0;i<balas_array.length;i++){
             if (balas_array[i]!=null){
                 balas_array[i].dibuja();
@@ -123,14 +134,15 @@ window.onload = function(){
                 }
             }
         }
-        //pintar enemigos//
+        // ENEMIGOS //
         for (var i = 0; i<enemigos_array.length; i++){
             enemigos_array[i].dibuja();
         }
     }
 
+    // ----- Funciones de evento ----- //
     //informa al navegador que quieres realizar una animación y solicita que el navegador programe el repintado de la ventana para el próximo ciclo de animación. Se crea para detectar el tipo de objeto "requestAnimationFrame que utiliza el navegador que usamos"
-    window.requestAnimationFrame = (function(){return window.requestAnimationFrame || window.webkitRequestAnimationFrame ||  window.mozRequestAnimationFrame || function(callback){window.setTimeout(callback,17);}    })();
+    window.requestAnimationFrame = (function() {return window.requestAnimationFrame || window.webkitRequestAnimationFrame ||  window.mozRequestAnimationFrame || function(callback){window.setTimeout(callback,17);} })();
 
 
     //eventos para el teclado//
@@ -141,7 +153,8 @@ window.onload = function(){
     document.addEventListener("keyup",function(e){tecla[e.key]=false;
     });
 
-    
+    // ----- Main ------ //
+
     //imagen nave//
     x = canvas.width/2;
     imagen = new Image();
