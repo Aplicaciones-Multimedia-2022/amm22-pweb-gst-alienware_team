@@ -1,6 +1,5 @@
 <<<<<<< HEAD
 -Balas poner imagen
--Problema con los enemigos
 -Mirar EasterEgg
 -Comentarios
 -Posicion imagen menu y juego
