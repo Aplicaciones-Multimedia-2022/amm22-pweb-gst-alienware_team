@@ -4,7 +4,7 @@ window.onload = function(){
     var canvas,ctx;
     var x = 100;
     var y = 100;
-    var tamañoXImg = 50, tamañoYImg = 50;
+    var tamañoXImg = 35, tamañoYImg = 30;
 
     var KEY_ENTER = 13;
     var KEY_LEFT = 37;
