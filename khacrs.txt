@@ -1,8 +1,8 @@
 <<<<<<< HEAD
 -Balas poner imagen
--Mirar EasterEgg
--Comentarios
--Posicion imagen menu y juego
--Ir empezando desarrollo
+-Mirar EasterEgg compatible con Chrome
+-Posicion imagen menu y juego --> mirar resto de ventanas de navegador
+-Ir empezando "desarrollo"
 -puntuaciones
 -vidas
+-nickname
