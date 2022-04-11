@@ -15,11 +15,11 @@
     width: 18vw;
     height: 27vh;
     border-radius: 8px;
+    border: solid white;
 }
 
 #fotos img:hover {
     -webkit-transform: scale(1.2);
-    border: solid white;
 }
 
 /* --------------- Cómo reaccionan las fotos --------------- */
@@ -33,7 +33,7 @@
 }
   
 .hidden_tab:hover {
-    border: solid white 5px;
+    /* border: solid white 5px; */
     border-radius: 10px;
 }
 
