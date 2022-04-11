@@ -116,9 +116,11 @@ window.onload = function(){
         jugador.dibuja(x);
         //pintar balas//
         for(var i = 0;i<balas_array.length;i++){
-            balas_array[i].dibuja();
-            if(balas_array[i].y<0){
-                balas_array[i] = null;
+            if (balas_array[i]!=null){
+                balas_array[i].dibuja();
+                if(balas_array[i].y<0){
+                    balas_array[i] = null;
+                }
             }
         }
         //pintar enemigos//
