@@ -6,3 +6,17 @@
     display: block;
     border: 2px solid yellow;
 }
+
+.header {
+	display: flex;
+	align-items: center;
+    flex-direction: row;
+}
+
+.titulo {
+    color: white;
+    text-align: center;
+    justify-content: center;
+    margin-left: 50vh;
+    font-size: 5vh;
+}
