@@ -8,3 +8,4 @@
 -Mirar EasterEgg
 -Mirar que los marcianitos se salen de la pantalla
 -Comentarios
+-Altura nave
