@@ -1,5 +1,6 @@
 window.onload = function(){
     
+    //
     var canvas,ctx;
     var x = 100;
     var y = 100;
@@ -67,6 +68,17 @@ window.onload = function(){
         }else if (tecla[KEY_LEFT]) {
             x -=10;
         }
+        //verifica cañon//
+        if (x>canvas.width-10){
+            x = canvas.width-10;
+        }else if (x<0){
+            x = 0;
+        }
+        //Disparo//
+        if (tecla[BARRA]){
+            balas_array.push(new Bala (jugador.x + 12,jugador.y-3,5));
+            tecla[BARRA] = false;
+        }
     }
 
     function pinta(){
@@ -92,7 +104,7 @@ window.onload = function(){
     imagen = new Image();
     imagen.src = "../img/nave.png"
 
-    image.onload = function(){
+    imagen.onload = function(){
         jugador = new Jugador(0);
         jugador.dibuja(canvas.width/2); 
         anima();
