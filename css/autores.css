@@ -25,6 +25,7 @@
 /* --------------- Cómo reaccionan las fotos --------------- */
 .active_tab {
     border: solid white;
+    -webkit-transform: scale(1.1);
     border-radius: 10px;
 }
   

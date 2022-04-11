@@ -6,12 +6,12 @@ window.onload = function(){
     var y = 100;
     var tamañoXImg = 50, tamañoYImg = 50;
 
-    var KEY_ENTER = 13;
-    var KEY_LEFT = 37;
-    var KEY_UP = 38;
-    var KEY_RIGHT = 39;
-    var KEY_DOWN = 40;
-    var BARRA = 32;
+    // var KEY_ENTER = 13;
+    var KEY_LEFT = "ArrowLeft";
+    // var KEY_UP = 38;
+    var KEY_RIGHT = "ArrowRight";
+    // var KEY_DOWN = 40;
+    var BARRA = " "; // caracter vacío == espacio
     var imagen, imagenEnemigo;
 
     var teclaPulsada = null;
@@ -94,10 +94,10 @@ window.onload = function(){
 
     //eventos para el teclado//
     document.addEventListener("keydown",function(e){
-        teclaPulsada = e.keyCode;
-        tecla[e.keyCode] = true;
+        teclaPulsada = e.key;
+        tecla[e.key] = true;
     });
-    document.addEventListener("keyup",function(e){tecla[e.keyCode]=false;
+    document.addEventListener("keyup",function(e){tecla[e.key]=false;
     });
 
     
