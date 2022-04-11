@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 - Alien Menu Principal (EasterEgg)
 - Imagen alien_nav tamaño imagen (%) --> https://www.w3schools.com/css/css3_object-fit.asp
 - Pensar fondo del nav y ver si introducimo alguna animacion o activacion (que cambie de color cuando el raton este encima)
@@ -5,4 +6,5 @@
 -Balas poner imagen
 -Problema con los enemigos
 -Mirar EasterEgg
--Mirar que lo smarcianitos se salen de la pantalla
+-Mirar que los marcianitos se salen de la pantalla
+-Comentarios
