@@ -4,6 +4,8 @@ window.onload = function(){
     var canvas,ctx;
     var x = 100;
     var y = 100;
+    var tamañoXImg = 50, tamañoYImg = 50;
+
     var KEY_ENTER = 13;
     var KEY_LEFT = 37;
     var KEY_UP = 38;
@@ -36,7 +38,7 @@ window.onload = function(){
         this.y = 450;
         this.dibuja = function(x){
             this.x = x;
-            ctx.drawImage(imagen, this.x, this.y, 30, 15);
+            ctx.drawImage(imagen, this.x, this.y, tamañoXImg, tamañoYImg);
         };
     }
     
@@ -69,8 +71,8 @@ window.onload = function(){
             x -=10;
         }
         //verifica cañon//
-        if (x>canvas.width-10){
-            x = canvas.width-10;
+        if (x>canvas.width-tamañoXImg){
+            x = canvas.width-tamañoXImg;
         }else if (x<0){
             x = 0;
         }
