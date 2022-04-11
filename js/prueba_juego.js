@@ -21,6 +21,10 @@ window.onload = function(){
     var balas_array = new Array();
     var enemigos_array = new Array();
 
+    //variables balas enemigos//
+    var balasEnemigas_array = new Array();
+    var de; //se crea esta variable para el tiempo de disparo de las balas enemigas//
+
     canvas = document.getElementById("SpaceCanvas");
     ctx = canvas.getContext("2d");
 
@@ -38,6 +42,14 @@ window.onload = function(){
             this.y = this.y - 4;
             ctx.restore();
         };
+
+        this.dispara = function(){
+            ctx.save();
+            ctx.fillStyle = colorBala;
+            ctx.fillRect(this.x,this.y,this.w,this.w);
+            this.y = this.y + 6;
+            ctx.restore();
+        }
 
     }
     
@@ -69,6 +81,7 @@ window.onload = function(){
         this.dibuja = function(){ // REVISAR (DAVID)
             //Retraso//
             if(this.ciclos > 30){ //ciclos = velocidad//
+                //saltitos
                 if(this.veces>this.num){
                     this.dx *= -1;
                     this.veces = 0;
@@ -81,11 +94,23 @@ window.onload = function(){
                 }
                 this.veces++;
                 this.ciclos = 0;
+                this.figura = !this.figura;
             }else{
                 this.ciclos++;
 
             }
-            ctx.drawImage(imagenEnemigo,0,0,93,84,this.x,this.y,35,30);
+            if(this.vive){
+                //if (this.figura){ por si queremos un parpadeo de los enemigos cambiando su forma
+                    ctx.drawImage(imagenEnemigo,0,0,93,84,this.x,this.y,35,30);
+               // }
+                //else{
+                    //ctx.drawImage(imagenEnemigo,50,0,35,30, this.x, this.y, 35, 30);
+                //}
+            }else {
+                ctx.fillStyle = "black";
+                ctx.fillRect(this.x, this.y, 35, 30);
+            }
+            
         };
     
     }
@@ -95,6 +120,7 @@ window.onload = function(){
         requestAnimationFrame(anima);
         verifica();
         pinta();
+        colisiones();
     }
 
     // ----- Comprueba movimiento de los objetos ----- //
@@ -106,17 +132,18 @@ window.onload = function(){
         } else if (tecla[KEY_LEFT]) {
             x -=10;
         }
-        // Márgenes canvas
+        // verifica cañon
         if (x>canvas.width-tamañoXImg){
             x = canvas.width-tamañoXImg;
         }else if (x<0){
             x = 0;
         }
 
-        // BALA //
+        // disparo 
         if (tecla[BARRA]){
             balas_array.push(new Bala (jugador.x + 12,jugador.y-3,5));
             tecla[BARRA] = false;
+            disparaEnemigo();
         }
     }
 
@@ -134,10 +161,54 @@ window.onload = function(){
                 }
             }
         }
+
         // ENEMIGOS //
         for (var i = 0; i<enemigos_array.length; i++){
-            enemigos_array[i].dibuja();
+            if (enemigos_array[i] != null){
+                enemigos_array[i].dibuja();
+            }
         }
+
+        //balas enemigas//
+        for(var i=0; i<balasEnemigas_array.length; i++){
+            if (balasEnemigas_array[i]!=null){
+                balasEnemigas_array[i].dispara();
+                if (balasEnemigas_array[i].y>canvas.height){
+                    balasEnemigas_array[i].dibuja();
+
+                }
+            }
+        }
+    }
+
+    function colisiones(){
+        for(var i=0; i<enemigos_array.length; i++){
+            for(var j=0; j<balas_array.length; j++){
+                enemigo = enemigos_array[i];
+                bala = balas_array[j];
+                if(enemigo != null && bala != null){
+                    if((bala.x > enemigo.x) && (bala.x < enemigo.x+enemigo.w) && (bala.y > enemigo.y) && (bala.y < enemigo.y+enemigo.w)){
+                        enemigo.vive = false;
+                        enemigos_array[i] = null;
+                        balas_array[j] = null;
+                    }
+                }
+            }
+        }
+    }
+
+    function disparaEnemigo(){
+        var ultimos = new Array();
+        for(var i=enemigos_array.length-1; i>0; i--){
+            if (enemigos_array[i] != null){
+                ultimos.push(i);
+            }
+            if (ultimos.length == 10){
+                break
+            }
+        }
+        d = ultimos[Math.floor(Math.random()*10)];
+        balasEnemigas_array.push( new Bala(enemigos_array[d].x + enemigos_array[d].w/2,enemigos_array[d].y,5));
     }
 
     // ----- Funciones de evento ----- //
@@ -176,4 +247,5 @@ window.onload = function(){
             }
         }
     }
+    de = setTimeout(disparaEnemigo,1500); //cada 1,5 seg//
 }
