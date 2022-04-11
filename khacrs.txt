@@ -3,3 +3,4 @@
 -Mirar EasterEgg
 -Comentarios
 -Posicion imagen menu y juego
+-Ir empezandio desarrollo
