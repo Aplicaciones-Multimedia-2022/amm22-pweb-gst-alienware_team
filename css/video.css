@@ -1,6 +1,9 @@
 
 body {
     background-image: url(../res/roger-american-dad.mp4);
+    background-repeat: repeat;
+    background-position: 100vh;
+    background-size: contain;
 }
 
 div{
