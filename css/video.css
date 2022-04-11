@@ -1,14 +1,14 @@
-@import url("general.css");
 
-.fondo {
-    background-image: url(../img/fondo_menu.jpg);
+body {
+    background-image: url(../res/roger-american-dad.mp4);
 }
 
 div{
     text-align: center;
 }
 
-.alien_EasterEgg{
-    width: 40px;
-    height: 40px;
+.alien_nav{
+    width: 15vh;
+    height: 15vh;
+    margin-top: 35vh;
 }
