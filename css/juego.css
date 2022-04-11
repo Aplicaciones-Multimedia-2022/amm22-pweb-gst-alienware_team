@@ -4,7 +4,7 @@
 #SpaceCanvas{
     margin: 0 auto;
     display: block;
-    border: 2px solid yellow;
+    border:4px solid rgb(255, 0, 0);
 }
 
 .header {
@@ -14,7 +14,7 @@
 }
 
 .titulo {
-    color: yellow;
+    color: rgb(255, 255, 255);
     justify-content: center;
     margin-left: 52vh;
     font-size: 5vh;

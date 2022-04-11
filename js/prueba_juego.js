@@ -64,13 +64,13 @@ window.onload = function(){
         this.vive = true;
         this.dibuja = function(){
             //Retraso//
-            if(this.ciclos > 30){
+            if(this.ciclos > 30){ //ciclos = velocidad//
                 if(this.veces>this.num){
                     this.dx *= -1;
                     this.veces = 0;
                     this.num = 28;
                     this.y += 20;
-                    //no se que pollas hace esto la vdd//
+                    //var result = condition ? value1: value2 Se evalúa condition si es verdadera entonces devuelve value1 , de lo contrario value2. //
                     this.dx = (this.dx>0) ? this.dx++:this.dx--;
                 }else{
                     this.x += this.dx;
@@ -145,7 +145,7 @@ window.onload = function(){
     //imagen nave//
     x = canvas.width/2;
     imagen = new Image();
-    imagen.src = "../img/nave.png"
+    imagen.src = "../img/nave2.png"
 
     imagen.onload = function(){
         jugador = new Jugador(0);
@@ -155,7 +155,7 @@ window.onload = function(){
 
     //imagen enemigo//
     imagenEnemigo = new Image();
-    imagenEnemigo.src = "../img/enemigo1.png"
+    imagenEnemigo.src = "../img/enemigo3.png"
     imagenEnemigo.onload = function(){
         for(var i = 0; i<5; i++){
             for (var j = 0; j<10; j++){
