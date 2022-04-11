@@ -1,10 +1,10 @@
 window.onload = function(){
     
-    //
+    //Variables//
     var canvas,ctx;
     var x = 100;
     var y = 100;
-    var tamañoXImg = 50, tamañoYImg = 50;
+    var tamañoXImg = 35, tamañoYImg = 30;
 
     var KEY_ENTER = 13;
     var KEY_LEFT = 37;
@@ -28,7 +28,13 @@ window.onload = function(){
         this.x = x;
         this.y = y;
         this.w = w;
-        this.dibuja = function(){};
+        this.dibuja = function(){
+            ctx.save();
+            ctx.fillStyle = colorBala;
+            ctx.fillRect(this.x,this.y,this.w,this.w);
+            this.y = this.y - 4;
+            ctx.restore();
+        };
 
     }
     
@@ -54,7 +60,9 @@ window.onload = function(){
         this.num = 14;
         this.figura = true;
         this.vive = true;
-        this.dibuja = function(){};
+        this.dibuja = function(){
+            ctx.drawImage(imagenEnemigo,0,0,40,30,this.x,this.y,35,30);
+        };
     
     }
 
@@ -86,6 +94,17 @@ window.onload = function(){
     function pinta(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
         jugador.dibuja(x);
+        //pintar balas//
+        for(var i = 0;i<balas_array.length;i++){
+            balas_array[i].dibuja();
+            if(balas_array[i].y<0){
+                balas_array[i] = null;
+            }
+        }
+        //pintar enemigos//
+        for (var i = 0; i<enemigos_array.length; i++){
+            enemigos_array[i].dibuja();
+        }
     }
 
     //informa al navegador que quieres realizar una animación y solicita que el navegador programe el repintado de la ventana para el próximo ciclo de animación. Se crea para detectar el tipo de objeto "requestAnimationFrame que utiliza el navegador que usamos"
@@ -110,6 +129,15 @@ window.onload = function(){
         jugador = new Jugador(0);
         jugador.dibuja(canvas.width/2); 
         anima();
-    } 
+    }
 
+    imagenEnemigo = new new Image();
+    imagenEnemigo.src = "../img/enemigo1.png"
+    imagenEnemigo.onload = function(){
+        for(var i = 0; i<5; i++){
+            for (var j = 0; j<10; j++){
+                enemigos_array.push(new Enemigo(100+40*j,30+45*i));
+            }
+        }
+    }
 }
