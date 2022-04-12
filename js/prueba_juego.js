@@ -58,6 +58,8 @@ window.onload = function(){
         
         this.x = x;
         this.y = 580;
+        this.w = 30;
+        this.h = 15;
 
         this.dibuja = function(x){
             this.x = x;
@@ -195,6 +197,14 @@ window.onload = function(){
                 }
             }
         }
+        for (var j = 0; j<balasEnemigas_array.length;j++){
+            bala = balasEnemigas_array[j];
+            if (bala != null){
+                if ((bala.x > jugador.x) && (bala.x < jugador.x + jugador.w) && (bala.y > jugador.y) && (bala.y < jugador.y + jugador.h)){
+                    gameOver();
+                }
+            }
+        }
     }
 
     function disparaEnemigo(){
@@ -209,6 +219,10 @@ window.onload = function(){
         }
         d = ultimos[Math.floor(Math.random()*10)];
         balasEnemigas_array.push( new Bala(enemigos_array[d].x + enemigos_array[d].w/2,enemigos_array[d].y,5));
+    }
+
+    function gameOver(){
+        alert("Game Over");
     }
 
     // ----- Funciones de evento ----- //
