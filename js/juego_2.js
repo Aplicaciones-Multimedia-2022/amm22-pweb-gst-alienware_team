@@ -92,12 +92,12 @@ window.onload = function(){
 
         this.dibuja = function(){ // REVISAR (DAVID)
             //Retraso//
-            if(this.ciclos > 10){ //ciclos = velocidad//
+            if(this.ciclos > 30){ //ciclos = velocidad//
                 //saltitos
                 if(this.veces>this.num){
                     this.dx *= -1;
                     this.veces = 0; 
-                    this.num = 33; //numero de saltos que hace de drcha a izq o viceversa//
+                    this.num = 28; //numero de saltos que hace de drcha a izq o viceversa//
                     this.y += 20; // numero de saltos hacia abajo //
                     //var result = condition ? value1: value2 Se evalúa condition si es verdadera entonces devuelve value1 , de lo contrario value2. //
                     this.dx = (this.dx>0) ? this.dx++:this.dx--;
@@ -161,7 +161,7 @@ window.onload = function(){
         if (tecla[ESPACIO]){
             balas_array.push(new Bala (jugador.x + 12,jugador.y-3,5));
             tecla[ESPACIO] = false;
-            disparaEnemigo();
+            // disparaEnemigo();
         }
     }
 
@@ -200,6 +200,7 @@ window.onload = function(){
     }
 
     function colisiones(){
+        // bala contra enemigo
         for(var i=0; i<enemigos_array.length; i++){
             for(var j=0; j<balas_array.length; j++){
                 enemigo = enemigos_array[i];
@@ -217,13 +218,14 @@ window.onload = function(){
                 }
             }
         }
+        // bala contra jugador
         for (var j = 0; j<balasEnemigas_array.length;j++){
             bala = balasEnemigas_array[j];
             if (bala != null){
                 if ((bala.x > jugador.x) && (bala.x < jugador.x + tamañoXImg) && (bala.y > jugador.y) && (bala.y < jugador.y + tamañoYImg)){
-                    // gameOver();
-                    vidas--;
-                    console.log("impacto");
+                    vidas--; // quito una vida
+                    balasEnemigas_array[j] = null; // esa bala ya no sigue
+                    // console.log("impacto");
                     if (vidas == 2) {
                         document.getElementById("vida3").classList.remove("img_vida");
                         document.getElementById("vida3").classList.add("pierdo_vida");
@@ -258,7 +260,7 @@ window.onload = function(){
             }
         }
         //console.log(fila_abajo);
-        d = fila_abajo[Math.floor(Math.random()*10)]; //math.floor devuelve el maximo entero menor o igual a math.random*10
+        d = fila_abajo[Math.floor(Math.random()*10)]; //math.floor devuelve el maximo entero menor o igual a math.random*10 --> qué enemigo está disparando
         balasEnemigas_array.push( new Bala(enemigos_array[d].x + enemigos_array[d].w/2,enemigos_array[d].y,5));
     }
 
@@ -305,9 +307,10 @@ window.onload = function(){
     imagenEnemigo.onload = function(){
         for(var i = 0; i<5; i++){ // crea todos los enemigos
             for (var j = 0; j<10; j++){
-                enemigos_array.push(new Enemigo(100+42*j,30+45*i)); //push: añade uno o mas elementos al array y devuelve la nueva longitud del array
+                enemigos_array.push(new Enemigo(100+40*j,30+45*i)); //push: añade uno o mas elementos al array y devuelve la nueva longitud del array
             }
         }
     }
-    de = setTimeout(disparaEnemigo,1500); //cada 1,5 seg//
+    // Disparan los enemigos todo el rato
+    de = setInterval(disparaEnemigo,500); //cada 0,5 seg//
 }
