@@ -78,15 +78,15 @@ window.onload = function(){
     }
     
     // ----- Constructor Enemigo ----- //
-    function Enemigo(x,y){ // REVISAR (DAVID)
+    function Enemigo(x,y){
         
         this.x = x;
         this.y = y;
         this.w = 35;
-        this.veces = 0;
+        this.veces = 0; // número de saltitos que lleva
         this.dx = 5; //numero de posiciones que se mueve hacia la izq o hacia la drch
         this.ciclos = 0;
-        this.num = 14;
+        this.num = 14; // número de saltitos máximos que da hacia los lados
         this.figura = true;
         this.vive = true;
 
@@ -128,7 +128,7 @@ window.onload = function(){
     
     
     
-    // ----- Genera la animacionción ----- //
+    // ----- Genera la animación ----- //
     function animacion(){
         requestanimaciontionFrame(animacion);
         verificar();
@@ -150,7 +150,7 @@ window.onload = function(){
         } else if (tecla[MOVER_IZQ]) {
             x -=10;
         }
-        // verificar cañon
+        // verificar jugador
         if (x>canvas.width-tamañoXImg){
             x = canvas.width-tamañoXImg;
         }else if (x<0){
@@ -169,7 +169,7 @@ window.onload = function(){
     function pinta(){
         ctx.clearRect(0,0,canvas.width,canvas.height);  // limpia el canvas
         // NAVE //
-        jugador.dibuja(x); // REVISAR (DAVID)
+        jugador.dibuja(x);
         // BALAS //
         for(var i = 0;i<balas_array.length;i++){
             if (balas_array[i]!=null){
@@ -286,7 +286,7 @@ window.onload = function(){
     imagenEnemigo = new Image();
     imagenEnemigo.src = "../img/enemigo3.png"
     imagenEnemigo.onload = function(){
-        for(var i = 0; i<5; i++){
+        for(var i = 0; i<5; i++){ // crea todos los enemigos
             for (var j = 0; j<10; j++){
                 enemigos_array.push(new Enemigo(100+40*j,30+45*i)); //push: añade uno o mas elementos al array y devuelve la nueva longitud del array
             }
