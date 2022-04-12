@@ -6,3 +6,5 @@
 -puntuaciones
 -vidas
 -nickname
+-Cuando te da una bala se repite varias veces el menaje ya que esta todo el rato chocando la bala con la nave. Esta hecho
+con una alerta por tanto no sale del juego cuando te matan. Mirar si queremos cambiar eso.
