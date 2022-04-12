@@ -86,11 +86,15 @@ body {
     display: flex;
     color: white;
     justify-content: space-between;
+    
 }
 
 .footer_card h3{
     font-size: 15px;
     font-weight: 500;
+    display:flex;
+    margin-top: auto;
+    flex-flow: column;
 }
 
 /*PARA HACER LA WEB RESPONSIVE*/
