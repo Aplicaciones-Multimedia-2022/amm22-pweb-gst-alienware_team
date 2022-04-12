@@ -3,13 +3,13 @@ window.onload = function(){
     // ----- Variables ----- //
     // Canvas
     var canvas,ctx;
-    var x = 100;
-    var y = 100;
+    var x;
+    var y;
     var tamañoXImg = 35, tamañoYImg = 30;
 
     // ----- Teclas ----- //
-    var KEY_LEFT = "ArrowLeft";
-    var KEY_RIGHT = "ArrowRight";
+    var MOVER_IZQ = "ArrowLeft";
+    var MOVER_DRCH = "ArrowRight";
     var BARRA = " "; // caracter vacío == espacio
     var teclaPulsada = null;
     var tecla = [];
@@ -129,9 +129,9 @@ window.onload = function(){
     function verifica(){
         // NAVE //
         // Mover
-        if (tecla[KEY_RIGHT]){
+        if (tecla[MOVER_DRCH]){
             x += 10;
-        } else if (tecla[KEY_LEFT]) {
+        } else if (tecla[MOVER_IZQ]) {
             x -=10;
         }
         // verifica cañon
