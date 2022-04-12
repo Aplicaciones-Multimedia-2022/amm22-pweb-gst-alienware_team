@@ -4,6 +4,7 @@
 .img_vida {
     width: 30px;
     height: 33px;
+    margin-left: 5%;
 }
 
 .pierdo_vida {
@@ -63,5 +64,6 @@
 
 #puntos {
     color: white;
+    margin-left: 5%;
 }
 
