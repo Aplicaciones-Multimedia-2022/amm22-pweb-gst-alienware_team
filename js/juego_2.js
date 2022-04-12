@@ -212,7 +212,7 @@ window.onload = function(){
                         
                         puntos++;
                         document.getElementById("puntos").innerHTML = puntos;
-                        console.log(document.getElementById("puntos"));
+                        // console.log(document.getElementById("puntos"));
                     }
                 }
             }
@@ -221,7 +221,23 @@ window.onload = function(){
             bala = balasEnemigas_array[j];
             if (bala != null){
                 if ((bala.x > jugador.x) && (bala.x < jugador.x + tamañoXImg) && (bala.y > jugador.y) && (bala.y < jugador.y + tamañoYImg)){
-                    gameOver();
+                    // gameOver();
+                    vidas--;
+                    console.log("impacto");
+                    if (vidas == 2) {
+                        document.getElementById("vida3").classList.remove("img_vida");
+                        document.getElementById("vida3").classList.add("pierdo_vida");
+
+                    } else if (vidas == 1) {
+                        document.getElementById("vida2").classList.remove("img_vida");
+                        document.getElementById("vida2").classList.add("pierdo_vida");
+
+                    } else if (vidas == 0) {
+                        document.getElementById("vida1").classList.remove("img_vida");
+                        document.getElementById("vida1").classList.add("pierdo_vida");
+                        gameOver();
+
+                    }
                 }
             }
         }
@@ -247,7 +263,8 @@ window.onload = function(){
     }
 
     function gameOver(){
-        //alert("ERES MALIIIIIIIISIMO");
+        alert("ERES MALIIIIIIIISIMO");
+        console.log("GAME OVER");
         
     }
 

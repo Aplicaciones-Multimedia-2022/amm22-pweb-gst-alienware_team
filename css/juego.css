@@ -1,6 +1,18 @@
 /* SE IMPORTA LA HOJA DE ESTILOS GENERAL */
 @import url("general.css");
 
+.img_vida {
+    width: 30px;
+    height: 33px;
+}
+
+.pierdo_vida {
+    width: 30px;
+    height: 33px;
+    display: none;
+    /* visibility: hidden; */
+}
+
 #SpaceCanvas{
     margin: 0 auto;
     display: block;
