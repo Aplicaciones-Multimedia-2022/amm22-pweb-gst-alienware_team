@@ -25,6 +25,7 @@ window.onload = function(){
     var balasEnemigas_array = new Array();
     var de; //se crea esta variable para el tiempo de disparo de las balas enemigas//
 
+    var fila_abajo = new Array(); //array con enemigos de la linea de abajo//
     
     canvas = document.getElementById("SpaceCanvas");
     ctx = canvas.getContext("2d");
@@ -66,7 +67,6 @@ window.onload = function(){
         
         this.x = x;
         this.y = 580;
-
         
         this.dibuja = function(x){
             this.x = x;
@@ -81,7 +81,7 @@ window.onload = function(){
         this.y = y;
         this.w = 35;
         this.veces = 0;
-        this.dx = 5;
+        this.dx = 5; //numero de posiciones que se mueve hacia la izq o hacia la drch
         this.ciclos = 0;
         this.num = 14;
         this.figura = true;
@@ -225,8 +225,8 @@ window.onload = function(){
    
    
     function disparaEnemigo(){
-        var fila_abajo = new Array(); //array con enemigos de la linea de abajo//
-        for(var i=enemigos_array.length-1; i>0; i--){
+        
+        for(var i=enemigos_array.length-1; i>0; i--){ //con este for conseguimos coger la linea de enemigos de abajo, si se quiere comprobar visualmente descomentar el console.logde la linea 236
             if (enemigos_array[i] != null){
                 fila_abajo.push(i);
             }
@@ -234,12 +234,14 @@ window.onload = function(){
                 break
             }
         }
+        //console.log(fila_abajo);
         d = fila_abajo[Math.floor(Math.random()*10)]; //math.floor devuelve el maximo entero menor o igual a math.random*10
         balasEnemigas_array.push( new Bala(enemigos_array[d].x + enemigos_array[d].w/2,enemigos_array[d].y,5));
     }
 
     function gameOver(){
-        alert("Game Over");
+        alert("ERES MALIIIIIIIISIMO");
+        
     }
 
     // ----- Funciones de evento ----- //
