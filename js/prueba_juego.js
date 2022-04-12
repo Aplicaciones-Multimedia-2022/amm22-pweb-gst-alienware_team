@@ -161,7 +161,7 @@ window.onload = function(){
         if (tecla[ESPACIO]){
             balas_array.push(new Bala (jugador.x + 12,jugador.y-3,5));
             tecla[ESPACIO] = false;
-            disparaEnemigo();
+            // disparaEnemigo();
         }
     }
 
@@ -200,6 +200,7 @@ window.onload = function(){
     }
 
     function colisiones(){
+        // bala contra enemigo
         for(var i=0; i<enemigos_array.length; i++){
             for(var j=0; j<balas_array.length; j++){
                 enemigo = enemigos_array[i];
@@ -217,13 +218,14 @@ window.onload = function(){
                 }
             }
         }
+        // bala contra jugador
         for (var j = 0; j<balasEnemigas_array.length;j++){
             bala = balasEnemigas_array[j];
             if (bala != null){
                 if ((bala.x > jugador.x) && (bala.x < jugador.x + tamañoXImg) && (bala.y > jugador.y) && (bala.y < jugador.y + tamañoYImg)){
-                    // gameOver();
-                    vidas--;
-                    console.log("impacto");
+                    vidas--; // quito una vida
+                    balasEnemigas_array[j] = null; // esa bala ya no sigue
+                    // console.log("impacto");
                     if (vidas == 2) {
                         document.getElementById("vida3").classList.remove("img_vida");
                         document.getElementById("vida3").classList.add("pierdo_vida");
@@ -258,7 +260,7 @@ window.onload = function(){
             }
         }
         //console.log(fila_abajo);
-        d = fila_abajo[Math.floor(Math.random()*10)]; //math.floor devuelve el maximo entero menor o igual a math.random*10
+        d = fila_abajo[Math.floor(Math.random()*10)]; //math.floor devuelve el maximo entero menor o igual a math.random*10 --> qué enemigo está disparando
         balasEnemigas_array.push( new Bala(enemigos_array[d].x + enemigos_array[d].w/2,enemigos_array[d].y,5));
     }
 
@@ -309,5 +311,6 @@ window.onload = function(){
             }
         }
     }
-    de = setTimeout(disparaEnemigo,1500); //cada 1,5 seg//
+    // Disparan los enemigos todo el rato
+    de = setInterval(disparaEnemigo,500); //cada 0,5 seg//
 }
