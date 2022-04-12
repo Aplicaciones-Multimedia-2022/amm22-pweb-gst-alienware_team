@@ -10,7 +10,7 @@ window.onload = function(){
     // ----- Teclas ----- //
     var MOVER_IZQ = "ArrowLeft";
     var MOVER_DRCH = "ArrowRight";
-    var BARRA = " "; // caracter vacío == espacio
+    var ESPACIO = " "; // caracter vacío == espacio
     var teclaPulsada = null;
     var tecla = [];
 
@@ -25,11 +25,16 @@ window.onload = function(){
     var balasEnemigas_array = new Array();
     var de; //se crea esta variable para el tiempo de disparo de las balas enemigas//
 
+    
     canvas = document.getElementById("SpaceCanvas");
     ctx = canvas.getContext("2d");
 
+    //color gradiente balas
+    var degradado = ctx.createLinearGradient(0, 0, 0, 170);
+    degradado.addColorStop(0, "red");
+    degradado.addColorStop(1, "white");   
     
-    
+    var imagenBala;
     
     // ----- Constructor Bala ----- //
     function Bala(x,y,w){
@@ -40,7 +45,7 @@ window.onload = function(){
 
         this.dibuja = function(){
             ctx.save();
-            ctx.fillStyle = colorBala;
+            ctx.fillStyle = degradado;
             ctx.fillRect(this.x,this.y,this.w,this.w);
             this.y = this.y - 4;
             ctx.restore();
@@ -61,9 +66,8 @@ window.onload = function(){
         
         this.x = x;
         this.y = 580;
-        this.w = 30;
-        this.h = 15;
 
+        
         this.dibuja = function(x){
             this.x = x;
             ctx.drawImage(imagen, this.x, this.y, tamañoXImg, tamañoYImg);
@@ -121,10 +125,10 @@ window.onload = function(){
     
     
     
-    // ----- Genera la animación ----- //
-    function anima(){
-        requestAnimationFrame(anima);
-        verifica();
+    // ----- Genera la animacionción ----- //
+    function animacion(){
+        requestanimaciontionFrame(animacion);
+        verificar();
         pinta();
         colisiones();
     }
@@ -135,7 +139,7 @@ window.onload = function(){
     
     
     // ----- Comprueba movimiento de los objetos ----- //
-    function verifica(){
+    function verificar(){
         // NAVE //
         // Mover
         if (tecla[MOVER_DRCH]){
@@ -143,7 +147,7 @@ window.onload = function(){
         } else if (tecla[MOVER_IZQ]) {
             x -=10;
         }
-        // verifica cañon
+        // verificar cañon
         if (x>canvas.width-tamañoXImg){
             x = canvas.width-tamañoXImg;
         }else if (x<0){
@@ -151,9 +155,9 @@ window.onload = function(){
         }
 
         // disparo 
-        if (tecla[BARRA]){
+        if (tecla[ESPACIO]){
             balas_array.push(new Bala (jugador.x + 12,jugador.y-3,5));
-            tecla[BARRA] = false;
+            tecla[ESPACIO] = false;
             disparaEnemigo();
         }
     }
@@ -209,7 +213,7 @@ window.onload = function(){
         for (var j = 0; j<balasEnemigas_array.length;j++){
             bala = balasEnemigas_array[j];
             if (bala != null){
-                if ((bala.x > jugador.x) && (bala.x < jugador.x + jugador.w) && (bala.y > jugador.y) && (bala.y < jugador.y + jugador.h)){
+                if ((bala.x > jugador.x) && (bala.x < jugador.x + tamañoXImg) && (bala.y > jugador.y) && (bala.y < jugador.y + tamañoYImg)){
                     gameOver();
                 }
             }
@@ -230,7 +234,7 @@ window.onload = function(){
                 break
             }
         }
-        d = fila_abajo[Math.floor(Math.random()*10)];
+        d = fila_abajo[Math.floor(Math.random()*10)]; //math.floor devuelve el maximo entero menor o igual a math.random*10
         balasEnemigas_array.push( new Bala(enemigos_array[d].x + enemigos_array[d].w/2,enemigos_array[d].y,5));
     }
 
@@ -239,8 +243,8 @@ window.onload = function(){
     }
 
     // ----- Funciones de evento ----- //
-    //informa al navegador que quieres realizar una animación y solicita que el navegador programe el repintado de la ventana para el próximo ciclo de animación. Se crea para detectar el tipo de objeto "requestAnimationFrame que utiliza el navegador que usamos"
-    window.requestAnimationFrame = (function() {return window.requestAnimationFrame || window.webkitRequestAnimationFrame ||  window.mozRequestAnimationFrame || function(callback){window.setTimeout(callback,17);} })();
+    //informa al navegador que quieres realizar una animacionción y solicita que el navegador programe el repintado de la ventana para el próximo ciclo de animacionción. Se crea para detectar el tipo de objeto "requestanimaciontionFrame que utiliza el navegador que usamos"
+    window.requestanimaciontionFrame = (function() {return window.requestanimaciontionFrame || window.webkitRequestanimaciontionFrame ||  window.mozRequestanimaciontionFrame || function(callback){window.setTimeout(callback,17);} })();
 
 
     //eventos para el teclado//
@@ -266,7 +270,7 @@ window.onload = function(){
     imagen.onload = function(){
         jugador = new Jugador(0);
         jugador.dibuja(canvas.width/2); 
-        anima();
+        animacion();
     }
 
     //imagen enemigo//
