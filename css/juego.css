@@ -24,3 +24,20 @@
     /* margin-left: 52vh; */
     font-size: 5vh;
 }
+
+.interfaz {
+    display: flex;
+    flex-direction: row;
+}
+
+.vidas > h3 {
+    color: white;
+}
+
+.puntuaciones > h3 {
+    color: white;
+}
+
+#puntos {
+    color: white;
+}

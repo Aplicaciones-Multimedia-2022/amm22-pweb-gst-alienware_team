@@ -36,6 +36,9 @@ window.onload = function(){
     degradado.addColorStop(1, "white");   
     
     var imagenBala;
+
+    // PUNTOS/VIDAS
+    var puntos = 0, vidas = 3;
     
     // ----- Constructor Bala ----- //
     function Bala(x,y,w){
@@ -206,6 +209,10 @@ window.onload = function(){
                         enemigo.vive = false;
                         enemigos_array[i] = null;
                         balas_array[j] = null;
+                        
+                        puntos++;
+                        document.getElementById("puntos").innerHTML = puntos;
+                        console.log(document.getElementById("puntos"));
                     }
                 }
             }
