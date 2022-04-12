@@ -3,13 +3,13 @@ window.onload = function(){
     // ----- Variables ----- //
     // Canvas
     var canvas,ctx;
-    var x = 100;
-    var y = 100;
+    var x;
+    var y;
     var tamañoXImg = 35, tamañoYImg = 30;
 
     // ----- Teclas ----- //
-    var KEY_LEFT = "ArrowLeft";
-    var KEY_RIGHT = "ArrowRight";
+    var MOVER_IZQ = "ArrowLeft";
+    var MOVER_DRCH = "ArrowRight";
     var BARRA = " "; // caracter vacío == espacio
     var teclaPulsada = null;
     var tecla = [];
@@ -28,6 +28,9 @@ window.onload = function(){
     canvas = document.getElementById("SpaceCanvas");
     ctx = canvas.getContext("2d");
 
+    
+    
+    
     // ----- Constructor Bala ----- //
     function Bala(x,y,w){
 
@@ -86,9 +89,9 @@ window.onload = function(){
                 //saltitos
                 if(this.veces>this.num){
                     this.dx *= -1;
-                    this.veces = 0;
-                    this.num = 28;
-                    this.y += 20;
+                    this.veces = 0; 
+                    this.num = 28; //numero de saltos que hace de drcha a izq o viceversa//
+                    this.y += 20; // numero de saltos hacia abajo //
                     //var result = condition ? value1: value2 Se evalúa condition si es verdadera entonces devuelve value1 , de lo contrario value2. //
                     this.dx = (this.dx>0) ? this.dx++:this.dx--;
                 }else{
@@ -102,21 +105,22 @@ window.onload = function(){
 
             }
             if(this.vive){
-                //if (this.figura){ por si queremos un parpadeo de los enemigos cambiando su forma
+
                     ctx.drawImage(imagenEnemigo,0,0,93,84,this.x,this.y,35,30);
-               // }
-                //else{
-                    //ctx.drawImage(imagenEnemigo,50,0,35,30, this.x, this.y, 35, 30);
-                //}
+
             }else {
                 ctx.fillStyle = "black";
                 ctx.fillRect(this.x, this.y, 35, 30);
             }
             
-        };
+        }
     
     }
 
+    
+    
+    
+    
     // ----- Genera la animación ----- //
     function anima(){
         requestAnimationFrame(anima);
@@ -125,13 +129,18 @@ window.onload = function(){
         colisiones();
     }
 
+    
+    
+    
+    
+    
     // ----- Comprueba movimiento de los objetos ----- //
     function verifica(){
         // NAVE //
         // Mover
-        if (tecla[KEY_RIGHT]){
+        if (tecla[MOVER_DRCH]){
             x += 10;
-        } else if (tecla[KEY_LEFT]) {
+        } else if (tecla[MOVER_IZQ]) {
             x -=10;
         }
         // verifica cañon
@@ -207,17 +216,21 @@ window.onload = function(){
         }
     }
 
+   
+   
+   
+   
     function disparaEnemigo(){
-        var ultimos = new Array();
+        var fila_abajo = new Array(); //array con enemigos de la linea de abajo//
         for(var i=enemigos_array.length-1; i>0; i--){
             if (enemigos_array[i] != null){
-                ultimos.push(i);
+                fila_abajo.push(i);
             }
-            if (ultimos.length == 10){
+            if (fila_abajo.length == 10){
                 break
             }
         }
-        d = ultimos[Math.floor(Math.random()*10)];
+        d = fila_abajo[Math.floor(Math.random()*10)];
         balasEnemigas_array.push( new Bala(enemigos_array[d].x + enemigos_array[d].w/2,enemigos_array[d].y,5));
     }
 
@@ -235,9 +248,14 @@ window.onload = function(){
         teclaPulsada = e.key;
         tecla[e.key] = true;
     });
-    document.addEventListener("keyup",function(e){tecla[e.key]=false;
+    document.addEventListener("keyup",function(e){
+        tecla[e.key]=false;
     });
 
+    
+    
+    
+    
     // ----- Main ------ //
 
     //imagen nave//
@@ -257,7 +275,7 @@ window.onload = function(){
     imagenEnemigo.onload = function(){
         for(var i = 0; i<5; i++){
             for (var j = 0; j<10; j++){
-                enemigos_array.push(new Enemigo(100+40*j,30+45*i));
+                enemigos_array.push(new Enemigo(100+40*j,30+45*i)); //push: añade uno o mas elementos al array y devuelve la nueva longitud del array
             }
         }
     }
