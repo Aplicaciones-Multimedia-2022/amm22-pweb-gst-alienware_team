@@ -10,7 +10,7 @@ window.onload = function(){
     // ----- Teclas ----- //
     var MOVER_IZQ = "ArrowLeft";
     var MOVER_DRCH = "ArrowRight";
-    var BARRA = " "; // caracter vacío == espacio
+    var ESPACIO = " "; // caracter vacío == espacio
     var teclaPulsada = null;
     var tecla = [];
 
@@ -25,9 +25,21 @@ window.onload = function(){
     var balasEnemigas_array = new Array();
     var de; //se crea esta variable para el tiempo de disparo de las balas enemigas//
 
+    var fila_abajo = new Array(); //array con enemigos de la linea de abajo//
+    
     canvas = document.getElementById("SpaceCanvas");
     ctx = canvas.getContext("2d");
 
+    //color gradiente balas
+    var degradado = ctx.createLinearGradient(0, 0, 0, 170);
+    degradado.addColorStop(0, "red");
+    degradado.addColorStop(1, "white");   
+    
+    var imagenBala;
+
+    // PUNTOS/VIDAS
+    var puntos = 0, vidas = 3;
+    
     // ----- Constructor Bala ----- //
     function Bala(x,y,w){
 
@@ -37,7 +49,7 @@ window.onload = function(){
 
         this.dibuja = function(){
             ctx.save();
-            ctx.fillStyle = colorBala;
+            ctx.fillStyle = degradado;
             ctx.fillRect(this.x,this.y,this.w,this.w);
             this.y = this.y - 4;
             ctx.restore();
@@ -58,9 +70,7 @@ window.onload = function(){
         
         this.x = x;
         this.y = 580;
-        this.w = 30;
-        this.h = 15;
-
+        
         this.dibuja = function(x){
             this.x = x;
             ctx.drawImage(imagen, this.x, this.y, tamañoXImg, tamañoYImg);
@@ -68,15 +78,15 @@ window.onload = function(){
     }
     
     // ----- Constructor Enemigo ----- //
-    function Enemigo(x,y){ // REVISAR (DAVID)
+    function Enemigo(x,y){
         
         this.x = x;
         this.y = y;
         this.w = 35;
-        this.veces = 0;
-        this.dx = 5;
+        this.veces = 0; // número de saltitos que lleva
+        this.dx = 5; //numero de posiciones que se mueve hacia la izq o hacia la drch
         this.ciclos = 0;
-        this.num = 14;
+        this.num = 14; // número de saltitos máximos que da hacia los lados
         this.figura = true;
         this.vive = true;
 
@@ -86,9 +96,9 @@ window.onload = function(){
                 //saltitos
                 if(this.veces>this.num){
                     this.dx *= -1;
-                    this.veces = 0;
-                    this.num = 28;
-                    this.y += 20;
+                    this.veces = 0; 
+                    this.num = 28; //numero de saltos que hace de drcha a izq o viceversa//
+                    this.y += 20; // numero de saltos hacia abajo //
                     //var result = condition ? value1: value2 Se evalúa condition si es verdadera entonces devuelve value1 , de lo contrario value2. //
                     this.dx = (this.dx>0) ? this.dx++:this.dx--;
                 }else{
@@ -102,31 +112,37 @@ window.onload = function(){
 
             }
             if(this.vive){
-                //if (this.figura){ por si queremos un parpadeo de los enemigos cambiando su forma
+
                     ctx.drawImage(imagenEnemigo,0,0,93,84,this.x,this.y,35,30);
-               // }
-                //else{
-                    //ctx.drawImage(imagenEnemigo,50,0,35,30, this.x, this.y, 35, 30);
-                //}
+
             }else {
                 ctx.fillStyle = "black";
                 ctx.fillRect(this.x, this.y, 35, 30);
             }
             
-        };
+        }
     
     }
 
+    
+    
+    
+    
     // ----- Genera la animación ----- //
-    function anima(){
-        requestAnimationFrame(anima);
-        verifica();
+    function animacion(){
+        requestanimaciontionFrame(animacion);
+        verificar();
         pinta();
         colisiones();
     }
 
+    
+    
+    
+    
+    
     // ----- Comprueba movimiento de los objetos ----- //
-    function verifica(){
+    function verificar(){
         // NAVE //
         // Mover
         if (tecla[MOVER_DRCH]){
@@ -134,7 +150,7 @@ window.onload = function(){
         } else if (tecla[MOVER_IZQ]) {
             x -=10;
         }
-        // verifica cañon
+        // verificar jugador
         if (x>canvas.width-tamañoXImg){
             x = canvas.width-tamañoXImg;
         }else if (x<0){
@@ -142,9 +158,9 @@ window.onload = function(){
         }
 
         // disparo 
-        if (tecla[BARRA]){
+        if (tecla[ESPACIO]){
             balas_array.push(new Bala (jugador.x + 12,jugador.y-3,5));
-            tecla[BARRA] = false;
+            tecla[ESPACIO] = false;
             disparaEnemigo();
         }
     }
@@ -153,7 +169,7 @@ window.onload = function(){
     function pinta(){
         ctx.clearRect(0,0,canvas.width,canvas.height);  // limpia el canvas
         // NAVE //
-        jugador.dibuja(x); // REVISAR (DAVID)
+        jugador.dibuja(x);
         // BALAS //
         for(var i = 0;i<balas_array.length;i++){
             if (balas_array[i]!=null){
@@ -193,6 +209,10 @@ window.onload = function(){
                         enemigo.vive = false;
                         enemigos_array[i] = null;
                         balas_array[j] = null;
+                        
+                        puntos++;
+                        document.getElementById("puntos").innerHTML = puntos;
+                        // console.log(document.getElementById("puntos"));
                     }
                 }
             }
@@ -200,34 +220,57 @@ window.onload = function(){
         for (var j = 0; j<balasEnemigas_array.length;j++){
             bala = balasEnemigas_array[j];
             if (bala != null){
-                if ((bala.x > jugador.x) && (bala.x < jugador.x + jugador.w) && (bala.y > jugador.y) && (bala.y < jugador.y + jugador.h)){
-                    gameOver();
+                if ((bala.x > jugador.x) && (bala.x < jugador.x + tamañoXImg) && (bala.y > jugador.y) && (bala.y < jugador.y + tamañoYImg)){
+                    // gameOver();
+                    vidas--;
+                    console.log("impacto");
+                    if (vidas == 2) {
+                        document.getElementById("vida3").classList.remove("img_vida");
+                        document.getElementById("vida3").classList.add("pierdo_vida");
+
+                    } else if (vidas == 1) {
+                        document.getElementById("vida2").classList.remove("img_vida");
+                        document.getElementById("vida2").classList.add("pierdo_vida");
+
+                    } else if (vidas == 0) {
+                        document.getElementById("vida1").classList.remove("img_vida");
+                        document.getElementById("vida1").classList.add("pierdo_vida");
+                        gameOver();
+
+                    }
                 }
             }
         }
     }
 
+   
+   
+   
+   
     function disparaEnemigo(){
-        var ultimos = new Array();
-        for(var i=enemigos_array.length-1; i>0; i--){
+        
+        for(var i=enemigos_array.length-1; i>0; i--){ //con este for conseguimos coger la linea de enemigos de abajo, si se quiere comprobar visualmente descomentar el console.logde la linea 236
             if (enemigos_array[i] != null){
-                ultimos.push(i);
+                fila_abajo.push(i);
             }
-            if (ultimos.length == 10){
+            if (fila_abajo.length == 10){
                 break
             }
         }
-        d = ultimos[Math.floor(Math.random()*10)];
+        //console.log(fila_abajo);
+        d = fila_abajo[Math.floor(Math.random()*10)]; //math.floor devuelve el maximo entero menor o igual a math.random*10
         balasEnemigas_array.push( new Bala(enemigos_array[d].x + enemigos_array[d].w/2,enemigos_array[d].y,5));
     }
 
     function gameOver(){
-        alert("Game Over");
+        alert("ERES MALIIIIIIIISIMO");
+        console.log("GAME OVER");
+        
     }
 
     // ----- Funciones de evento ----- //
-    //informa al navegador que quieres realizar una animación y solicita que el navegador programe el repintado de la ventana para el próximo ciclo de animación. Se crea para detectar el tipo de objeto "requestAnimationFrame que utiliza el navegador que usamos"
-    window.requestAnimationFrame = (function() {return window.requestAnimationFrame || window.webkitRequestAnimationFrame ||  window.mozRequestAnimationFrame || function(callback){window.setTimeout(callback,17);} })();
+    //informa al navegador que quieres realizar una animacionción y solicita que el navegador programe el repintado de la ventana para el próximo ciclo de animacionción. Se crea para detectar el tipo de objeto "requestanimaciontionFrame que utiliza el navegador que usamos"
+    window.requestanimaciontionFrame = (function() {return window.requestanimaciontionFrame || window.webkitRequestanimaciontionFrame ||  window.mozRequestanimaciontionFrame || function(callback){window.setTimeout(callback,17);} })();
 
 
     //eventos para el teclado//
@@ -235,9 +278,14 @@ window.onload = function(){
         teclaPulsada = e.key;
         tecla[e.key] = true;
     });
-    document.addEventListener("keyup",function(e){tecla[e.key]=false;
+    document.addEventListener("keyup",function(e){
+        tecla[e.key]=false;
     });
 
+    
+    
+    
+    
     // ----- Main ------ //
 
     //imagen nave//
@@ -248,16 +296,16 @@ window.onload = function(){
     imagen.onload = function(){
         jugador = new Jugador(0);
         jugador.dibuja(canvas.width/2); 
-        anima();
+        animacion();
     }
 
     //imagen enemigo//
     imagenEnemigo = new Image();
     imagenEnemigo.src = "../img/enemigo3.png"
     imagenEnemigo.onload = function(){
-        for(var i = 0; i<5; i++){
+        for(var i = 0; i<5; i++){ // crea todos los enemigos
             for (var j = 0; j<10; j++){
-                enemigos_array.push(new Enemigo(100+40*j,30+45*i));
+                enemigos_array.push(new Enemigo(100+40*j,30+45*i)); //push: añade uno o mas elementos al array y devuelve la nueva longitud del array
             }
         }
     }
