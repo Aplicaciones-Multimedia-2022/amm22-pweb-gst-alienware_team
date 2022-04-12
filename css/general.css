@@ -41,7 +41,8 @@ html {
 /* --------------- Estilos nav de las páginas --------------- */
 #sticky { /* Para mantener el nav aunque la página tenga scroll */
   /* position: -webkit-sticky; */
-  position: sticky;
+  position: fixed;
+  z-index: 1000;
   top: 0.1px; /* Hueco entre la parte superior del nav y la parte superior de viewport */
 }
 

@@ -92,12 +92,12 @@ window.onload = function(){
 
         this.dibuja = function(){ // REVISAR (DAVID)
             //Retraso//
-            if(this.ciclos > 30){ //ciclos = velocidad//
+            if(this.ciclos > 10){ //ciclos = velocidad//
                 //saltitos
                 if(this.veces>this.num){
                     this.dx *= -1;
                     this.veces = 0; 
-                    this.num = 28; //numero de saltos que hace de drcha a izq o viceversa//
+                    this.num = 33; //numero de saltos que hace de drcha a izq o viceversa//
                     this.y += 20; // numero de saltos hacia abajo //
                     //var result = condition ? value1: value2 Se evalúa condition si es verdadera entonces devuelve value1 , de lo contrario value2. //
                     this.dx = (this.dx>0) ? this.dx++:this.dx--;
@@ -305,7 +305,7 @@ window.onload = function(){
     imagenEnemigo.onload = function(){
         for(var i = 0; i<5; i++){ // crea todos los enemigos
             for (var j = 0; j<10; j++){
-                enemigos_array.push(new Enemigo(100+40*j,30+45*i)); //push: añade uno o mas elementos al array y devuelve la nueva longitud del array
+                enemigos_array.push(new Enemigo(100+42*j,30+45*i)); //push: añade uno o mas elementos al array y devuelve la nueva longitud del array
             }
         }
     }

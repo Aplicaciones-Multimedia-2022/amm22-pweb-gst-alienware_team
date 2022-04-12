@@ -1,10 +1,15 @@
-/* SE IMPORTA LA HOJA DE ESTILOS GENERAL */
-@import url("general.css");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #212025;
+
 }
 
 .container_cards {
@@ -14,7 +19,7 @@
     flex-wrap: wrap;
     justify-content: center;
     position: absolute;
-    top: 10%;
+    top: 20%;
     transform: translate (-50%, -50%);
 }
 
@@ -81,11 +86,15 @@
     display: flex;
     color: white;
     justify-content: space-between;
+    
 }
 
 .footer_card h3{
     font-size: 15px;
     font-weight: 500;
+    display:flex;
+    margin-top: auto;
+    flex-flow: column;
 }
 
 /*PARA HACER LA WEB RESPONSIVE*/
