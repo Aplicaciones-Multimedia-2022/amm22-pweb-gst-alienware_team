@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    width: 100%;
 }
 
 .container_cards {
@@ -13,7 +14,7 @@
     flex-wrap: wrap;
     justify-content: center;
     position: absolute;
-    top: 20%;
+    top: 10%;
     transform: translate (-50%, -50%);
 }
 
