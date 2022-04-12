@@ -26,8 +26,19 @@
 }
 
 .interfaz {
+    width: auto;
     display: flex;
-    flex-direction: row;
+    margin: auto;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+
+.item{
+    flex: none;
+    width: 20%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
 }
 
 .vidas > h3 {
@@ -41,3 +52,4 @@
 #puntos {
     color: white;
 }
+
