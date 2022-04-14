@@ -23,9 +23,11 @@ window.onload = function(){
 
     //variables balas enemigos//
     var balasEnemigas_array = new Array();
-    var de; //se crea esta variable para el tiempo de disparo de las balas enemigas//
+    var disparo_interval; //se crea esta variable para el tiempo de disparo de las balas enemigas//
 
     var fila_abajo = new Array(); //array con enemigos de la linea de abajo//
+
+    var id_request;
     
     canvas = document.getElementById("SpaceCanvas");
     ctx = canvas.getContext("2d");
@@ -90,7 +92,7 @@ window.onload = function(){
         this.figura = true;
         this.vive = true;
 
-        this.dibuja = function(){ // REVISAR (DAVID)
+        this.dibuja = function(){
             //Retraso//
             if(this.ciclos > 30){ //ciclos = velocidad//
                 //saltitos
@@ -130,7 +132,7 @@ window.onload = function(){
     
     // ----- Genera la animación ----- //
     function animacion(){
-        requestanimaciontionFrame(animacion);
+        id_request = requestAnimationFrame(animacion);
         verificar();
         pinta();
         colisiones();
@@ -163,6 +165,17 @@ window.onload = function(){
             tecla[ESPACIO] = false;
             // disparaEnemigo();
         }
+
+        // VERIFICAR FIN DE CANVAS //
+        if(enemigos_array[enemigos_array.length-1].y >= jugador.y - tamañoYImg) {
+            gameOver();
+        }
+
+        // VERIFICAR ENEMIGOS MUERTOS //
+        if (enemigos_array.length == 0) {
+            gameOver();
+        }
+
     }
 
     // ----- Pinta los objetos sobre el canvas ----- //
@@ -273,7 +286,7 @@ window.onload = function(){
             }
             
         }
-        console.log(fila_abajo);
+        // console.log(fila_abajo);
         d = fila_abajo[Math.floor(Math.random()*aux)]; //math.floor devuelve el maximo entero menor o igual a math.random*10 --> qué enemigo está disparando
         balasEnemigas_array.push( new Bala(enemigos_array[d].x + enemigos_array[d].w/2,enemigos_array[d].y,5) );
         // Necesito limpiar el array que recoje los aliens de la última fila para que se recalcule de nuevo cada vez que tienen que disparar (por si he matado uno de los enemigos que estaba incluído en el array)
@@ -286,9 +299,10 @@ window.onload = function(){
     }
 
     function gameOver(){
-        alert("ERES MALIIIIIIIISIMO");
-        console.log("GAME OVER");
-        
+        clearInterval(disparo_interval);
+        cancelAnimationFrame(id_request);
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        alert("partida finalizada");
     }
 
     // ----- Funciones de evento ----- //
@@ -318,8 +332,7 @@ window.onload = function(){
 
     imagen.onload = function(){
         jugador = new Jugador(0);
-        jugador.dibuja(canvas.width/2); 
-        animacion();
+        jugador.dibuja(canvas.width/2);
     }
 
     //imagen enemigo//
@@ -327,11 +340,13 @@ window.onload = function(){
     imagenEnemigo.src = "../img/enemigo3.png"
     imagenEnemigo.onload = function(){
         for(var i = 0; i<5; i++){ // crea todos los enemigos
-            for (var j = 0; j<10; j++){
+            for (var j = 0; j<2; j++){
                 enemigos_array.push(new Enemigo(100+40*j,30+45*i)); //push: añade uno o mas elementos al array y devuelve la nueva longitud del array
             }
         }
+        
+        animacion();
     }
     // Disparan los enemigos todo el rato
-    de = setInterval(disparaEnemigo,500); //cada 0,5 seg//
+    disparo_interval = setInterval(disparaEnemigo,500); //cada 0,5 seg//
 }
