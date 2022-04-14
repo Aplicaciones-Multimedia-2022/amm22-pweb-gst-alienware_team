@@ -161,7 +161,7 @@ window.onload = function(){
         if (tecla[ESPACIO]){
             balas_array.push(new Bala (jugador.x + 12,jugador.y-3,5));
             tecla[ESPACIO] = false;
-            disparaEnemigo();
+            // disparaEnemigo();
         }
     }
 
@@ -200,6 +200,7 @@ window.onload = function(){
     }
 
     function colisiones(){
+        // bala contra enemigo
         for(var i=0; i<enemigos_array.length; i++){
             for(var j=0; j<balas_array.length; j++){
                 enemigo = enemigos_array[i];
@@ -207,8 +208,8 @@ window.onload = function(){
                 if(enemigo != null && bala != null){
                     if((bala.x > enemigo.x) && (bala.x < enemigo.x+enemigo.w) && (bala.y > enemigo.y) && (bala.y < enemigo.y+enemigo.w)){
                         enemigo.vive = false;
-                        enemigos_array[i] = null;
-                        balas_array[j] = null;
+                        enemigos_array.splice(i, 1);
+                        balas_array.splice(j, 1);
                         
                         puntos++;
                         document.getElementById("puntos").innerHTML = puntos;
@@ -217,13 +218,14 @@ window.onload = function(){
                 }
             }
         }
+        // bala contra jugador
         for (var j = 0; j<balasEnemigas_array.length;j++){
             bala = balasEnemigas_array[j];
             if (bala != null){
                 if ((bala.x > jugador.x) && (bala.x < jugador.x + tamañoXImg) && (bala.y > jugador.y) && (bala.y < jugador.y + tamañoYImg)){
-                    // gameOver();
-                    vidas--;
-                    console.log("impacto");
+                    vidas--; // quito una vida
+                    balasEnemigas_array.splice(j, 1); // esa bala ya no sigue
+                    // console.log("impacto");
                     if (vidas == 2) {
                         document.getElementById("vida3").classList.remove("img_vida");
                         document.getElementById("vida3").classList.add("pierdo_vida");
@@ -248,18 +250,39 @@ window.onload = function(){
    
    
     function disparaEnemigo(){
-        
-        for(var i=enemigos_array.length-1; i>0; i--){ //con este for conseguimos coger la linea de enemigos de abajo, si se quiere comprobar visualmente descomentar el console.logde la linea 236
-            if (enemigos_array[i] != null){
-                fila_abajo.push(i);
+        let aux = 10;        
+        if (enemigos_array.length >= aux) {
+            for(var i=enemigos_array.length-1; i>=0; i--){ //con este for conseguimos coger la linea de enemigos de abajo, si se quiere comprobar visualmente descomentar el console.logde la linea 276
+                if (enemigos_array[i] != null){
+                    fila_abajo.push(i);
+                }
+                if (fila_abajo.length == aux){
+                    break
+                }
             }
-            if (fila_abajo.length == 10){
-                break
+            
+        } else {
+            aux = enemigos_array.length;
+            for(var i=aux-1; i>=0; i--){ //con este for conseguimos coger la linea de enemigos de abajo, si se quiere comprobar visualmente descomentar el console.logde la linea 276
+                if (enemigos_array[i] != null){
+                    fila_abajo.push(i);
+                }
+                if (fila_abajo.length == aux){
+                    break
+                }
             }
+            
         }
-        //console.log(fila_abajo);
-        d = fila_abajo[Math.floor(Math.random()*10)]; //math.floor devuelve el maximo entero menor o igual a math.random*10
-        balasEnemigas_array.push( new Bala(enemigos_array[d].x + enemigos_array[d].w/2,enemigos_array[d].y,5));
+        console.log(fila_abajo);
+        d = fila_abajo[Math.floor(Math.random()*aux)]; //math.floor devuelve el maximo entero menor o igual a math.random*10 --> qué enemigo está disparando
+        balasEnemigas_array.push( new Bala(enemigos_array[d].x + enemigos_array[d].w/2,enemigos_array[d].y,5) );
+        // Necesito limpiar el array que recoje los aliens de la última fila para que se recalcule de nuevo cada vez que tienen que disparar (por si he matado uno de los enemigos que estaba incluído en el array)
+        // while(fila_abajo.length > 0) {
+        //     fila_abajo.pop();
+        // }
+        fila_abajo.length = 0;
+        // console.log(enemigos_array.length);
+
     }
 
     function gameOver(){
@@ -309,5 +332,6 @@ window.onload = function(){
             }
         }
     }
-    de = setTimeout(disparaEnemigo,1500); //cada 1,5 seg//
+    // Disparan los enemigos todo el rato
+    de = setInterval(disparaEnemigo,500); //cada 0,5 seg//
 }
