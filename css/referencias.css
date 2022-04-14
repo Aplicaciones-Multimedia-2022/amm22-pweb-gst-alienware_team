@@ -13,12 +13,14 @@
 }
 
 .titulo_html {
+  margin-top: 5vh;
   flex-grow: 0.6;
 }
 .titulo_css {
+  margin-top: 5vh;
   flex-grow: 0.7;
 }
-.titulo_js {
+.titulo_js {margin-top: 5vh;
   flex-grow: 1.1;
 }
 
