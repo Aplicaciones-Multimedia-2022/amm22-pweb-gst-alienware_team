@@ -1,9 +1,7 @@
 <<<<<<< HEAD
 -Mirar EasterEgg compatible con Chrome
 -Posicion imagen menu y juego --> mirar resto de ventanas de navegador
--Ir empezando "desarrollo" --> David
--puntuaciones --> mirar si gusta
+-Ir empezando "desarrollo" 
 -nickname --> poner un prompt o algo así
--Cuando llegan al final el juego no acaba
-- Cuando te quitan las tres vidas el juego no acaba
+-Si da tiempo cuando el juego acabe poner algo (lo que se nos ocurra)
 - Poner boton de reset (?) para reiniciar el juego en vez de refrescar --> daría la posibilidad de almacenar en score distintas partidas con distintos nombres

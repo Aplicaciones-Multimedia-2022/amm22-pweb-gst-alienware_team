@@ -62,11 +62,11 @@ window.onload = function(){
         comenzarJuego();
     }
 
-    //document.getElementById(boton1).onclick = function() {nivel1()};
-    //document.getElementById(boton2).onclick = function() {nivel2()};
+    //document.getElementById("boton1").onclick = function() {nivel1};
+    //document.getElementById("boton2").onclick = function() {nivel2};
 
-    document.getElementById("boton1").addEventListener("click",nivel1());
-    document.getElementById("boton2").addEventListener("click",nivel2());
+    document.getElementById("boton1").addEventListener("click",nivel1);
+    document.getElementById("boton2").addEventListener("click",nivel2);
 
     
     // ----- Constructor Bala ----- //
