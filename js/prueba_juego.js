@@ -195,6 +195,7 @@ window.onload = function(){
 
         // VERIFICAR FIN DE CANVAS //
         if(enemigos_array[enemigos_array.length-1].y >= jugador.y - tamañoYImg) {
+            vidas = 0;
             gameOver();
         }
 
@@ -329,6 +330,18 @@ window.onload = function(){
         clearInterval(disparo_interval);
         cancelAnimationFrame(id_request);
         ctx.clearRect(0,0,canvas.width,canvas.height);
+        if (vidas == 3) {
+            puntos += 30;
+            alert("Por haber acabado el nivel con 3 vidas, obtienes 30 puntos extra");
+        } else if (vidas == 2) {
+            puntos += 20;
+            alert("Por haber acabado el nivel con 2 vidas, obtienes 20 puntos extra");
+        } else if (vidas == 1) {
+            puntos += 10;
+            alert("Por haber acabado el nivel con 1 vida, obtienes 10 puntos extra");
+        }
+        document.getElementById("puntos").innerHTML = puntos;
+
         alert("partida finalizada");
     }
 
@@ -354,6 +367,15 @@ window.onload = function(){
 
     
     function comenzarJuego(){
+        
+        // console.log(disparo_interval);
+        // console.log(id_request);
+        clearInterval(disparo_interval);
+        cancelAnimationFrame(id_request);
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        // console.log(disparo_interval);
+        // console.log(id_request);
+
         //imagen nave//
         x = canvas.width/2;
         imagen = new Image();
@@ -378,5 +400,7 @@ window.onload = function(){
         }
         // Disparan los enemigos todo el rato
         disparo_interval = setInterval(disparaEnemigo,500); //cada 0,5 seg//
+        console.log("fin función");
     }
+    console.log("fin script");
 }
