@@ -41,6 +41,33 @@ window.onload = function(){
 
     // PUNTOS/VIDAS
     var puntos = 0, vidas = 3;
+
+    //NIVELES
+    var nivel;
+    
+    var variable_ciclos;
+    var variable_saltos;
+    var variable_balas; //Preguntar a David (Checa)
+
+
+    function nivel1(){
+        variable_ciclos = 10;
+        variable_saltos = 15;
+        comenzarJuego();
+    }
+
+    function nivel2(){
+        variable_ciclos = 20;
+        variable_saltos = 20;
+        comenzarJuego();
+    }
+
+    //document.getElementById(boton1).onclick = function() {nivel1()};
+    //document.getElementById(boton2).onclick = function() {nivel2()};
+
+    document.getElementById("boton1").addEventListener("click",nivel1());
+    document.getElementById("boton2").addEventListener("click",nivel2());
+
     
     // ----- Constructor Bala ----- //
     function Bala(x,y,w){
@@ -86,7 +113,7 @@ window.onload = function(){
         this.y = y;
         this.w = 35;
         this.veces = 0; // número de saltitos que lleva
-        this.dx = 5; //numero de posiciones que se mueve hacia la izq o hacia la drch
+        this.dx = 6; //numero de posiciones que se mueve hacia la izq o hacia la drch
         this.ciclos = 0;
         this.num = 14; // número de saltitos máximos que da hacia los lados
         this.figura = true;
@@ -94,13 +121,13 @@ window.onload = function(){
 
         this.dibuja = function(){
             //Retraso//
-            if(this.ciclos > 30){ //ciclos = velocidad//
+            if(this.ciclos > variable_ciclos){ //ciclos = velocidad//
                 //saltitos
                 if(this.veces>this.num){
                     this.dx *= -1;
                     this.veces = 0; 
-                    this.num = 28; //numero de saltos que hace de drcha a izq o viceversa//
-                    this.y += 20; // numero de saltos hacia abajo //
+                    this.num = 29; //numero de saltos que hace de drcha a izq o viceversa//
+                    this.y += variable_saltos; // numero de saltos hacia abajo //
                     //var result = condition ? value1: value2 Se evalúa condition si es verdadera entonces devuelve value1 , de lo contrario value2. //
                     this.dx = (this.dx>0) ? this.dx++:this.dx--;
                 }else{
@@ -325,28 +352,31 @@ window.onload = function(){
     
     // ----- Main ------ //
 
-    //imagen nave//
-    x = canvas.width/2;
-    imagen = new Image();
-    imagen.src = "../img/nave2.png"
+    
+    function comenzarJuego(){
+        //imagen nave//
+        x = canvas.width/2;
+        imagen = new Image();
+        imagen.src = "../img/nave2.png"
 
-    imagen.onload = function(){
-        jugador = new Jugador(0);
-        jugador.dibuja(canvas.width/2);
-    }
-
-    //imagen enemigo//
-    imagenEnemigo = new Image();
-    imagenEnemigo.src = "../img/enemigo3.png"
-    imagenEnemigo.onload = function(){
-        for(var i = 0; i<5; i++){ // crea todos los enemigos
-            for (var j = 0; j<2; j++){
-                enemigos_array.push(new Enemigo(100+40*j,30+45*i)); //push: añade uno o mas elementos al array y devuelve la nueva longitud del array
-            }
+        imagen.onload = function(){
+            jugador = new Jugador(0);
+            jugador.dibuja(canvas.width/2);
         }
+
+        //imagen enemigo//
+        imagenEnemigo = new Image();
+        imagenEnemigo.src = "../img/enemigo3.png"
+        imagenEnemigo.onload = function(){
+            for(var i = 0; i<5; i++){ // crea todos los enemigos
+                for (var j = 0; j<10; j++){
+                    enemigos_array.push(new Enemigo(100+40*j,30+45*i)); //push: añade uno o mas elementos al array y devuelve la nueva longitud del array
+                }
+            }
         
-        animacion();
+            animacion();
+        }
+        // Disparan los enemigos todo el rato
+        disparo_interval = setInterval(disparaEnemigo,500); //cada 0,5 seg//
     }
-    // Disparan los enemigos todo el rato
-    disparo_interval = setInterval(disparaEnemigo,500); //cada 0,5 seg//
 }

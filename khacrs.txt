@@ -3,9 +3,7 @@
 -Posicion imagen menu y juego --> mirar resto de ventanas de navegador
 -Ir empezando "desarrollo" --> David
 -puntuaciones --> mirar si gusta
--vidas --> mirar si gusta
 -nickname --> poner un prompt o algo así
--centrar marcianitos
 -Cuando llegan al final el juego no acaba
 - Cuando te quitan las tres vidas el juego no acaba
 - Poner boton de reset (?) para reiniciar el juego en vez de refrescar --> daría la posibilidad de almacenar en score distintas partidas con distintos nombres
