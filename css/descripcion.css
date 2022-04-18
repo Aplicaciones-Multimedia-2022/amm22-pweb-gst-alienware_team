@@ -32,5 +32,17 @@
   margin-bottom: 2vh;
   text-align: center;
   color: red;
+}
 
+.controles{
+  margin-top: 6vh;
+  flex-grow: 0.6;
+}
+
+.tabla{
+  color: white;
+  text-align: center;
+  margin:auto;
+  border-collapse: separate;
+  border-spacing: 20em 0.7em;
 }
