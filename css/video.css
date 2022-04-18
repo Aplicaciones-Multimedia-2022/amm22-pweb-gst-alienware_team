@@ -2,8 +2,9 @@
 body {
     background-image: url(../res/roger.gif);
     background-repeat: repeat;
-    background-position: 100vh;
-    background-size: contain;
+   /* background-repeat: no-repeat; 
+    background-size: cover;  // Para que ocupe el 100% del contain */
+    
 }
 
 div{
@@ -13,5 +14,6 @@ div{
 .alien_nav{
     width: 15vh;
     height: 15vh;
-    margin-top: 35vh;
+    margin-top: 40vh;
+    margin-left: 18vw;
 }
