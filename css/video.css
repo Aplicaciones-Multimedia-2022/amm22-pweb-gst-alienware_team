@@ -1,4 +1,7 @@
+*{
+    cursor: url(../img/cursor.png), auto;
 
+}
 body {
     background-image: url(../res/roger.gif);
     background-repeat: repeat;
