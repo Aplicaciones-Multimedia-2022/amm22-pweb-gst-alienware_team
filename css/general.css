@@ -4,6 +4,7 @@
 * { /* Reseteo los márgenes dentro y fuera de los contenedores a 0 */
     padding: 0;
     margin: 0;
+    cursor: url(../img/cursor.png), auto;
 }
 
 @font-face {  /* Se importa la fuente de letra "game over" */
@@ -25,6 +26,7 @@ html {
     width: 25px;
     height: 25px;
     margin-right: 13vw;
+    cursor: url(../img/cursos_grey.png), auto;
     /* justify-content: center; */
     /* margin-left: 25px;
     margin-top: 15px; */
@@ -37,6 +39,7 @@ html {
   align-items: center;
   width: 80px;
   height: 88px;
+  cursor: url(../img/cursos_grey.png), auto;
 }
 
 /* --------------- Estilos nav de las páginas --------------- */
@@ -57,6 +60,7 @@ html {
   justify-content:space-between;
   /* overflow: hidden; */
   background-color: #1d1b1b;
+  cursor: url(../img/cursos_grey.png), auto;
 }
 
 .li_navegacion {
@@ -72,6 +76,7 @@ html {
   text-decoration: none; /* quita la linea de debajo de la lista */
   list-style-type: none; /* quita los puntos de delante */
   color: white;
+  cursor: url(../img/cursos_grey.png), auto;
 }
 
 .hover .li_nav:hover {
