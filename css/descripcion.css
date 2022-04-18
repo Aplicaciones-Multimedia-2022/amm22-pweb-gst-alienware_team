@@ -41,8 +41,17 @@
 
 .tabla{
   color: white;
-  text-align: center;
-  margin:auto;
+  /*text-align: center;
+  align-content: center;*/
+  width: 100%;
   border-collapse: separate;
-  border-spacing: 20em 0.7em;
+  border-spacing: 10em 0.7em;
+  font-size: 1.2em;
+}
+
+.filas{
+  text-align: center;
+}
+.img{
+  border:4px solid rgb(255, 0, 0);
 }
