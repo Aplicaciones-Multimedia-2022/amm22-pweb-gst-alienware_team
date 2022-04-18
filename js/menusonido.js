@@ -4,6 +4,6 @@ window.onload = function (){
     const element = document.querySelector(audio);
     const source = audioContext.createMediaElementSource(element);
     source.connect(audioContext.destination)
-    audio.play();   
+    audio.play();  
 
 }
