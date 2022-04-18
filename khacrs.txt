@@ -1,5 +1,4 @@
 <<<<<<< HEAD
--Mirar EasterEgg compatible con Chrome
 -Posicion imagen menu y juego --> mirar resto de ventanas de navegador
 -Ir empezando "desarrollo" 
 -nickname --> poner un prompt o algo así
