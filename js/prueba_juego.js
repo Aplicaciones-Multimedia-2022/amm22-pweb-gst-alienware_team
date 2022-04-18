@@ -37,7 +37,8 @@ window.onload = function(){
     var imagenBala;
 
     // PUNTOS/VIDAS
-    var puntos = 0, vidas = 3;
+    var puntos;
+    var vidas;
 
     //NIVELES
     var nivel;
@@ -66,8 +67,8 @@ window.onload = function(){
         degradado = ctx.createLinearGradient(0, 0, 0, 170);
         degradado.addColorStop(0, "red");
         degradado.addColorStop(1, "white");
-
-
+        puntos = 0;
+        vidas = 3;
     }
 
 
