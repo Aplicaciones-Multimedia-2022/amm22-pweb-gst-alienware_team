@@ -5,37 +5,34 @@ window.onload = function(){
     var canvas,ctx;
     var x;
     var y;
-    var tamañoXImg = 35, tamañoYImg = 30;
+    const tamañoXImg = 35, tamañoYImg = 30;
 
     // ----- Teclas ----- //
-    var MOVER_IZQ = "ArrowLeft";
-    var MOVER_DRCH = "ArrowRight";
-    var ESPACIO = " "; // caracter vacío == espacio
-    var teclaPulsada = null;
-    var tecla = [];
+    const MOVER_IZQ = "ArrowLeft";
+    const MOVER_DRCH = "ArrowRight";
+    const ESPACIO = " "; // caracter vacío == espacio
+    var teclaPulsada;
+    var tecla;
 
     // ----- Otros usos ----- //
     var imagen, imagenEnemigo;
 
-    var colorBala = "red";
-    var balas_array = new Array();
-    var enemigos_array = new Array();
+    const colorBala = "red";
+    var balas_array;
+    var enemigos_array;
 
     //variables balas enemigos//
-    var balasEnemigas_array = new Array();
+    var balasEnemigas_array;
     var disparo_interval; //se crea esta variable para el tiempo de disparo de las balas enemigas//
 
-    var fila_abajo = new Array(); //array con enemigos de la linea de abajo//
+    var fila_abajo; //array con enemigos de la linea de abajo//
 
     var id_request;
     
-    canvas = document.getElementById("SpaceCanvas");
-    ctx = canvas.getContext("2d");
 
     //color gradiente balas
-    var degradado = ctx.createLinearGradient(0, 0, 0, 170);
-    degradado.addColorStop(0, "red");
-    degradado.addColorStop(1, "white");   
+    var degradado;
+     
     
     var imagenBala;
 
@@ -49,16 +46,42 @@ window.onload = function(){
     var variable_saltos;
     var variable_balas; //Preguntar a David (Checa)
 
+    function borrar_init() {
+
+        canvas = document.getElementById("SpaceCanvas");
+        ctx = canvas.getContext("2d");
+
+        //borrar variables//
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        //incializar variables//
+        
+
+        teclaPulsada = null;
+        tecla = [];
+        balas_array = new Array();
+        enemigos_array = new Array();
+        balasEnemigas_array = new Array();
+        fila_abajo = new Array();
+        degradado = ctx.createLinearGradient(0, 0, 0, 170);
+        degradado.addColorStop(0, "red");
+        degradado.addColorStop(1, "white");
+
+
+    }
+
 
     function nivel1(){
-        variable_ciclos = 10;
-        variable_saltos = 15;
+        variable_ciclos = 50; //mas ciclos mas despacio//
+        variable_saltos = 10;
+        borrar_init();
         comenzarJuego();
     }
 
     function nivel2(){
         variable_ciclos = 20;
         variable_saltos = 20;
+        borrar_init();
         comenzarJuego();
     }
 
