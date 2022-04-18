@@ -1,5 +1,5 @@
 window.onload = function(){
-    
+
     // ----- Variables ----- //
     // Canvas
     var canvas,ctx;
@@ -28,12 +28,12 @@ window.onload = function(){
     var fila_abajo; //array con enemigos de la linea de abajo//
 
     var id_request;
-    
+
 
     //color gradiente balas
     var degradado;
-     
-    
+
+
     var imagenBala;
 
     // PUNTOS/VIDAS
@@ -42,7 +42,7 @@ window.onload = function(){
 
     //NIVELES
     var nivel;
-    
+
     var variable_ciclos;
     var variable_saltos;
     var variable_balas; //Preguntar a David (Checa)
@@ -56,7 +56,7 @@ window.onload = function(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
 
         //incializar variables//
-        
+
 
         teclaPulsada = null;
         tecla = [];
@@ -92,7 +92,7 @@ window.onload = function(){
     document.getElementById("boton1").addEventListener("click",nivel1);
     document.getElementById("boton2").addEventListener("click",nivel2);
 
-    
+
     // ----- Constructor Bala ----- //
     function Bala(x,y,w){
 
@@ -117,22 +117,22 @@ window.onload = function(){
         }
 
     }
-    
+
     // ----- Constructor Jugador ----- //
     function Jugador(x){
-        
+
         this.x = x;
         this.y = 580;
-        
+
         this.dibuja = function(x){
             this.x = x;
             ctx.drawImage(imagen, this.x, this.y, tamañoXImg, tamañoYImg);
         };
     }
-    
+
     // ----- Constructor Enemigo ----- //
     function Enemigo(x,y){
-        
+
         this.x = x;
         this.y = y;
         this.w = 35;
@@ -149,7 +149,7 @@ window.onload = function(){
                 //saltitos
                 if(this.veces>this.num){
                     this.dx *= -1;
-                    this.veces = 0; 
+                    this.veces = 0;
                     this.num = 29; //numero de saltos que hace de drcha a izq o viceversa//
                     this.y += variable_saltos; // numero de saltos hacia abajo //
                     //var result = condition ? value1: value2 Se evalúa condition si es verdadera entonces devuelve value1 , de lo contrario value2. //
@@ -172,15 +172,15 @@ window.onload = function(){
                 ctx.fillStyle = "black";
                 ctx.fillRect(this.x, this.y, 35, 30);
             }
-            
+
         }
-    
+
     }
 
-    
-    
-    
-    
+
+
+
+
     // ----- Genera la animación ----- //
     function animacion(){
         id_request = requestAnimationFrame(animacion);
@@ -189,11 +189,11 @@ window.onload = function(){
         colisiones();
     }
 
-    
-    
-    
-    
-    
+
+
+
+
+
     // ----- Comprueba movimiento de los objetos ----- //
     function verificar(){
         // NAVE //
@@ -210,7 +210,7 @@ window.onload = function(){
             x = 0;
         }
 
-        // disparo 
+        // disparo
         if (tecla[ESPACIO]){
             balas_array.push(new Bala (jugador.x + 12,jugador.y-3,5));
             tecla[ESPACIO] = false;
@@ -275,7 +275,7 @@ window.onload = function(){
                         enemigo.vive = false;
                         enemigos_array.splice(i, 1);
                         balas_array.splice(j, 1);
-                        
+
                         puntos++;
                         document.getElementById("puntos").innerHTML = puntos;
                         // console.log(document.getElementById("puntos"));
@@ -310,12 +310,12 @@ window.onload = function(){
         }
     }
 
-   
-   
-   
-   
+
+
+
+
     function disparaEnemigo(){
-        let aux = 10;        
+        let aux = 10;
         if (enemigos_array.length >= aux) {
             for(var i=enemigos_array.length-1; i>=0; i--){ //con este for conseguimos coger la linea de enemigos de abajo, si se quiere comprobar visualmente descomentar el console.logde la linea 276
                 if (enemigos_array[i] != null){
@@ -325,7 +325,7 @@ window.onload = function(){
                     break
                 }
             }
-            
+
         } else {
             aux = enemigos_array.length;
             for(var i=aux-1; i>=0; i--){ //con este for conseguimos coger la linea de enemigos de abajo, si se quiere comprobar visualmente descomentar el console.logde la linea 276
@@ -336,7 +336,7 @@ window.onload = function(){
                     break
                 }
             }
-            
+
         }
         // console.log(fila_abajo);
         d = fila_abajo[Math.floor(Math.random()*aux)]; //math.floor devuelve el maximo entero menor o igual a math.random*10 --> qué enemigo está disparando
@@ -383,15 +383,15 @@ window.onload = function(){
         tecla[e.key]=false;
     });
 
-    
-    
-    
-    
+
+
+
+
     // ----- Main ------ //
 
-    
+
     function comenzarJuego(){
-        
+
         // console.log(disparo_interval);
         // console.log(id_request);
         clearInterval(disparo_interval);
@@ -419,7 +419,7 @@ window.onload = function(){
                     enemigos_array.push(new Enemigo(100+40*j,30+45*i)); //push: añade uno o mas elementos al array y devuelve la nueva longitud del array
                 }
             }
-        
+
             animacion();
         }
         // Disparan los enemigos todo el rato

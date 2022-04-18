@@ -17,6 +17,7 @@ a img { /* imágenes con enlace */
 .titulo {
   /* margin-right: 3vw; */
   /* flex-grow: 2; */
+  margin-top: 1vh;
   align-items: center;
   text-align: center;
   justify-content: center;
@@ -33,6 +34,7 @@ a img { /* imágenes con enlace */
   height: 80px;
   /* float: right; */
   margin-right: 2vw;
+  cursor: url(../img/cursos_grey.png), auto;
   /* margin-right: 25px;
   margin-top: 15px; */
 }
@@ -44,6 +46,7 @@ a img { /* imágenes con enlace */
   height: 120px;
   width: 350px; 
   animation: parpadeo 1.2s infinite alternate;
+  cursor: url(../img/cursos_grey.png), auto;
 }
 
 @keyframes parpadeo { /* funcion parpadeo boton play */
@@ -82,6 +85,7 @@ ul {
   text-align: center;
   padding: 14px 22px; /*Specify some padding between each <a> element, to make them look good. 14px=espacio entre lineas y 16px= */
   text-decoration: none;
+  cursor: url(../img/cursos_grey.png), auto;
 }
 
 .a_menu:hover { /*Cambiamos el color cuando pasamos el raton*/

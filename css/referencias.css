@@ -69,6 +69,7 @@
   margin: 0;
   padding: 0;
   overflow:hidden;
+  
 }
 
 .li_ref_top {
@@ -87,6 +88,7 @@
   padding-right: 2em;
   padding-left: 2em;
   font-size: 1.3em;
+  cursor: url(../img/cursos_grey.png), auto;
 }
 
 .a_ref:hover {
