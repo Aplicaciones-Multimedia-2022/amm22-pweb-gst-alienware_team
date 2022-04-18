@@ -54,7 +54,7 @@ html {
   margin: 0;
   padding: 0;
   align-items: stretch;
-  /*justify-content:space-between;*/
+  justify-content:space-between;
   /* overflow: hidden; */
   background-color: #1d1b1b;
 }
