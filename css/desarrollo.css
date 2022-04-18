@@ -11,7 +11,7 @@
   /*text-align: center;*/
   padding-top: 2em;
   padding-left: 4em;
-  padding-right: 4em;
+  padding-right: 7em;
 }
 
 .hijos_box{
@@ -28,7 +28,7 @@
 .titulo{
   margin-bottom: 2vh;
   margin-top: 2vh;
-  color: red;
+  color: rgb(139, 128, 128);
 
 }
 
