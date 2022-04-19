@@ -50,6 +50,8 @@ window.onload = function () {
 
     // AUDIOS
     const audio_disparo = new Audio("../res/shoot.wav");
+    const audio_loseLife = new Audio("../res/lose_life.mp3");
+    const audio_GaveOver = new Audio("../res/game_over.mp3");
 
     // INICIALIZAR
     function reset() {
@@ -67,9 +69,9 @@ window.onload = function () {
             if (vidas_reset[i].classList.contains("pierdo_vida")) {
                 vidas_reset[i].classList.remove("pierdo_vida")
                 vidas_reset[i].classList.add("img_vida")
-                
+
             }
-            
+
         }
 
         // Inicializar variables
@@ -319,6 +321,7 @@ window.onload = function () {
             if (bala != null) {
                 if ((bala.x > jugador.x) && (bala.x < jugador.x + tamañoXImg) && (bala.y > jugador.y) && (bala.y < jugador.y + tamañoYImg)) {
                     vidas--; // quito una vida
+                    audio_loseLife.play();
                     balasEnemigas_array.splice(j, 1); // esa bala ya no sigue
                     // console.log("impacto");
                     if (vidas == 2) {
@@ -398,6 +401,7 @@ window.onload = function () {
             puntos += 10;
             alert("Por haber acabado el nivel con 1 vida, obtienes 10 puntos extra");
         } else if (vidas == 0) {
+            audio_GaveOver.play();
             alert("Has perdido!");
         }
         document.getElementById("puntos").innerHTML = puntos;
@@ -455,7 +459,7 @@ window.onload = function () {
     // AUDIO //
 
     document.getElementById("play").addEventListener("mousedown",sonar);
-    document.getElementById("stop").addEventListener("mousedown",callar);			
+    document.getElementById("stop").addEventListener("mousedown",callar);
 
 
     function sonar(){
