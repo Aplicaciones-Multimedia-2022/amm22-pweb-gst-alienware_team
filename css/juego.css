@@ -56,23 +56,48 @@
 
 .vidas > h3 {
     color: white;
+    font-size: 30px;
+    margin-left: 3vw;
 }
 
 .puntuaciones > h3 {
     color: white;
+    font-size: 30px;
 }
 
 #puntos {
     color: white;
     margin-left: 5%;
+    font-size: 30px;
+    
 }
 
-#boton1{
-    background-color: blue;
+
+#boton1, #boton2{
+    display: flex;
+    flex-direction: column;
+    /*tipo de letra*/
+    font-family: game_over;
+    src: url(../res/Rixel.otf);
+    /*formato boton*/
+    color:white;
+    padding: 8px;
+    font-size: 30px;
+    box-shadow: 10px 10px 25px rgba(255, 255, 255, 0.3);
+    background:rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    background:rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    backdrop-filter: blur(2px);
+    /*distribucion*/
+    margin-top:  3vw;
+
+    
 }
-#boton2{
-    background-color: crimson;
-}
+
 
 /* AUDIO */
 
