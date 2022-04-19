@@ -97,6 +97,7 @@ h1{
   /* margin-bottom: 40px; */
   font-size: 150px;
   color: rgb(255, 255, 255);
+  text-shadow: 0 0 9px #ffff00, 0 0 15px #ffa200; /*Efecto Neon del titulo*/
   /* justify-content: left; */
 }
 
