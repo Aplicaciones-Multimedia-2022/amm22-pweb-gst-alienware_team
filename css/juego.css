@@ -35,6 +35,7 @@
     color: rgb(255, 255, 255);
     justify-content: center;
     /* margin-left: 52vh; */
+    text-shadow: 0 0 9px #ff5e00, 0 0 15px #ff0000;
     font-size: 5vh;
 }
 
@@ -82,7 +83,6 @@ h4{
     color: white;
     margin-left: 5%;
     font-size: 30px;
-
 }
 
 
@@ -104,13 +104,8 @@ h4{
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     background:rgba(255, 255, 255, 0.1);
     border-radius: 5px;
-    backdrop-filter: blur(2px);
-    /*distribucion*/
-    margin-top:  3vw;
-
-
+    backdrop-filter: blur(2px);   
 }
-
 
 /* AUDIO */
 
