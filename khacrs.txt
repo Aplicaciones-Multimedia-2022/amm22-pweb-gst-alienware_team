@@ -1,7 +1,6 @@
 <<<<<<< HEAD
--Mirar EasterEgg compatible con Chrome
--Posicion imagen menu y juego --> mirar resto de ventanas de navegador
--Ir empezando "desarrollo" 
+-sonido disparos etc etc
+-Hacer desarrollo de una vez
 -nickname --> poner un prompt o algo así
 -Si da tiempo cuando el juego acabe poner algo (lo que se nos ocurra)
 - Poner boton de reset (?) para reiniciar el juego en vez de refrescar --> daría la posibilidad de almacenar en score distintas partidas con distintos nombres
