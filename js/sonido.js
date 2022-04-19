@@ -8,7 +8,7 @@ window.onload = function (){
         var sonido = document.createElement("iframe");
         sonido.setAttribute("src","../res/Chiptronical.ogg");
         document.body.appendChild(sonido);
-        document.getElementById("play").removeEventListener("click",sonarPajaros);
+        document.getElementById("play").removeEventListener("mousedown",sonar);
     }
     
     function callar(){
@@ -16,7 +16,7 @@ window.onload = function (){
     
         if (iframe.length > 0){
             iframe[0].parentNode.removeChild(iframe[0]);
-            document.getElementById("play").addEventListener("click",sonarPajaros);
+            document.getElementById("play").addEventListener("mousedown",sonar);
         }
     }
 
