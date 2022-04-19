@@ -48,6 +48,9 @@ window.onload = function () {
     var disparo_interval; // tiempo disparo enemigos
     var num_filas, num_columnas; // nº enemigos
 
+    // AUDIOS
+    const audio_disparo = new Audio("../res/shoot.wav");
+
     // INICIALIZAR
     function reset() {
         // Coger canvas
@@ -231,6 +234,7 @@ window.onload = function () {
             x -= 10;
         } else if (tecla[ESPACIO]) {
             balas_array.push(new Bala(jugador.x + 12, jugador.y - 3, 5));
+            audio_disparo.play();
             tecla[ESPACIO] = false;
         }
 
