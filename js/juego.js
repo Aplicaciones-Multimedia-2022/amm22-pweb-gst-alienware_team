@@ -496,15 +496,15 @@ window.onload = function () {
         } else {
             if (vidas == 3) {
                 puntos += 30;
-                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
+                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/level_up.png)";
                 swal('Por haber acabado el nivel con 3 vidas, obtienes 30 puntos extra','', 'success');
             } else if (vidas == 2) {
                 puntos += 20;
-                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
+                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/level_up.png)";
                 swal('Por haber acabado el nivel con 2 vidas, obtienes 20 puntos extra','', 'success');
             } else if (vidas == 1) {
                 puntos += 10;
-                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
+                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/level_up.png)";
                 swal('Por haber acabado el nivel con 1 vida, obtienes 10 puntos extra','', 'success');
             } else if (vidas == 0) {
                 audio_finPartida.play();
