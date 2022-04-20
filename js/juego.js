@@ -547,8 +547,8 @@ window.onload = function () {
         imagen.src = "../img/nave2.png"
 
         imagen.onload = function () {
-            jugador = new Jugador(0);
-            jugador.dibuja(canvas.width / 2);
+            jugador = new Jugador(x);
+            jugador.dibuja;
         }
 
         //imagen enemigo//

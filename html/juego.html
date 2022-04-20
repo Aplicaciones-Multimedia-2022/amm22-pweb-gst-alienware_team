@@ -62,22 +62,31 @@
         <canvas id="SpaceCanvas" width="600" height="650"> </canvas>
       </div>
 
-      <div class = "niveles item ">
+      <div class = "contenedor_drch">
+
+        <div class = "niveles item ">
           <button id = "boton1" > NIVEL 1</button>
           <button id = "boton2" > NIVEL 2</button>
           <button id = "boton3" > NIVEL 3</button>
           <button id = "boton4" > NIVEL 4</button>
+        </div>
+
+        <div>
+          <span style="color: white;"> MUSICA: </span>
+          <span id = "play" style="color: white"> PLAY </span>
+          <span id = "stop" style="color: white"> STOP </span>
+          <iframe src = "../res/Chiptronical.ogg" controls> </iframe>
+          <!-- <audio id = "musica_fondo" src="../res/Chiptronical.ogg" style="display: none;" controls></audio> -->
+        </div>
+
+
       </div>
 
+      
+
     </div>
 
-    <div>
-      <span style="color: white;"> MUSICA: </span>
-      <span id = "play" style="color: white"> PLAY </span>
-      <span id = "stop" style="color: white"> STOP </span>
-      <iframe src = "../res/Chiptronical.ogg" controls> </iframe>
-      <!-- <audio id = "musica_fondo" src="../res/Chiptronical.ogg" style="display: none;" controls></audio> -->
-    </div>
+   
   </body>
 
 </html>
