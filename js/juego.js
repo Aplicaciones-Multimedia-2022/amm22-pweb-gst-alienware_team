@@ -72,7 +72,7 @@ window.onload = function () {
         // console.log(i);
         aux_partida = JSON.parse(window.localStorage.getItem(i));
         document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
-        document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
+        document.getElementById("db").insertAdjacentHTML("afterbegin", "<br>");
 
     }
 
@@ -502,13 +502,13 @@ window.onload = function () {
             // console.log(i);
             aux_partida = JSON.parse(window.localStorage.getItem(i));
             document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
-            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
+            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br>");
             }
 
         } else {
             aux_partida = JSON.parse(window.localStorage.getItem(numPartidas));
             document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
-            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
+            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br>");
 
         }
 
