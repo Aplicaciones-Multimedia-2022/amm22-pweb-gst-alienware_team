@@ -1,23 +1,24 @@
 window.onload = function () {
 
-
+    // // // // // // // // // // // // 
+    // EXLPICACIÓN INICIAL DEL JUEGO //
+    // // // // // // // // // // // // 
     swal('Introduce un "Nickname" en la parte izquierda de la pantalla antes de comenzar a jugar', 'En la parte inferior se guardan las puntuaciones de todos los jugadores, en caso de querer borrarlo, bastara con pulsar el boton "Reset"');
 
-    
-
-    // ----- Variables ----- //
-    // Canvas
+    // // // // // // // // //
+    //  VARIABLES GLOBALES  //
+    // // // // // // // // //
+    // --- Canvas --- //
     var canvas, ctx;
-    var x;
-    const tamañoXImg = 35, tamañoYImg = 30;
 
-    // ----- Teclas ----- //
+    // --- Teclas --- //
     const MOVER_IZQ = "ArrowLeft";
     const MOVER_DRCH = "ArrowRight";
     const ESPACIO = " "; // caracter vacío == espacio
     const ENTER = "Enter";
     var tecla;
 
+    // Escuchadores de las teclas
     function keydownHandler(e) {
         tecla[e.key] = true;
         // e.preventDefault();
@@ -28,44 +29,42 @@ window.onload = function () {
         tecla[e.key] = false;
     }
 
-    // ----- Otros usos ----- //
+    // --- Objetos --- //
+    var x;
+    const tamañoXImg = 35, tamañoYImg = 30;
+
     var imagen, imagenEnemigo;
 
     var colorBala;
+    var degradado; // color gradiente balas
     var balas_array;
     var enemigos_array;
-
-    //variables balas enemigos//
     var balasEnemigas_array;
-    var id_disparo;
 
-    var fila_abajo; //array con enemigos de la linea de abajo//
+    var id_disparo; // ID de los procesos "setInterval" para disparo de enemigos
+    var fila_abajo; // array con enemigos de la linea de abajo
 
-    var id_request;
+    var id_request; // ID para los procesos AnimationFrame
 
-
-    //color gradiente balas
-    var degradado;
-
-    // PUNTOS/VIDAS
+    // --- Puntos/Vidas --- //
     var puntos, vidas;
-    var flag_finCanvas;
-    var jugando;
+    var flag_finCanvas; // controla aliens si llegan a la nave del jugador
+    var jugando; // controla si se está en una partida
 
-    // NIVELES
-    var variable_ciclos, variable_saltos; // movimiento enemigos
-    var disparo_interval, velocidad_balas; // tiempo disparo enemigos y velocidad
+    // --- Niveles --- //
+    var variable_ciclos, variable_saltos; // movimiento enemigos (velocidad)
+    var disparo_interval, velocidad_balas; // tiempo y velocidad disparo enemigos
     var num_filas, num_columnas; // nº enemigos
 
-    // AUDIOS
+    // --- Audios --- //
     const audio_disparo = new Audio("../res/shoot.wav");
     const audio_perderVida = new Audio("../res/lose_life.mp3");
     const audio_finPartida = new Audio("../res/game_over.mp3");
 
-    // LOCALSTORAGE
+    // --- localStorage --- //
     var nombreUsuario = "undefined";
     var numPartidas;
-    if (window.localStorage.length == 0) { // me aprovecho de que se mantienen los datos entre sesiones
+    if (window.localStorage.length == 0) { // me aprovecho de que se mantienen los datos entre sesiones para obtener el nº de partidas almacenadas
         numPartidas = 0;
 
     } else {
@@ -74,13 +73,19 @@ window.onload = function () {
     }
     window.localStorage.setItem("numPartidas", numPartidas); // se actualiza la entrada del número de partidas para saber cuántas partidas llevamos
 
-    var aux_partida;
+    var aux_partida; // me ayuda a escribir la info en el HTML
     for (let i = 1; i <= numPartidas; i++) {
         // console.log(i);
         aux_partida = JSON.parse(window.localStorage.getItem(i));
-        document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
+        document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " --> " + aux_partida.puntos);
         document.getElementById("db").insertAdjacentHTML("afterbegin", "<br>");
 
+    }
+
+    // Escuchadores para el uso de localStorage
+    function cogerNombre() {
+        nombreUsuario = document.getElementById("nombreUsuario").value;
+        document.getElementById("nombreUsuario").value = ""; // limpia el recuadro
     }
 
     function enterHandler(e) {
@@ -99,17 +104,17 @@ window.onload = function () {
     document.getElementById("nombreUsuario").addEventListener("keyup", enterHandler);
     document.getElementById("boton_reset").addEventListener("click", limpiarStorage);
 
-    // INICIALIZAR
+    // // // // // // // // //
+    // INICIALIZAR PARTIDAS //
+    // // // // // // // // // 
     function reset() {
         // Coger canvas
-        //dibujarCanvas();
         canvas = document.getElementById("SpaceCanvas");
         ctx = canvas.getContext("2d");
         // Limpiar todo
         clearInterval(id_disparo);
         cancelAnimationFrame(id_request);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        //document.getElementById("SpaceCanvas").style.backgroundImage = "none";
 
         document.getElementById("puntos").innerHTML = 0;
         if (window.localStorage.length == 0) { // por si se limpia el localStorage sin refrescar la página
@@ -151,10 +156,9 @@ window.onload = function () {
 
     }
 
-    //NIVELES
-    var variable_ciclos;
-    var variable_saltos;
-
+    // // // // // // // // //
+    //  CONTROL DE NIVELES  //
+    // // // // // // // // //
     function nivel1() {
         variable_saltos = 10;
         variable_ciclos = 20;
@@ -203,20 +207,22 @@ window.onload = function () {
         comenzarJuego();
     }
 
-
+    // Escuchadores de comienzo de nivel
     document.getElementById("boton1").addEventListener("mousedown", nivel1);
     document.getElementById("boton2").addEventListener("mousedown", nivel2);
     document.getElementById("boton3").addEventListener("mousedown", nivel3);
     document.getElementById("boton4").addEventListener("mousedown", nivel4);
 
-
-    // ----- Constructor BD ----- //
+    // // // // // // // // // //
+    //  CONSTRUCTORES OBJETOS  //
+    // // // // // // // // // //
+    // --- Constructor BD --- //
     function Partida(nombre, puntos) { // me almacena los datos de una partida
         this.nombre = nombre;
         this.puntos = puntos;
     }
 
-    // ----- Constructor Bala ----- //
+    // --- Constructor Bala --- //
     function Bala(x, y, w) {
 
         this.x = x;
@@ -241,7 +247,7 @@ window.onload = function () {
 
     }
 
-    // ----- Constructor Jugador ----- //
+    // --- Constructor Jugador --- //
     function Jugador(x) {
 
         this.x = x;
@@ -253,7 +259,7 @@ window.onload = function () {
         };
     }
 
-    // ----- Constructor Enemigo ----- //
+    // --- Constructor Enemigo --- //
     function Enemigo(x, y) {
 
         this.x = x;
@@ -300,11 +306,10 @@ window.onload = function () {
 
     }
 
-
-
-
-
-    // ----- Genera la animación ----- //
+    // // // // // // // // //
+    //  FLUJO DEL PROGRAMA  //
+    // // // // // // // // //
+    // --- Genera la animación --- //
     function animacion() {
         id_request = requestAnimationFrame(animacion);
         verificar();
@@ -312,12 +317,7 @@ window.onload = function () {
         colisiones();
     }
 
-
-
-
-
-
-    // ----- Comprueba movimiento de los objetos ----- //
+    // --- Comprueba movimiento de los objetos --- //
     function verificar() {
         // NAVE //
         // Mover
@@ -357,7 +357,7 @@ window.onload = function () {
 
     }
 
-    // ----- Pinta los objetos sobre el canvas ----- //
+    // --- Pinta los objetos sobre el canvas --- //
     function pinta() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);  // limpia el canvas
         // NAVE //
@@ -391,6 +391,7 @@ window.onload = function () {
         }
     }
 
+    // --- Colisiones entre balas y naves --- //
     function colisiones() {
         // bala contra enemigo
         for (var i = 0; i < enemigos_array.length; i++) {
@@ -440,15 +441,11 @@ window.onload = function () {
         }
     }
 
-
-
-
-
     function disparaEnemigo() {
         let aux = 10;
         let flag = true;
         if (enemigos_array.length >= aux) {
-            for (var i = enemigos_array.length - 1; i >= 0; i--) { //con este for conseguimos coger la linea de enemigos de abajo, si se quiere comprobar visualmente descomentar el console.logde la linea 276
+            for (var i = enemigos_array.length - 1; i >= 0; i--) { //con este for conseguimos coger la linea de enemigos de abajo, si se quiere comprobar visualmente descomentar el console.logde la linea 467
                 if (enemigos_array[i] != null) {
                     fila_abajo.push(i);
                 }
@@ -462,7 +459,7 @@ window.onload = function () {
 
         } else {
             aux = enemigos_array.length;
-            for (var i = aux - 1; i >= 0; i--) { //con este for conseguimos coger la linea de enemigos de abajo, si se quiere comprobar visualmente descomentar el console.log de la linea 276
+            for (var i = aux - 1; i >= 0; i--) { //con este for conseguimos coger la linea de enemigos de abajo, si se quiere comprobar visualmente descomentar el console.log de la linea 467
                 if (enemigos_array[i] != null) {
                     fila_abajo.push(i);
                 }
@@ -482,38 +479,38 @@ window.onload = function () {
         //     fila_abajo.pop();
         // }
         fila_abajo.length = 0;
-        // console.log(enemigos_array.length);
 
     }
 
+    // --- Función de fin de la partida --- //
     function gameOver() {
-        // console.log(vidas);
         if (flag_finCanvas == true) {
             audio_finPartida.play();
-                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
-                swal('Game Over', 'Tu nave ha colisionado...', 'error');
-            
+            document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
+            swal('Game Over', 'Tu nave ha colisionado...', 'error');
+
         } else {
             if (vidas == 3) {
                 puntos += 30;
                 document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/level_up.png)";
-                swal('Por haber acabado el nivel con 3 vidas, obtienes 30 puntos extra','', 'success');
+                swal('Por haber acabado el nivel con 3 vidas, obtienes 30 puntos extra', '', 'success');
             } else if (vidas == 2) {
                 puntos += 20;
                 document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/level_up.png)";
-                swal('Por haber acabado el nivel con 2 vidas, obtienes 20 puntos extra','', 'success');
+                swal('Por haber acabado el nivel con 2 vidas, obtienes 20 puntos extra', '', 'success');
             } else if (vidas == 1) {
                 puntos += 10;
                 document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/level_up.png)";
-                swal('Por haber acabado el nivel con 1 vida, obtienes 10 puntos extra','', 'success');
+                swal('Por haber acabado el nivel con 1 vida, obtienes 10 puntos extra', '', 'success');
             } else if (vidas == 0) {
                 audio_finPartida.play();
                 document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
                 swal('Game Over', 'Tu nave ha sido destruida...', 'error');
             }
-            
+
         }
 
+        // Actualiza info en HTML sobre las partidas realizadas
         document.getElementById("puntos").innerHTML = puntos;
         let newScore = new Partida(nombreUsuario, puntos);
         numPartidas++;
@@ -526,15 +523,15 @@ window.onload = function () {
         if (document.getElementById("db").firstChild == null || window.localStorage.length == 0) { // no tengo info aún, lo escribo todo
             document.getElementById("db").innerHTML = "";
             for (let i = 1; i <= numPartidas; i++) {
-            // console.log(i);
-            aux_partida = JSON.parse(window.localStorage.getItem(i));
-            document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
-            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br>");
+                // console.log(i);
+                aux_partida = JSON.parse(window.localStorage.getItem(i));
+                document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " --> " + aux_partida.puntos);
+                document.getElementById("db").insertAdjacentHTML("afterbegin", "<br>");
             }
 
         } else {
             aux_partida = JSON.parse(window.localStorage.getItem(numPartidas));
-            document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
+            document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " --> " + aux_partida.puntos);
             document.getElementById("db").insertAdjacentHTML("afterbegin", "<br>");
 
         }
@@ -542,19 +539,13 @@ window.onload = function () {
         reset();
     }
 
-    // ----- Funciones de evento ----- //
-    //informa al navegador que quieres realizar una animacionción y solicita que el navegador programe el repintado de la ventana para el próximo ciclo de animacionción. Se crea para detectar el tipo de objeto "requestanimaciontionFrame que utiliza el navegador que usamos"
+    // --- Activación de la función AnimationFrame para los distintos navegadores --- //
+    // Informa al navegador que quieres realizar una animación y solicita que el navegador programe el repintado de la ventana para el próximo ciclo de animación. Se crea para detectar el tipo de objeto "requestanimaciontionFrame" que utiliza el navegador que usamos
     window.requestanimaciontionFrame = (function () { return window.requestanimaciontionFrame || window.webkitRequestanimaciontionFrame || window.mozRequestanimaciontionFrame || function (callback) { window.setTimeout(callback, 17); } })();
 
-
-
-
-
-
-
-    // ----- Main ------ //
-
-
+    // // // // // // // // 
+    // INICIO DE PARTIDA //
+    // // // // // // // // 
     function comenzarJuego() {
         jugando = true;
 
@@ -585,37 +576,29 @@ window.onload = function () {
         }
         // Disparan los enemigos todo el rato
         id_disparo = setInterval(disparaEnemigo, disparo_interval); //cada 0,5 seg//
-        // console.log("fin función");
     }
-    // console.log("fin script");
 
 
     // AUDIO //
 
-    document.getElementById("play").addEventListener("mousedown",sonar);
-    document.getElementById("stop").addEventListener("mousedown",callar);
+    document.getElementById("play").addEventListener("mousedown", sonar);
+    document.getElementById("stop").addEventListener("mousedown", callar);
 
 
-    function sonar(){
+    function sonar() {
         var sonido = document.createElement("iframe");
-        sonido.setAttribute("src","../res/Chiptronical.ogg");
+        sonido.setAttribute("src", "../res/Chiptronical.ogg");
         document.body.appendChild(sonido);
-        document.getElementById("play").removeEventListener("mousedown",sonar);
+        document.getElementById("play").removeEventListener("mousedown", sonar);
     }
 
-    function callar(){
+    function callar() {
         var iframe = document.getElementsByTagName("iframe");
 
-        if (iframe.length > 0){
+        if (iframe.length > 0) {
             iframe[0].parentNode.removeChild(iframe[0]);
-            document.getElementById("play").addEventListener("mousedown",sonar);
+            document.getElementById("play").addEventListener("mousedown", sonar);
         }
-    }
-
-    // NOMBRE Y LOCALSTORAGE //
-    function cogerNombre() {
-        nombreUsuario = document.getElementById("nombreUsuario").value;
-        document.getElementById("nombreUsuario").value = ""; // limpia el recuadro
     }
 
 }
