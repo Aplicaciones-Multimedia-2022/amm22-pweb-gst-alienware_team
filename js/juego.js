@@ -83,8 +83,14 @@ window.onload = function () {
         }
     }
 
+    function limpiarStorage() {
+        window.localStorage.clear();
+        document.getElementById("db").innerHTML = "";
+    }
+
     document.getElementById("botonNombre").addEventListener("click", cogerNombre);
     document.getElementById("nombreUsuario").addEventListener("keyup", enterHandler);
+    document.getElementById("boton_reset").addEventListener("click", limpiarStorage);
 
     // INICIALIZAR
     function reset() {
