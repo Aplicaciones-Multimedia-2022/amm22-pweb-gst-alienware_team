@@ -160,6 +160,7 @@ window.onload = function () {
         num_columnas = 10;
         num_filas = 6;
         reset();
+        document.getElementById("SpaceCanvas").style.backgroundImage = "none";
         comenzarJuego();
     }
 
@@ -171,6 +172,7 @@ window.onload = function () {
         num_columnas = 10;
         num_filas = 6;
         reset();
+        document.getElementById("SpaceCanvas").style.backgroundImage = "none";
         comenzarJuego();
     }
 
