@@ -19,7 +19,8 @@
     display: block;
     border:4px solid rgb(255, 0, 0);
     background-size: cover;
-    
+    background-position: center;
+
 }
 
 .header {
