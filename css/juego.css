@@ -140,6 +140,7 @@ h4{
    height: 30px;
    border-radius: 10px;
    border: solid 2px white;
+   cursor: url(../img/cursos_grey.png), auto;
 }
 
 #boton_reset{
@@ -153,6 +154,7 @@ h4{
     width: 180px;
     height: 30px;
     border-radius: 10px;
+    cursor: url(../img/cursos_grey.png), auto;
 
 }
 
@@ -167,6 +169,7 @@ h4{
       padding:16px;
       border: 1px solid rgb(255, 255, 255);
       border-radius: 5px;
+      cursor: url(../img/cursos_grey.png), auto;
 
   }
 
