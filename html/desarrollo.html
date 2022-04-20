@@ -37,18 +37,19 @@
         <h2 class="titulo"><u>Responsabilidades concretas asignadas a cada miembro del equipo</u></h2>
         <ul class="box_p">
           <li><h3 class="lista">Carlos Garcia Checa:</h3></li>
-          <p class="parrafo">Principal desarrollador y creador del juego. Su funcion principal ha sido entender el tipo de juego que queriamos
-            desarrollar. Despues de hacer un esquema de conceptos y estructuracion entre todo el equipo, comenzó a identificar todos y cada uno
-            de los eslabones necesarios para consguir unirlos entre ellos y  crear nuestra gran juego.<br><br>
-            - Ademas ha colaborado en la creacion el menu de navegacion de AlienWare
+          <p class="parrafo">Principal desarrollador del juego y responsable de la navegacion.<br><br>
+            - Mi funcion principal ha sido entender el tipo de juego que queriamos desarrollar.
+            Despues de hacer un esquema de conceptos y estructuracion entre todo el equipo, comenzo a identificar todos y cada uno
+            de los eslabones necesarios para consguir unirlos entre ellos y  crear nuestro gran juego.<br>
+            - He desarrollado la creacion del menu de navegacion de los html´s secundarios de AlienWare.<br>
+            - He creado la navegacion del menu principal (descripcion, desarrollo, etc) ademas del hover de dicho menu.
           </p>
           <li><h3 class="lista">Jorge Gonzalez</h3></li>
-          <p class="parrafo">Desarrollador de varias funciones tales como, crear todo el apartado de "Referencias" y maquetacion del mismo
-            y cooparticipe del diseño y desarrollo de otras de las paginas.<br><br>
-            - Estructura y redaccion del apartado "Descripcion"<br>
-            - Diseño de la estructura de la pagina "Desarrollo"<br>
-            - Auxiliar JS para la introduccion de efectos de sonido multimedia del juego. <br>
-            - Cooparticipe de la creacion de la base de datos del juego (localstorage). <br>
+          <p class="parrafo">Desarrollador de varias funciones tales como, crear todo el apartado de "Referencias" y maquetacion del mismo y cooparticipe del diseño y desarrollo de otras de las paginas.<br><br>
+            - Estructura y diseño del apartado "Descripcion"<br>
+            - Diseño de la estructura de la pagina "Desarrollo" con los diferentes apartados tanto del HTML como del CSS<br>
+            - Auxiliar JS para la introduccion de efectos de sonido multimedia del juego y ayudante en varios apartados del mismo. <br>
+            - Cooparticipe de la creacion de la base de datos del juego (localstorage) <br>
             - Creacion del display de fondo de "GameOver" en el JS.<br>
           </p>
           <li><h3 class="lista">Alberto Sanz: </h3></li>
@@ -86,6 +87,8 @@
           <p class="parrafo">Se han utilizado escuchadores de eventos en los ficheros JS para conseguir capturar la pulsacion de teclas y la seleccion de elementos mediante el raton.</p>
           <li><h3 class="lista">localStorage:</h3></li>
           <p class="parrafo">Nos hemos aprovechado de la potencia que ofrece la interfaz "Storage" del API de JS para poder almacenar datos entre sesiones de juego, y así dar al jugador un historial de partidas con el nombre de los otros jugadores y los puntos.</p>
+          <li><h3 class="lista">SweetAlert:</h3></li>
+          <p class="parrafo">Es un paquete que hemos utilizado para modificar las alertas del juego que aparecen en el navegador </p>
 
         </ul>
 
@@ -93,10 +96,14 @@
         <h2 class="titulo"><u>Principales problemas y dificultades encontrados</u></h2>
         <ul class="box_p">
           <li><h3 class="lista">Fuente de letra</h3></li>
-          <p class="parrafo"><span class = "problema">Al introducir en la página web una fuente de letra distinta de la predefinida, las tildes que se introducen dejan un aspecto muy extraño en las letras afectadas por las mismas.</span> Frente a este problema hemos decidido dejar la fuente de letra intacta para dar un diseño mas homogeneo a toda la aplicacion, y en su defecto eliminar las tildes de todo el texto de la página web.</p>
-          <li><h3 class="lista">Contenedores de los "nav"</h3></li>
-          <p class="parrafo"><span class = "problema"></span>Al principio de crear el nav, quisimos resaltar el apartado en el que pinchabas dandole un fondo blanco. Pero por problemas de tamaño de los contenedores entre el elemento 'li' y el elemento 'a' el fondo blanco no se aplicaba correctamente en todo el espacio que queríamos.<span> La solución fue cambiar el elemento sobre el que aplicabamos el fondo blanco y de esta forma aprovechamos la diferencia de tamaño entre los contenedores HTML dejando un subrayado blanco muy bonito.</p>
-          
+          <p class="parrafo"><span>Al introducir en la página web una fuente de letra distinta de la predefinida, las tildes que se introducen dejan un aspecto muy extraño en las letras afectadas por las mismas, pasa lo mismo con la letra "ñ" (como se puede observar).</span> Frente a este problema hemos decidido dejar la fuente de letra intacta para dar un diseño mas homogeneo a toda la aplicacion, y en su defecto eliminar las tildes de todo el texto de la página web.</p>
+          <li><h3 class="lista">JavaScript:</h3></li>
+          <p class="parrafo">La dificultad principal ha sido el uso de de objetos en el juego ya que no sabiamos estructurar bien sus parametros teniendo que hacer multiples pruebas. Lo que mas costo entender fue el uso de funciones dentro de los objetos.<br>
+          </p>
+          <li><h3 class="lista">Alberto:</h3></li>
+          <p class="parrafo">Lo que sea</p>
+          <li><h3 class="lista">David:</h3></li>
+          <p class="parrafo">Lo que sea</p>
         </ul>
 
         <!-- CUARTA CAJA -->
@@ -127,31 +134,6 @@
         </ul>
       </div>
     </div>
-
-    <!--
-      Pasos:
-      1. Los primeros pasos del proyecto fueron: lectura conjunta del proyecto y organización y diseño de la web, requerimientos de nuestro juego y estructuración de los ficheros.
-      DAR UNA ESTIMACIÓN DE HORAS
-      2. Iniciarse en GitHub -> problemas para crear el repo; solución con vídeos de YT :)
-      3. Ver cómo funcionaban los comandos y herramientas que proporcionaba GitHub
-      4. Creación de toda la estructura de ficheros y búsqueda de recursos (fuentes, imagenes, etc)
-      5. Elección de fondo de pantalla y fijación para que quedase bien
-      6. Creación de un nav en la página principal del proyecto para navegar al resto de HTMLs
-      7. Implementación mediante CSS y "keyframes" de los efectos hover del menú
-      8. Vinculación de las imagen "alien" con el html principal para poder volver al inicio
-      9. Creación de la imagen de "play" para sustituir
-      10. Logo GitHUb para centrar título
-
-      . Creación de logotipos para las tecnologías HTML5 de las referencias
-
-      -- problemas hover nav a (contenedor más pequeño que li); solución hover li queda muy bien
-      -- problemas setInterval; solución animation frame
-      -- problemas animation frame (ir más rápido)
-      -- problemas tamaño aliens; solución refes
-      -- problema si matas enemigo que ha disparado, da error de enemigo null (juego.js línea 262)
-
-      * a lo largo de todo el proyecto se han ido maquetando los distintos contenedores según ha habido necesidad, ha sido tarea de todos
-     -->
 
   </body>
 
