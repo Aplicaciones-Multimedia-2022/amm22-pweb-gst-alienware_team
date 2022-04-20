@@ -1,6 +1,9 @@
 window.onload = function () {
 
-    swal('Introduce un "Nickname" en la parte izquierda de la pantalla antes de comenzar a jugar', 'Debajo encontraras un listado que recoge las maximas puntuaciones de las partidas finalizadas...... Si quieres borrar dicho listado bastara con pulsar el boton "Reset. Ademas puedes seleccionar la dificultad del juego pulsando en el selector de niveles de la parte derecha de la pantalla');
+
+    swal('Introduce un "Nickname" en la parte izquierda de la pantalla antes de comenzar a jugar', 'En la parte inferior se guardan las puntuaciones de todos los jugadores, en caso de querer borrarlo, bastara con pulsar el boton "Reset"');
+
+    
 
     // ----- Variables ----- //
     // Canvas
