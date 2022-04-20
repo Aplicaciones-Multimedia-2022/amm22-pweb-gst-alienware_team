@@ -45,28 +45,26 @@
         <img src = "../img/nave2.png" name = "vida" id = "vida3" class = "img_vida">
         </h3>
         <h3> SCORE:<span id = "puntos">0</span></h3>
-        <h4>localStorage (David)</h4>
+        <h4>OTROS JUGADORES :</h4>
 
-        <div class="tabla_nombres">
-          <input id="nombreUsuario" type="text" placeholder="Nombre del jugador"></input><br><br>
+        <div class="storage">
+          <input id="nombreUsuario" type="text" placeholder="        Nombre del jugador"></input><br><br>
           <button style = "display: none;" id = "botonNombre"></button> <!-- PONER HIDDEN EN CSS --><br>
-          <p id = "db" style="color: white; overflow-y: scroll;"></p>
+          <p class="records"id = "db" ></p>
 
         </div>
 
       </div>
 
       <div class = "juego">
-
-        <canvas id="SpaceCanvas" width="600" height="650"> </canvas>
-
+        <canvas id="SpaceCanvas" width="600" height="650"> </canvas>    
       </div>
 
       <div class = "puntuaciones item">
-        <button id = "boton1" > NIVEL 1</button>
-        <button id = "boton2" > NIVEL 2</button>
-        <button id = "boton3" > NIVEL 3</button>
-        <button id = "boton4" > NIVEL 4</button>
+        <button id = "boton1" > FACIL</button>
+        <button id = "boton2" > MEDIO</button>
+        <button id = "boton3" > DIFICIL</button>
+        <button id = "boton4" > EXTERMINIO</button>
       </div>
 
     </div>
