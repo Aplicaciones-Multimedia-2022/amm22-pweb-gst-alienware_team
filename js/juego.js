@@ -60,10 +60,10 @@ window.onload = function () {
     var numPartidas;
     if (window.localStorage.length == 0) { // me aprovecho de que se mantienen los datos entre sesiones
         numPartidas = 0;
-        
+
     } else {
         numPartidas = window.localStorage.getItem("numPartidas");
-        
+
     }
     window.localStorage.setItem("numPartidas", numPartidas); // se actualiza la entrada del número de partidas para saber cuántas partidas llevamos
 
@@ -72,10 +72,10 @@ window.onload = function () {
         // console.log(i);
         aux_partida = JSON.parse(window.localStorage.getItem(i));
         document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
-        document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
-        
+        document.getElementById("db").insertAdjacentHTML("afterbegin", "<br>");
+
     }
-    
+
     function enterHandler(e) {
         e.preventDefault();
         if (e.key == ENTER) {
@@ -89,12 +89,14 @@ window.onload = function () {
     // INICIALIZAR
     function reset() {
         // Coger canvas
+        //dibujarCanvas();
         canvas = document.getElementById("SpaceCanvas");
         ctx = canvas.getContext("2d");
         // Limpiar todo
         clearInterval(id_disparo);
         cancelAnimationFrame(id_request);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //document.getElementById("SpaceCanvas").style.backgroundImage = "none";
 
         document.getElementById("puntos").innerHTML = 0;
         if (window.localStorage.length == 0) { // por si se limpia el localStorage sin refrescar la página
@@ -108,9 +110,9 @@ window.onload = function () {
             if (vidas_reset[i].classList.contains("pierdo_vida")) {
                 vidas_reset[i].classList.remove("pierdo_vida")
                 vidas_reset[i].classList.add("img_vida")
-                
+
             }
-            
+
         }
 
         // Inicializar variables
@@ -146,6 +148,7 @@ window.onload = function () {
         num_columnas = 10;
         num_filas = 6;
         reset();
+        document.getElementById("SpaceCanvas").style.backgroundImage = "none";
         comenzarJuego();
     }
 
@@ -179,6 +182,7 @@ window.onload = function () {
         num_columnas = 10;
         num_filas = 6;
         reset();
+        document.getElementById("SpaceCanvas").style.backgroundImage = "none";
         comenzarJuego();
     }
 
@@ -409,6 +413,7 @@ window.onload = function () {
                         // console.log("GAME OVER");
                         gameOver();
 
+
                     }
                 }
             }
@@ -462,24 +467,30 @@ window.onload = function () {
     }
 
     function gameOver() {
-        dibujarCanvas();
+
+        //dibujarCanvas();
         if (vidas == 3) {
             puntos += 30;
+            document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
             alert("Por haber acabado el nivel con 3 vidas, obtienes 30 puntos extra");
         } else if (vidas == 2) {
             puntos += 20;
+            document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
             alert("Por haber acabado el nivel con 2 vidas, obtienes 20 puntos extra");
         } else if (vidas == 1) {
             puntos += 10;
+            document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
             alert("Por haber acabado el nivel con 1 vida, obtienes 10 puntos extra");
         } else if (vidas == 0) {
             audio_finPartida.play();
+            document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
             alert("Has perdido!");
         }
+
         document.getElementById("puntos").innerHTML = puntos;
         let newScore = new Partida(nombreUsuario, puntos);
         numPartidas++;
-        
+
         window.localStorage.setItem(numPartidas, JSON.stringify(newScore)); // almaceno mi objeto con los datos de la partida en la BD
         // console.log(window.localStorage.getItem(numPartidas));
 
@@ -491,26 +502,18 @@ window.onload = function () {
             // console.log(i);
             aux_partida = JSON.parse(window.localStorage.getItem(i));
             document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
-            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
+            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br>");
             }
 
         } else {
             aux_partida = JSON.parse(window.localStorage.getItem(numPartidas));
             document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
-            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
-            
+            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br>");
+
         }
-        
+
         reset();
     }
-
-    function dibujarCanvas(){
-        canvas = document.getElementById("SpaceCanvas");
-        ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-	      // imagen
-        document.getElementById("SpaceCanvas").style.backgroundImage = 'url(../img/game_over_img.jpg)';
-	  }
 
     // ----- Funciones de evento ----- //
     //informa al navegador que quieres realizar una animacionción y solicita que el navegador programe el repintado de la ventana para el próximo ciclo de animacionción. Se crea para detectar el tipo de objeto "requestanimaciontionFrame que utiliza el navegador que usamos"
@@ -562,7 +565,7 @@ window.onload = function () {
     // AUDIO //
 
     document.getElementById("play").addEventListener("mousedown",sonar);
-    document.getElementById("stop").addEventListener("mousedown",callar);			
+    document.getElementById("stop").addEventListener("mousedown",callar);
 
 
     function sonar(){
