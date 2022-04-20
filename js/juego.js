@@ -12,6 +12,7 @@ window.onload = function () {
     const ESPACIO = " "; // caracter vacío == espacio
     var tecla;
 
+
     function keydownHandler(e) {
         tecla[e.key] = true;
         // e.preventDefault();
@@ -74,6 +75,7 @@ window.onload = function () {
 
         }
 
+        //gameOver(false);
         // Inicializar variables
         x = canvas.width / 2;
 
@@ -336,6 +338,7 @@ window.onload = function () {
                         document.getElementById("vida1").classList.remove("img_vida");
                         document.getElementById("vida1").classList.add("pierdo_vida");
                         // console.log("GAME OVER");
+                        //gameOver(true);
                         gameOver();
 
                     }
@@ -390,7 +393,13 @@ window.onload = function () {
 
     }
 
-    function gameOver() {
+    function gameOver() { //poner n dentro
+      /*if(n){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        document.getElementById("SpaceCanvas").style.backgroundImage = 'url(../img/game_over_img.jpeg)';
+        //canvas = document.getElementById("SpaceCanvas");
+        //ctx = canvas.getContext("2d");
+      }*/
         if (vidas == 3) {
             puntos += 30;
             alert("Por haber acabado el nivel con 3 vidas, obtienes 30 puntos extra");
@@ -404,9 +413,10 @@ window.onload = function () {
             audio_GaveOver.play();
             alert("Has perdido!");
         }
-        document.getElementById("puntos").innerHTML = puntos;
 
-        reset();
+      document.getElementById("puntos").innerHTML = puntos;
+
+      reset();
     }
 
     // ----- Funciones de evento ----- //

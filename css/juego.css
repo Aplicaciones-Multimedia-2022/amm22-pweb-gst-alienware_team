@@ -4,7 +4,7 @@
 .img_vida {
     width: 30px;
     height: 33px;
-    margin-left: 5%;
+
 }
 
 .pierdo_vida {
@@ -43,22 +43,35 @@
     width: auto;
     display: flex;
     margin: auto;
+    align-items: stretch;
+    flex-direction:row;
+    flex-flow:row;
     justify-content:space-between;
-    flex-wrap: wrap;
+
 }
 
 .item{
-    flex: none;
     width: 20%;
-    display: flex;
-    justify-content:center;
-    align-items: center;
 }
 
 .vidas > h3 {
     color: white;
     font-size: 30px;
-    margin-left: 3vw;
+    margin-left: 4vw;
+    margin-bottom: 2em;
+    margin-top: 3em;
+}
+
+h4{
+  color: white;
+  font-size: 1.3em;
+  margin-left: 4vw;
+}
+
+.tabla_nombres{
+  margin-top: 1em;
+  color: white;
+  margin-left: 4vw;
 }
 
 .puntuaciones > h3 {
@@ -102,9 +115,9 @@
       padding:16px;
       border: 1px solid rgb(255, 255, 255);
       border-radius: 5px;
-  
+
   }
-  
+
   iframe{
     display: none;
   }
