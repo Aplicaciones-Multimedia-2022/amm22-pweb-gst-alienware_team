@@ -80,6 +80,7 @@ h4{
 .puntuaciones  {
     color: white;
     font-size: 30px;
+
 }
 
 #puntos {
@@ -109,6 +110,7 @@ h4{
     background:rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     backdrop-filter: blur(2px);
+    cursor: url(../img/cursos_grey.png), auto;
 }
 
 /* AUDIO */
