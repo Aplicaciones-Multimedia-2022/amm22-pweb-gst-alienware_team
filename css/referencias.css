@@ -4,7 +4,7 @@
 /* --------------- Contenedor de los tres apartados --------------- */
 .titulos {
   display: flex;
-  flex-flow:row wrap;
+  flex-flow: row wrap;
   justify-content: space-around;
   align-items: stretch;
   align-content: center;
@@ -16,32 +16,35 @@
   margin-top: 5vh;
   flex-grow: 0.6;
 }
+
 .titulo_css {
   margin-top: 5vh;
   flex-grow: 0.7;
 }
+
 .titulo_js {
   margin-top: 5vh;
   flex-grow: 1.1;
 }
 
 #html {
-    width: 22vw;
-    height: 20vh;
+  width: 22vw;
+  height: 20vh;
 }
 
 #css {
-    width: 18vw;
-    height: 20vh;
+  width: 18vw;
+  height: 20vh;
 }
+
 #js {
-    width: 13vw;
-    height: 20vh;
+  width: 13vw;
+  height: 20vh;
 }
 
 .referencias {
   display: flex;
-  flex-flow:row wrap;
+  flex-flow: row wrap;
   justify-content: space-around;
   align-items: stretch;
   align-content: center;
@@ -51,13 +54,15 @@
 
 /* --------------- Apartados --------------- */
 .html {
-  background: rgb(200,22,22);
+  background: rgb(200, 22, 22);
   flex-grow: 1;
 }
+
 .css {
   background: blue;
   flex-grow: 1.5;
 }
+
 .js {
   background: rgb(230, 230, 0);
   flex-grow: 1;
@@ -68,8 +73,8 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow:hidden;
-  
+  overflow: hidden;
+
 }
 
 .li_ref_top {

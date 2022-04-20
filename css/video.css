@@ -5,9 +5,6 @@
 body {
     background-image: url(../res/roger.gif);
     background-repeat: repeat;
-   /* background-repeat: no-repeat; 
-    background-size: cover;  // Para que ocupe el 100% del contain */
-    
 }
 
 div{

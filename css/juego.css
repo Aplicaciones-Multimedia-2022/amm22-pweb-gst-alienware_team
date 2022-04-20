@@ -11,32 +11,27 @@
     width: 30px;
     height: 33px;
     display: none;
-    /* visibility: hidden; */
 }
 
-#SpaceCanvas{
-    position:relative;
+#SpaceCanvas {
+    position: relative;
     margin: 0 auto;
     display: block;
-    border:4px solid rgb(255, 0, 0);
+    border: 4px solid rgb(255, 0, 0);
     background-size: cover;
     background-position: center;
 
 }
 
-
-
 .header {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
     flex-direction: row;
 }
 
 #alien_j {
     flex-grow: 1.5;
 }
-
-
 
 .titulo {
     flex-grow: 1.8;
@@ -52,17 +47,17 @@
     display: flex;
     margin: auto;
     align-items: stretch;
-    flex-direction:row;
-    flex-flow:row;
-    justify-content:space-between;
+    flex-direction: row;
+    flex-flow: row;
+    justify-content: space-between;
 
 }
 
-.item{
+.item {
     width: 20%;
 }
 
-.vidas > h3 {
+.vidas>h3 {
     color: white;
     font-size: 30px;
     margin-left: 4vw;
@@ -70,26 +65,26 @@
     margin-top: 3em;
 }
 
-h4{
-  color: white;
-  font-size: 1.8em;
-  margin-left: 4vw;
+h4 {
+    color: white;
+    font-size: 1.8em;
+    margin-left: 4vw;
 }
 
-.tabla_nombres{
-  margin-top: 1em;
-  color: white;
-  margin-left: 4vw;
+.tabla_nombres {
+    margin-top: 1em;
+    color: white;
+    margin-left: 4vw;
 }
 
-.niveles  {
+.niveles {
     color: white;
     font-size: 30px;
     align-content: stretch;
 
 }
 
-.contenedor_drch{
+.contenedor_drch {
     margin: 0;
     padding: 0;
 }
@@ -101,32 +96,35 @@ h4{
     font-size: 30px;
 }
 
-#boton1, #boton2, #boton3, #boton4{
+#boton1,
+#boton2,
+#boton3,
+#boton4 {
     display: flex;
     flex-direction: column;
     /*tipo de letra*/
     font-family: game_over;
     src: url(../res/Rixel.otf);
     /*formato boton*/
-    color:white;
+    color: white;
     margin-bottom: 2.5em;
     padding: 8px;
     padding-left: 20;
     padding-right: 20;
     font-size: 30px;
     box-shadow: 10px 10px 25px rgba(255, 255, 255, 0.3);
-    background:rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-left: 1px solid rgba(255, 255, 255, 0.5);
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.5);
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    background:rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     backdrop-filter: blur(2px);
     cursor: url(../img/cursos_grey.png), auto;
 }
 
-.records{
+.records {
     color: white;
     overflow-y: scroll;
     margin-left: 4vw;
@@ -139,18 +137,18 @@ h4{
 }
 
 #nombreUsuario {
-   font-family: game_over;
-   text-align: center;
-   margin-left: 4vw;
-   margin-top: 2vh;
-   width: 180px;
-   height: 30px;
-   border-radius: 10px;
-   border: solid 2px white;
-   cursor: url(../img/cursos_grey.png), auto;
+    font-family: game_over;
+    text-align: center;
+    margin-left: 4vw;
+    margin-top: 2vh;
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    border: solid 2px white;
+    cursor: url(../img/cursos_grey.png), auto;
 }
 
-#boton_reset{
+#boton_reset {
     font-family: game_over;
     background: linear-gradient(to right, rgb(255, 0, 0), rgb(246, 202, 72));
     font-weight: bold;
@@ -165,25 +163,27 @@ h4{
 
 }
 
-#botonNombre{
+#botonNombre {
     display: none
 }
+
 /* AUDIO */
 
-#play,#stop {
+#play,
+#stop {
 
-    display:inline-block;
-      padding:16px;
-      border: 1px solid rgb(255, 255, 255);
-      border-radius: 5px;
-      cursor: url(../img/cursos_grey.png), auto;
+    display: inline-block;
+    padding: 16px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    cursor: url(../img/cursos_grey.png), auto;
 
 }
 
-iframe{
+iframe {
     display: none;
-  }
+}
 
-.swal-modal{
-      border: 4px solid rgb(233, 4, 4);
-  }
+.swal-modal {
+    border: 4px solid rgb(233, 4, 4);
+}

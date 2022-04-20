@@ -1,40 +1,39 @@
 /* ESTILOS GENERALES DE TODAS LAS PÁGINAS */
 
 /* --------------- Estilos HTML --------------- */
-* { /* Reseteo los márgenes dentro y fuera de los contenedores a 0 */
-    padding: 0;
-    margin: 0;
-    cursor: url(../img/cursor.png), auto;
+* {
+  /* Reseteo los márgenes dentro y fuera de los contenedores a 0 */
+  padding: 0;
+  margin: 0;
+  cursor: url(../img/cursor.png), auto;
 }
 
-@font-face {  /* Se importa la fuente de letra "game over" */
+@font-face {
+  /* Se importa la fuente de letra "game over" */
   font-family: game_over;
   src: url(../res/Rixel.otf);
 }
 
 html {
-    overflow-y: auto; /* Cómo se comporta el contenido de la página cuando este desborda del contenedor */
-    background-image: url(../img/fondo_menu.jpg); /* La imagen de fondo va a ser la misma para todas las páginas */
-    background-repeat: no-repeat; /* Hacemos que la imagen no se repita */
-    background-size: cover; /* Dimensiona la imagen al tamaño de la página */
-    background-attachment: fixed; /* La imagen no se desplaza al hacer scroll */
-    font-family: game_over;
-  }
+  overflow-y: auto;/* Cómo se comporta el contenido de la página cuando este desborda del contenedor */
+  background-image: url(../img/fondo_menu.jpg);/* La imagen de fondo va a ser la misma para todas las páginas */
+  background-repeat: no-repeat; /* Hacemos que la imagen no se repita */
+  background-size: cover;/* Dimensiona la imagen al tamaño de la página */
+  background-attachment: fixed;/* La imagen no se desplaza al hacer scroll */
+  font-family: game_over;
+}
 
 /* --------------- Tamaños "alien_logo" del header --------------- */
-.alien_nav img{  /* Icono Alien return "menu.html" (NAV) */
-    width: 25px;
-    height: 25px;
-    margin-right: 13vw;
-    cursor: url(../img/cursos_grey.png), auto;
-    /* justify-content: center; */
-    /* margin-left: 25px;
-    margin-top: 15px; */
+.alien_nav img {
+  /* Icono Alien return "menu.html" (NAV) */
+  width: 25px;
+  height: 25px;
+  margin-right: 13vw;
+  cursor: url(../img/cursos_grey.png), auto;
 }
 
 .alien_mj img { /* Icono Alien return "menu.html" (menu.html y juego.html) */
-  margin-left: 2vw;
-  /* margin-right: 2vw; */
+  margin-left: 2vw;/* margin-right: 2vw; */
   margin-top: 3vh;
   align-items: center;
   width: 80px;
@@ -43,11 +42,11 @@ html {
 }
 
 /* --------------- Estilos nav de las páginas --------------- */
-#sticky { /* Para mantener el nav aunque la página tenga scroll */
-  /* position: -webkit-sticky; */
+#sticky {
+  /* Para mantener el nav aunque la página tenga scroll */
   position: fixed;
   z-index: 1000;
-  top: 0.1px; /* Hueco entre la parte superior del nav y la parte superior de viewport */
+  top: 0.1px;/* Hueco entre la parte superior del nav y la parte superior de viewport */
   width: 100%;
 }
 
@@ -57,8 +56,7 @@ html {
   margin: 0;
   padding: 0;
   align-items: stretch;
-  justify-content:space-between;
-  /* overflow: hidden; */
+  justify-content: space-between;
   background-color: #1d1b1b;
   cursor: url(../img/cursos_grey.png), auto;
 }
@@ -73,8 +71,8 @@ html {
   background-color: #1d1b1b;
   font-size: 21px;
   text-align: center;
-  text-decoration: none; /* quita la linea de debajo de la lista */
-  list-style-type: none; /* quita los puntos de delante */
+  text-decoration: none;/* quita la linea de debajo de la lista */
+  list-style-type: none;/* quita los puntos de delante */
   color: white;
   cursor: url(../img/cursos_grey.png), auto;
 }
