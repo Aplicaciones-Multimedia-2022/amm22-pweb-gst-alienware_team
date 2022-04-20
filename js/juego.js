@@ -12,6 +12,7 @@ window.onload = function () {
     const ESPACIO = " "; // caracter vacío == espacio
     var tecla;
 
+
     function keydownHandler(e) {
         tecla[e.key] = true;
         // e.preventDefault();
@@ -50,6 +51,8 @@ window.onload = function () {
 
     // AUDIOS
     const audio_disparo = new Audio("../res/shoot.wav");
+    const audio_loseLife = new Audio("../res/lose_life.mp3");
+    const audio_GaveOver = new Audio("../res/game_over.mp3");
 
     // INICIALIZAR
     function reset() {
@@ -67,11 +70,12 @@ window.onload = function () {
             if (vidas_reset[i].classList.contains("pierdo_vida")) {
                 vidas_reset[i].classList.remove("pierdo_vida")
                 vidas_reset[i].classList.add("img_vida")
-                
+
             }
-            
+
         }
 
+        //gameOver(false);
         // Inicializar variables
         x = canvas.width / 2;
 
@@ -319,6 +323,7 @@ window.onload = function () {
             if (bala != null) {
                 if ((bala.x > jugador.x) && (bala.x < jugador.x + tamañoXImg) && (bala.y > jugador.y) && (bala.y < jugador.y + tamañoYImg)) {
                     vidas--; // quito una vida
+                    audio_loseLife.play();
                     balasEnemigas_array.splice(j, 1); // esa bala ya no sigue
                     // console.log("impacto");
                     if (vidas == 2) {
@@ -333,6 +338,7 @@ window.onload = function () {
                         document.getElementById("vida1").classList.remove("img_vida");
                         document.getElementById("vida1").classList.add("pierdo_vida");
                         // console.log("GAME OVER");
+                        //gameOver(true);
                         gameOver();
 
                     }
@@ -387,8 +393,15 @@ window.onload = function () {
 
     }
 
-    function gameOver() {
-        if (vidas == 3) {
+    function gameOver() { //poner n dentro
+      /*if(n){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        document.getElementById("SpaceCanvas").style.backgroundImage = 'url(../img/game_over_img.jpeg)';
+        //canvas = document.getElementById("SpaceCanvas");
+        //ctx = canvas.getContext("2d");
+      }*/
+      dibujarCanvas();
+        /*if (vidas == 3) {
             puntos += 30;
             alert("Por haber acabado el nivel con 3 vidas, obtienes 30 puntos extra");
         } else if (vidas == 2) {
@@ -398,12 +411,22 @@ window.onload = function () {
             puntos += 10;
             alert("Por haber acabado el nivel con 1 vida, obtienes 10 puntos extra");
         } else if (vidas == 0) {
+            audio_GaveOver.play();
             alert("Has perdido!");
-        }
-        document.getElementById("puntos").innerHTML = puntos;
+        }*/
 
-        reset();
+      document.getElementById("puntos").innerHTML = puntos;
+
+      reset();
     }
+
+    function dibujarCanvas(){
+        canvas = document.getElementById("SpaceCanvas");
+        ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+	      // imagen
+        document.getElementById("SpaceCanvas").style.backgroundImage = 'url(../img/game_over_img.jpg)';
+	  }
 
     // ----- Funciones de evento ----- //
     //informa al navegador que quieres realizar una animacionción y solicita que el navegador programe el repintado de la ventana para el próximo ciclo de animacionción. Se crea para detectar el tipo de objeto "requestanimaciontionFrame que utiliza el navegador que usamos"
@@ -455,7 +478,7 @@ window.onload = function () {
     // AUDIO //
 
     document.getElementById("play").addEventListener("mousedown",sonar);
-    document.getElementById("stop").addEventListener("mousedown",callar);			
+    document.getElementById("stop").addEventListener("mousedown",callar);
 
 
     function sonar(){

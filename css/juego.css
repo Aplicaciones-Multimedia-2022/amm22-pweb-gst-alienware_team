@@ -4,7 +4,7 @@
 .img_vida {
     width: 30px;
     height: 33px;
-    margin-left: 5%;
+
 }
 
 .pierdo_vida {
@@ -18,6 +18,8 @@
     margin: 0 auto;
     display: block;
     border:4px solid rgb(255, 0, 0);
+    background-size: cover;
+    
 }
 
 .header {
@@ -35,6 +37,7 @@
     color: rgb(255, 255, 255);
     justify-content: center;
     /* margin-left: 52vh; */
+    text-shadow: 0 0 9px #ff5e00, 0 0 15px #ff0000;
     font-size: 5vh;
 }
 
@@ -42,36 +45,69 @@
     width: auto;
     display: flex;
     margin: auto;
+    align-items: stretch;
+    flex-direction:row;
+    flex-flow:row;
     justify-content:space-between;
-    flex-wrap: wrap;
+
 }
 
 .item{
-    flex: none;
     width: 20%;
-    display: flex;
-    justify-content:center;
-    align-items: center;
 }
 
 .vidas > h3 {
     color: white;
+    font-size: 30px;
+    margin-left: 4vw;
+    margin-bottom: 2em;
+    margin-top: 3em;
 }
 
-.puntuaciones > h3 {
+h4{
+  color: white;
+  font-size: 1.3em;
+  margin-left: 4vw;
+}
+
+.tabla_nombres{
+  margin-top: 1em;
+  color: white;
+  margin-left: 4vw;
+}
+
+.puntuaciones  {
     color: white;
+    font-size: 30px;
 }
 
 #puntos {
     color: white;
     margin-left: 5%;
+    font-size: 30px;
 }
 
-#boton1{
-    background-color: blue;
-}
-#boton2{
-    background-color: crimson;
+
+#boton1, #boton2{
+    display: flex;
+    flex-direction: column;
+    /*tipo de letra*/
+    font-family: game_over;
+    src: url(../res/Rixel.otf);
+    /*formato boton*/
+    color:white;
+    margin-bottom: 1em;
+    padding: 8px;
+    font-size: 30px;
+    box-shadow: 10px 10px 25px rgba(255, 255, 255, 0.3);
+    background:rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    background:rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    backdrop-filter: blur(2px);
 }
 
 /* AUDIO */
@@ -82,9 +118,9 @@
       padding:16px;
       border: 1px solid rgb(255, 255, 255);
       border-radius: 5px;
-  
+
   }
-  
+
   iframe{
     display: none;
   }
