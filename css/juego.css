@@ -48,7 +48,7 @@
 }
 
 .interfaz {
-    width: auto;
+    /*width: auto;*/
     display: flex;
     margin: auto;
     align-items: stretch;
@@ -82,18 +82,19 @@ h4{
   margin-left: 4vw;
 }
 
-.puntuaciones  {
+.niveles  {
     color: white;
     font-size: 30px;
+    align-content: stretch;
 
 }
+
 
 #puntos {
     color: white;
     margin-left: 5%;
     font-size: 30px;
 }
-
 
 #boton1, #boton2, #boton3, #boton4{
     display: flex;
@@ -119,7 +120,7 @@ h4{
 }
 
 .records{
-    color: white; 
+    color: white;
     overflow-y: scroll;
     margin-left: 4vw;
     border: 2px solid white;
