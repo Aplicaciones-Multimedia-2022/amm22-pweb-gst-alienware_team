@@ -17,7 +17,7 @@ a img { /* imágenes con enlace */
 .titulo {
   /* margin-right: 3vw; */
   /* flex-grow: 2; */
-  margin-top: 3vh;
+  margin-top: 1vh;
   align-items: center;
   text-align: center;
   justify-content: center;
@@ -97,7 +97,6 @@ h1{
   /* margin-bottom: 40px; */
   font-size: 150px;
   color: rgb(255, 255, 255);
-  text-shadow: 0 0 9px #ffff00, 0 0 15px #ffa200; /*Efecto Neon del titulo*/
   /* justify-content: left; */
 }
 
