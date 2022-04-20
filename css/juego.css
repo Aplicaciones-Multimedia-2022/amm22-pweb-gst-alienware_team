@@ -118,6 +118,20 @@ h4{
     cursor: url(../img/cursos_grey.png), auto;
 }
 
+.records{
+    color: white; 
+    overflow-y: scroll;
+    margin-left: 4vw;
+}
+
+#nombreUsuario{
+   margin-left: 4vw;
+   margin-top: 2vh;
+   width: 180px;
+   height: 30px;
+   border-radius: 10px;
+   border: solid 2px white;
+}
 /* AUDIO */
 
 #play,#stop {

@@ -141,21 +141,43 @@ window.onload = function () {
     var variable_saltos;
 
     function nivel1() {
-        variable_saltos = 15;
+        variable_saltos = 10;
         variable_ciclos = 20;
         disparo_interval = 1000;
-        velocidad_balas = 6;
-        num_columnas = 5;
-        num_filas = 5;
+        velocidad_balas = 3;
+        num_columnas = 10;
+        num_filas = 6;
         reset();
         document.getElementById("SpaceCanvas").style.backgroundImage = "none";
         comenzarJuego();
     }
 
     function nivel2() {
-        variable_saltos = 10;
-        variable_ciclos = 20;
+        variable_saltos = 15;
+        variable_ciclos = 15;
         disparo_interval = 500;
+        velocidad_balas = 5;
+        num_columnas = 10;
+        num_filas = 6;
+        reset();
+        comenzarJuego();
+    }
+
+    function nivel3() {
+        variable_saltos = 20;
+        variable_ciclos = 10;
+        disparo_interval = 250;
+        velocidad_balas = 8;
+        num_columnas = 10;
+        num_filas = 6;
+        reset();
+        comenzarJuego();
+    }
+
+    function nivel4() {
+        variable_saltos = 20;
+        variable_ciclos = 5;
+        disparo_interval = 200;
         velocidad_balas = 10;
         num_columnas = 10;
         num_filas = 6;
@@ -164,8 +186,11 @@ window.onload = function () {
         comenzarJuego();
     }
 
+
     document.getElementById("boton1").addEventListener("mousedown", nivel1);
     document.getElementById("boton2").addEventListener("mousedown", nivel2);
+    document.getElementById("boton3").addEventListener("mousedown", nivel3);
+    document.getElementById("boton4").addEventListener("mousedown", nivel4);
 
 
     // ----- Constructor BD ----- //
