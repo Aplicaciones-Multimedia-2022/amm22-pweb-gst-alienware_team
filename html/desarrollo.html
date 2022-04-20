@@ -104,6 +104,9 @@
             Un problema ha surgido al saltar la alerta de gameover a la hora de hacer click en OK la imagen del raton cambia a la imagen del raton predeterminado. No se ha podido solucionar<br><br>
             A la hora de eliminar los enemigos se declaraban como null y nos daba error ya que un elemento null no podia disparar.
             La solucion fue eleminar los enemigos del array que hemos creado para estos. <br><br>
+            Un problema grave que tuvimos fue que mezclamos los eventos de final de juego, es decir, cuando los enemigos llegaban al final 
+            se producia un conflicto entre las funciones "gameOver" y "reset" de manera que el juego identificaba despues del reset que 
+            volviamos a tener 3 vidas y lo reconocia como "Victoria"
           </p>
           <li><h3 class="lista">CSS</h3></li>
           <p class="parrafo">Una de las cosas que mas nos ha dado problemas ha sido el centrar los diferentes contenedores usando flexbox.<br><br>
