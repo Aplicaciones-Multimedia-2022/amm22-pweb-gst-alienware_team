@@ -106,8 +106,8 @@ window.onload = function () {
         variable_saltos = 15;
         variable_ciclos = 20;
         disparo_interval = 1000;
-        num_columnas = 5;
-        num_filas = 5;
+        num_columnas = 10;
+        num_filas = 6;
         reset();
         comenzarJuego();
     }
@@ -122,8 +122,30 @@ window.onload = function () {
         comenzarJuego();
     }
 
+    function nivel3() {
+        variable_saltos = 10;
+        variable_ciclos = 20;
+        disparo_interval = 500;
+        num_columnas = 10;
+        num_filas = 6;
+        reset();
+        comenzarJuego();
+    }
+
+    function nivel4() {
+        variable_saltos = 10;
+        variable_ciclos = 20;
+        disparo_interval = 500;
+        num_columnas = 10;
+        num_filas = 6;
+        reset();
+        comenzarJuego();
+    }
+
     document.getElementById("boton1").addEventListener("mousedown", nivel1);
     document.getElementById("boton2").addEventListener("mousedown", nivel2);
+    document.getElementById("boton3").addEventListener("mousedown", nivel3);
+    document.getElementById("boton4").addEventListener("mousedown", nivel4);
 
 
     // ----- Constructor Bala ----- //
