@@ -44,6 +44,8 @@ window.onload = function () {
 
     // PUNTOS/VIDAS
     var puntos, vidas;
+    var flag_finCanvas;
+    var jugando;
 
     // NIVELES
     var variable_ciclos, variable_saltos; // movimiento enemigos
@@ -139,6 +141,8 @@ window.onload = function () {
 
         puntos = 0;
         vidas = 3;
+        flag_finCanvas = false;
+        jugando = false;
 
     }
 
@@ -333,13 +337,16 @@ window.onload = function () {
         // VERIFICAR FIN DE CANVAS //
         if (enemigos_array.length != 0) {
             if (enemigos_array[enemigos_array.length - 1].y >= jugador.y - tamañoYImg) {
-                vidas = 0;
+                // vidas = 0;
+                flag_finCanvas = true;
+                // console.log("fin canvas");
                 gameOver();
             }
         }
 
         // VERIFICAR ENEMIGOS MUERTOS //
-        if (enemigos_array.length == 0) {
+        if (enemigos_array.length == 0 && jugando == true) {
+            // console.log("enemigos muertos");
             gameOver();
         }
 
@@ -418,7 +425,7 @@ window.onload = function () {
                     } else if (vidas == 0) {
                         document.getElementById("vida1").classList.remove("img_vida");
                         document.getElementById("vida1").classList.add("pierdo_vida");
-                        // console.log("GAME OVER");
+                        // console.log("vidas 0");
                         gameOver();
 
 
@@ -475,24 +482,31 @@ window.onload = function () {
     }
 
     function gameOver() {
-
-        //dibujarCanvas();
-        if (vidas == 3) {
-            puntos += 30;
-            document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
-            swal('Por haber acabado el nivel con 3 vidas, obtienes 30 puntos extra','', 'success');
-        } else if (vidas == 2) {
-            puntos += 20;
-            document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
-            swal('Por haber acabado el nivel con 2 vidas, obtienes 20 puntos extra','', 'success');
-        } else if (vidas == 1) {
-            puntos += 10;
-            document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
-            swal('Por haber acabado el nivel con 1 vida, obtienes 10 puntos extra','', 'success');
-        } else if (vidas == 0) {
+        // console.log(vidas);
+        if (flag_finCanvas == true) {
             audio_finPartida.play();
-            document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
-            swal('Game Over', 'Tu nave ha sido destruida...', 'error');
+                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
+                swal('Game Over', 'Tu nave ha colisionado...', 'error');
+            
+        } else {
+            if (vidas == 3) {
+                puntos += 30;
+                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
+                swal('Por haber acabado el nivel con 3 vidas, obtienes 30 puntos extra','', 'success');
+            } else if (vidas == 2) {
+                puntos += 20;
+                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
+                swal('Por haber acabado el nivel con 2 vidas, obtienes 20 puntos extra','', 'success');
+            } else if (vidas == 1) {
+                puntos += 10;
+                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
+                swal('Por haber acabado el nivel con 1 vida, obtienes 10 puntos extra','', 'success');
+            } else if (vidas == 0) {
+                audio_finPartida.play();
+                document.getElementById("SpaceCanvas").style.backgroundImage = "url(../img/game_over_img.jpg)";
+                swal('Game Over', 'Tu nave ha sido destruida...', 'error');
+            }
+            
         }
 
         document.getElementById("puntos").innerHTML = puntos;
@@ -537,6 +551,7 @@ window.onload = function () {
 
 
     function comenzarJuego() {
+        jugando = true;
 
         //eventos para el teclado//
         document.addEventListener("keydown", keydownHandler);
