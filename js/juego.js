@@ -400,7 +400,8 @@ window.onload = function () {
         //canvas = document.getElementById("SpaceCanvas");
         //ctx = canvas.getContext("2d");
       }*/
-        if (vidas == 3) {
+      dibujarCanvas();
+        /*if (vidas == 3) {
             puntos += 30;
             alert("Por haber acabado el nivel con 3 vidas, obtienes 30 puntos extra");
         } else if (vidas == 2) {
@@ -412,12 +413,20 @@ window.onload = function () {
         } else if (vidas == 0) {
             audio_GaveOver.play();
             alert("Has perdido!");
-        }
+        }*/
 
       document.getElementById("puntos").innerHTML = puntos;
 
       reset();
     }
+
+    function dibujarCanvas(){
+        canvas = document.getElementById("SpaceCanvas");
+        ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+	      // imagen
+        document.getElementById("SpaceCanvas").style.backgroundImage = 'url(../img/game_over_img.jpg)';
+	  }
 
     // ----- Funciones de evento ----- //
     //informa al navegador que quieres realizar una animacionción y solicita que el navegador programe el repintado de la ventana para el próximo ciclo de animacionción. Se crea para detectar el tipo de objeto "requestanimaciontionFrame que utiliza el navegador que usamos"
