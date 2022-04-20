@@ -10,8 +10,8 @@ window.onload = function () {
     const MOVER_IZQ = "ArrowLeft";
     const MOVER_DRCH = "ArrowRight";
     const ESPACIO = " "; // caracter vacío == espacio
+    const ENTER = "Enter";
     var tecla;
-
 
     function keydownHandler(e) {
         tecla[e.key] = true;
@@ -19,6 +19,7 @@ window.onload = function () {
     }
 
     function keyupHandler(e) {
+        e.preventDefault();
         tecla[e.key] = false;
     }
 
@@ -46,13 +47,44 @@ window.onload = function () {
 
     // NIVELES
     var variable_ciclos, variable_saltos; // movimiento enemigos
-    var disparo_interval; // tiempo disparo enemigos
+    var disparo_interval, velocidad_balas; // tiempo disparo enemigos y velocidad
     var num_filas, num_columnas; // nº enemigos
 
     // AUDIOS
     const audio_disparo = new Audio("../res/shoot.wav");
-    const audio_loseLife = new Audio("../res/lose_life.mp3");
-    const audio_GaveOver = new Audio("../res/game_over.mp3");
+    const audio_perderVida = new Audio("../res/lose_life.mp3");
+    const audio_finPartida = new Audio("../res/game_over.mp3");
+
+    // LOCALSTORAGE
+    var nombreUsuario = "undefined";
+    var numPartidas;
+    if (window.localStorage.length == 0) { // me aprovecho de que se mantienen los datos entre sesiones
+        numPartidas = 0;
+        
+    } else {
+        numPartidas = window.localStorage.getItem("numPartidas");
+        
+    }
+    window.localStorage.setItem("numPartidas", numPartidas); // se actualiza la entrada del número de partidas para saber cuántas partidas llevamos
+
+    var aux_partida;
+    for (let i = 1; i <= numPartidas; i++) {
+        // console.log(i);
+        aux_partida = JSON.parse(window.localStorage.getItem(i));
+        document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
+        document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
+        
+    }
+    
+    function enterHandler(e) {
+        e.preventDefault();
+        if (e.key == ENTER) {
+            document.getElementById("botonNombre").click(); // consigo que pulsando la tecla enter en el recuadro se envíe la info
+        }
+    }
+
+    document.getElementById("botonNombre").addEventListener("click", cogerNombre);
+    document.getElementById("nombreUsuario").addEventListener("keyup", enterHandler);
 
     // INICIALIZAR
     function reset() {
@@ -64,18 +96,23 @@ window.onload = function () {
         cancelAnimationFrame(id_request);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+        document.getElementById("puntos").innerHTML = 0;
+        if (window.localStorage.length == 0) { // por si se limpia el localStorage sin refrescar la página
+            numPartidas = 0;
+        }
+        window.localStorage.setItem("numPartidas", numPartidas); // se actualiza la entrada del número de partidas para saber cuántas partidas llevamos
+
         // Recolocar vidas
         let vidas_reset = document.getElementsByName("vida");
         for (let i = 0; i < vidas_reset.length; i++) {
             if (vidas_reset[i].classList.contains("pierdo_vida")) {
                 vidas_reset[i].classList.remove("pierdo_vida")
                 vidas_reset[i].classList.add("img_vida")
-
+                
             }
-
+            
         }
 
-        //gameOver(false);
         // Inicializar variables
         x = canvas.width / 2;
 
@@ -101,13 +138,13 @@ window.onload = function () {
     var variable_ciclos;
     var variable_saltos;
 
-
     function nivel1() {
         variable_saltos = 15;
         variable_ciclos = 20;
         disparo_interval = 1000;
-        num_columnas = 10;
-        num_filas = 6;
+        velocidad_balas = 6;
+        num_columnas = 5;
+        num_filas = 5;
         reset();
         comenzarJuego();
     }
@@ -116,26 +153,7 @@ window.onload = function () {
         variable_saltos = 10;
         variable_ciclos = 20;
         disparo_interval = 500;
-        num_columnas = 10;
-        num_filas = 6;
-        reset();
-        comenzarJuego();
-    }
-
-    function nivel3() {
-        variable_saltos = 10;
-        variable_ciclos = 20;
-        disparo_interval = 500;
-        num_columnas = 10;
-        num_filas = 6;
-        reset();
-        comenzarJuego();
-    }
-
-    function nivel4() {
-        variable_saltos = 10;
-        variable_ciclos = 20;
-        disparo_interval = 500;
+        velocidad_balas = 10;
         num_columnas = 10;
         num_filas = 6;
         reset();
@@ -144,9 +162,13 @@ window.onload = function () {
 
     document.getElementById("boton1").addEventListener("mousedown", nivel1);
     document.getElementById("boton2").addEventListener("mousedown", nivel2);
-    document.getElementById("boton3").addEventListener("mousedown", nivel3);
-    document.getElementById("boton4").addEventListener("mousedown", nivel4);
 
+
+    // ----- Constructor BD ----- //
+    function Partida(nombre, puntos) { // me almacena los datos de una partida
+        this.nombre = nombre;
+        this.puntos = puntos;
+    }
 
     // ----- Constructor Bala ----- //
     function Bala(x, y, w) {
@@ -158,7 +180,7 @@ window.onload = function () {
         this.dibuja = function () {
             ctx.save();
             ctx.fillStyle = degradado;
-            ctx.fillRect(this.x, this.y, this.w, this.w);
+            ctx.fillRect(this.x, this.y, this.w, this.w + 8);
             this.y = this.y - 4;
             ctx.restore();
         };
@@ -166,8 +188,8 @@ window.onload = function () {
         this.dispara = function () {
             ctx.save();
             ctx.fillStyle = colorBala;
-            ctx.fillRect(this.x, this.y, this.w, this.w);
-            this.y = this.y + 6;
+            ctx.fillRect(this.x, this.y, this.w, this.w + 8);
+            this.y = this.y + velocidad_balas;
             ctx.restore();
         }
 
@@ -345,7 +367,7 @@ window.onload = function () {
             if (bala != null) {
                 if ((bala.x > jugador.x) && (bala.x < jugador.x + tamañoXImg) && (bala.y > jugador.y) && (bala.y < jugador.y + tamañoYImg)) {
                     vidas--; // quito una vida
-                    audio_loseLife.play();
+                    audio_perderVida.play();
                     balasEnemigas_array.splice(j, 1); // esa bala ya no sigue
                     // console.log("impacto");
                     if (vidas == 2) {
@@ -360,7 +382,6 @@ window.onload = function () {
                         document.getElementById("vida1").classList.remove("img_vida");
                         document.getElementById("vida1").classList.add("pierdo_vida");
                         // console.log("GAME OVER");
-                        //gameOver(true);
                         gameOver();
 
                     }
@@ -415,15 +436,9 @@ window.onload = function () {
 
     }
 
-    function gameOver() { //poner n dentro
-      /*if(n){
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        document.getElementById("SpaceCanvas").style.backgroundImage = 'url(../img/game_over_img.jpeg)';
-        //canvas = document.getElementById("SpaceCanvas");
-        //ctx = canvas.getContext("2d");
-      }*/
-      dibujarCanvas();
-        /*if (vidas == 3) {
+    function gameOver() {
+        dibujarCanvas();
+        if (vidas == 3) {
             puntos += 30;
             alert("Por haber acabado el nivel con 3 vidas, obtienes 30 puntos extra");
         } else if (vidas == 2) {
@@ -433,13 +448,35 @@ window.onload = function () {
             puntos += 10;
             alert("Por haber acabado el nivel con 1 vida, obtienes 10 puntos extra");
         } else if (vidas == 0) {
-            audio_GaveOver.play();
+            audio_finPartida.play();
             alert("Has perdido!");
-        }*/
+        }
+        document.getElementById("puntos").innerHTML = puntos;
+        let newScore = new Partida(nombreUsuario, puntos);
+        numPartidas++;
+        
+        window.localStorage.setItem(numPartidas, JSON.stringify(newScore)); // almaceno mi objeto con los datos de la partida en la BD
+        // console.log(window.localStorage.getItem(numPartidas));
 
-      document.getElementById("puntos").innerHTML = puntos;
+        // console.log(numPartidas);
+        // document.getElementById("db").innerHTML = "";
+        if (document.getElementById("db").firstChild == null || window.localStorage.length == 0) { // no tengo info aún, lo escribo todo
+            document.getElementById("db").innerHTML = "";
+            for (let i = 1; i <= numPartidas; i++) {
+            // console.log(i);
+            aux_partida = JSON.parse(window.localStorage.getItem(i));
+            document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
+            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
+            }
 
-      reset();
+        } else {
+            aux_partida = JSON.parse(window.localStorage.getItem(numPartidas));
+            document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
+            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
+            
+        }
+        
+        reset();
     }
 
     function dibujarCanvas(){
@@ -500,7 +537,7 @@ window.onload = function () {
     // AUDIO //
 
     document.getElementById("play").addEventListener("mousedown",sonar);
-    document.getElementById("stop").addEventListener("mousedown",callar);
+    document.getElementById("stop").addEventListener("mousedown",callar);			
 
 
     function sonar(){
@@ -517,6 +554,12 @@ window.onload = function () {
             iframe[0].parentNode.removeChild(iframe[0]);
             document.getElementById("play").addEventListener("mousedown",sonar);
         }
+    }
+
+    // NOMBRE Y LOCALSTORAGE //
+    function cogerNombre() {
+        nombreUsuario = document.getElementById("nombreUsuario").value;
+        document.getElementById("nombreUsuario").value = ""; // limpia el recuadro
     }
 
 }

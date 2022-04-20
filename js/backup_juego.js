@@ -10,6 +10,7 @@ window.onload = function () {
     const MOVER_IZQ = "ArrowLeft";
     const MOVER_DRCH = "ArrowRight";
     const ESPACIO = " "; // caracter vacío == espacio
+    const ENTER = "Enter";
     var tecla;
 
     function keydownHandler(e) {
@@ -18,6 +19,7 @@ window.onload = function () {
     }
 
     function keyupHandler(e) {
+        e.preventDefault();
         tecla[e.key] = false;
     }
 
@@ -48,6 +50,42 @@ window.onload = function () {
     var disparo_interval; // tiempo disparo enemigos
     var num_filas, num_columnas; // nº enemigos
 
+    // AUDIOS
+    const audio_disparo = new Audio("../res/shoot.wav");
+    const audio_perderVida = new Audio("../res/lose_life.mp3");
+    const audio_finPartida = new Audio("../res/game_over.mp3");
+
+    // LOCALSTORAGE
+    var nombreUsuario = "undefined";
+    var numPartidas;
+    if (window.localStorage.length == 0) { // me aprovecho de que se mantienen los datos entre sesiones
+        numPartidas = 0;
+        
+    } else {
+        numPartidas = window.localStorage.getItem("numPartidas");
+        
+    }
+    window.localStorage.setItem("numPartidas", numPartidas); // se actualiza la entrada del número de partidas para saber cuántas partidas llevamos
+
+    var aux_partida;
+    for (let i = 1; i <= numPartidas; i++) {
+        // console.log(i);
+        aux_partida = JSON.parse(window.localStorage.getItem(i));
+        document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
+        document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
+        
+    }
+    
+    function enterHandler(e) {
+        e.preventDefault();
+        if (e.key == ENTER) {
+            document.getElementById("botonNombre").click(); // consigo que pulsando la tecla enter en el recuadro se envíe la info
+        }
+    }
+
+    document.getElementById("botonNombre").addEventListener("click", cogerNombre);
+    document.getElementById("nombreUsuario").addEventListener("keyup", enterHandler);
+
     // INICIALIZAR
     function reset() {
         // Coger canvas
@@ -57,6 +95,12 @@ window.onload = function () {
         clearInterval(id_disparo);
         cancelAnimationFrame(id_request);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        document.getElementById("puntos").innerHTML = 0;
+        if (window.localStorage.length == 0) { // por si se limpia el localStorage sin refrescar la página
+            numPartidas = 0;
+        }
+        window.localStorage.setItem("numPartidas", numPartidas); // se actualiza la entrada del número de partidas para saber cuántas partidas llevamos
 
         // Recolocar vidas
         let vidas_reset = document.getElementsByName("vida");
@@ -94,7 +138,6 @@ window.onload = function () {
     var variable_ciclos;
     var variable_saltos;
 
-
     function nivel1() {
         variable_saltos = 15;
         variable_ciclos = 20;
@@ -118,6 +161,12 @@ window.onload = function () {
     document.getElementById("boton1").addEventListener("mousedown", nivel1);
     document.getElementById("boton2").addEventListener("mousedown", nivel2);
 
+
+    // ----- Constructor BD ----- //
+    function Partida(nombre, puntos) { // me almacena los datos de una partida
+        this.nombre = nombre;
+        this.puntos = puntos;
+    }
 
     // ----- Constructor Bala ----- //
     function Bala(x, y, w) {
@@ -231,6 +280,7 @@ window.onload = function () {
             x -= 10;
         } else if (tecla[ESPACIO]) {
             balas_array.push(new Bala(jugador.x + 12, jugador.y - 3, 5));
+            audio_disparo.play();
             tecla[ESPACIO] = false;
         }
 
@@ -315,6 +365,7 @@ window.onload = function () {
             if (bala != null) {
                 if ((bala.x > jugador.x) && (bala.x < jugador.x + tamañoXImg) && (bala.y > jugador.y) && (bala.y < jugador.y + tamañoYImg)) {
                     vidas--; // quito una vida
+                    audio_perderVida.play();
                     balasEnemigas_array.splice(j, 1); // esa bala ya no sigue
                     // console.log("impacto");
                     if (vidas == 2) {
@@ -394,10 +445,34 @@ window.onload = function () {
             puntos += 10;
             alert("Por haber acabado el nivel con 1 vida, obtienes 10 puntos extra");
         } else if (vidas == 0) {
+            audio_finPartida.play();
             alert("Has perdido!");
         }
         document.getElementById("puntos").innerHTML = puntos;
+        let newScore = new Partida(nombreUsuario, puntos);
+        numPartidas++;
+        
+        window.localStorage.setItem(numPartidas, JSON.stringify(newScore)); // almaceno mi objeto con los datos de la partida en la BD
+        // console.log(window.localStorage.getItem(numPartidas));
 
+        // console.log(numPartidas);
+        // document.getElementById("db").innerHTML = "";
+        if (document.getElementById("db").firstChild == null || window.localStorage.length == 0) { // no tengo info aún, lo escribo todo
+            document.getElementById("db").innerHTML = "";
+            for (let i = 1; i <= numPartidas; i++) {
+            // console.log(i);
+            aux_partida = JSON.parse(window.localStorage.getItem(i));
+            document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
+            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
+            }
+
+        } else {
+            aux_partida = JSON.parse(window.localStorage.getItem(numPartidas));
+            document.getElementById("db").insertAdjacentHTML("afterbegin", aux_partida.nombre + " " + aux_partida.puntos);
+            document.getElementById("db").insertAdjacentHTML("afterbegin", "<br></br>");
+            
+        }
+        
         reset();
     }
 
@@ -451,23 +526,42 @@ window.onload = function () {
     // AUDIO //
 
     document.getElementById("play").addEventListener("mousedown",sonar);
-    document.getElementById("stop").addEventListener("mousedown",callar);			
+    document.getElementById("stop").addEventListener("mousedown",callar);
 
+    var musica_fondo = new Audio("../res/Chiptronical.ogg");
+    musica_fondo.volume = 0.3;
 
     function sonar(){
-        var sonido = document.createElement("iframe");
-        sonido.setAttribute("src","../res/Chiptronical.ogg");
-        document.body.appendChild(sonido);
+        musica_fondo.currentTime = 0;
+        musica_fondo.play();
         document.getElementById("play").removeEventListener("mousedown",sonar);
     }
 
     function callar(){
-        var iframe = document.getElementsByTagName("iframe");
+        musica_fondo.pause();
+        document.getElementById("play").addEventListener("mousedown",sonar);
+    }
 
-        if (iframe.length > 0){
-            iframe[0].parentNode.removeChild(iframe[0]);
-            document.getElementById("play").addEventListener("mousedown",sonar);
-        }
+    // function sonar(){
+    //     var sonido = document.createElement("iframe");
+    //     sonido.setAttribute("src","../res/Chiptronical.ogg");
+    //     document.body.appendChild(sonido);
+    //     document.getElementById("play").removeEventListener("mousedown",sonar);
+    // }
+
+    // function callar(){
+    //     var iframe = document.getElementsByTagName("iframe");
+
+    //     if (iframe.length > 0){
+    //         iframe[0].parentNode.removeChild(iframe[0]);
+    //         document.getElementById("play").addEventListener("mousedown",sonar);
+    //     }
+    // }
+
+    // NOMBRE Y LOCALSTORAGE //
+    function cogerNombre() {
+        nombreUsuario = document.getElementById("nombreUsuario").value;
+        document.getElementById("nombreUsuario").value = ""; // limpia el recuadro
     }
 
 }

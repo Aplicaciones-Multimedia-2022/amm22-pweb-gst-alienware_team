@@ -16,11 +16,7 @@
     <link rel="stylesheet" type="text/css" href="../css/juego.css"/>
 
     <!-- ENLACE ARCHIVO JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-    &lt;script&gt;
-    &lt;script&gt;</script>
     <script type="text/javascript" src="../js/juego.js"></script>
-    <script type="text/javascript" src="../js/almacenamiento.js"></script>
 
   </head>
 
@@ -43,26 +39,19 @@
     <div class = "interfaz">
 
       <div class = "vidas item">
-        <h3>VIDAS :
+        <h3>VIDAS:
         <img src = "../img/nave2.png" name = "vida" id = "vida1" class = "img_vida">
         <img src = "../img/nave2.png" name = "vida" id = "vida2" class = "img_vida">
         <img src = "../img/nave2.png" name = "vida" id = "vida3" class = "img_vida">
         </h3>
-        <h3> SCORE :<span id = "puntos">0</span></h3>
-        <h4>Ejemplo - localStorage</h4>
+        <h3> SCORE:<span id = "puntos">0</span></h3>
+        <h4>localStorage (David)</h4>
 
         <div class="tabla_nombres">
-          <input type="text" placeholder="Nombre" id="nombretxt"><br><br>
+          <input id="nombreUsuario" type="text" placeholder="Nombre del jugador"></input><br><br>
+          <button style = "display: none;" id = "botonNombre"></button> <!-- PONER HIDDEN EN CSS --><br>
+          <p id = "db" style="color: white; overflow-y: scroll;"></p>
 
-          <button id="boton-guardar">Guardar</button><br>
-
-          <hr />
-          <p style="color:white;">Nombre almacenado:</p>
-          <label style="color:white;" type="text" id="nombre"></label><br>
-          
-          <button id="boton-cargar">
-          Cargar elementos
-          </button>
         </div>
 
       </div>
@@ -87,6 +76,7 @@
       <span id = "play" style="color: white"> PLAY </span>
       <span id = "stop" style="color: white"> STOP </span>
       <iframe src = "../res/Chiptronical.ogg" controls> </iframe>
+      <!-- <audio id = "musica_fondo" src="../res/Chiptronical.ogg" style="display: none;" controls></audio> -->
     </div>
   </body>
 
