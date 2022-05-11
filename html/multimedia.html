@@ -33,16 +33,28 @@
 
       <div class="div">
 
-        <h2 id = "letra" > Pipeline: </h2>
-        <h4 id = "letra" > Este apartado se ha implementado mediante la opción </br>
-        2 de integración GStreamer en HTML: TCPServer + Firefox </h4>
-
+        <h2 id = "letra" >
+          Pipeline: gst-launch-1.0 filesrc location="res/trailer.ogg" !</br> oggdemux ! theoradec ! videoconvert !</br>
+          videobalance saturation=0.0 !</br>
+          timeoverlay !</br>
+          queue ! theoraenc ! m. oggmux name=m ! queue !</br>
+          tcpserversink host=127.0.0.1 port=9090
+        </h2>
+      </br>
+        <h4 id = "letra" >
+          Este apartado se ha implementado mediante la opcion 2 de integracion GStreamer en HTML:</br>
+          TCPServer (servidor + pipeline en dos terminales en la carpeta del repositorio) +</br>
+          Firefox (https://localhost:[python_port]/html/multimedia.html)
+        </h4>
       </div>
+    </br>
+      <div class="video">
 
-
-      <video width="700" height="500" id = "gst_video" autoplay loop>
-        <source src="http://localhost:9090">
-      </video>
+        <video width="700" height="500" id = "gst_video" autoplay loop>
+          <source src="http://localhost:9090">
+        </video>
+      
+      </div>
 
     </div>
 
