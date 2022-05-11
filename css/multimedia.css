@@ -2,14 +2,14 @@
 @import url("general.css");
 
 #letra{
-    color: white;
+  color: white;
 }
 
 #centrar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%; /* En Firefox no se aplica bien el flex, y no se lee el pipeline */
 }
 
 .div{
