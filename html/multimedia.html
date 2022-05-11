@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="../css/multimedia.css"/>
   </head>
 
-  <body>
+  <body id = centrar>
     <header id = "sticky">
       <nav>
         <ul class = "ul_navegacion hover">
@@ -29,12 +29,22 @@
 
     </header>
 
-    <!-- <h2>Pipeline: </h2>
-    <h4> Este apartado se ha implementado mediante la opción 2 de integración GStreamer en HTML: TCPServer + Firefox </h4> -->
+    <div>
 
-    <video width="700" height="500" id = "gst_video" autoplay>
-      <source src="http://localhost:9090">
-    </video>
+      <div>
+
+        <h2 id = letra > Pipeline: </h2> 
+      <h4 id = "letra" > Este apartado se ha implementado mediante la opción </br> 
+        2 de integración GStreamer en HTML: TCPServer + Firefox </h4>
+
+      </div>
+      
+
+      <video width="700" height="500" id = "gst_video" autoplay loop>
+        <source src="http://localhost:9090">
+      </video>
+
+    </div>
 
   </body>
 
