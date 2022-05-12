@@ -1,0 +1,1 @@
+gst-launch-1.0 filesrc location="res/recreat.ogg" ! oggdemux ! theoradec ! videoconvert ! videobalance saturation=0.0 ! timeoverlay ! queue ! theoraenc ! m. oggmux name=m ! queue ! tcpserversink host=127.0.0.1 port=9090
